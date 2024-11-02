@@ -1,721 +1,746 @@
-<!DOCTYPE html>
-
-
-
-<html lang="en">
-
-
-
-<head>
-
-
-
-    <meta charset="UTF-8">
-
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-    <title>SAT Score Calculator</title>
-
-
-
-    <link rel="stylesheet" href="styles.css">
-
-
-
-    <script type="text/javascript">
-
-
-
-        function googleTranslateElementInit() {
-
-
-
-            new google.translate.TranslateElement({
-
-
-
-                pageLanguage: 'en',
-
-
-
-                includedLanguages: 'en,de',
-
-
-
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-
-
-
-                autoDisplay: false
-
-
-
-            }, 'google_translate_element');
-
-
-
-        }
-
-
-
-    </script>
-
-
-
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js"></script>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-
-</head>
-
-
-
-<body>
-
-
-
-    <div id="google_translate_element" style="display: none;"></div>
-
-
-
-    <header class="site-header">
-
-
-
-        <div class="header-container">
-
-
-
-            <div class="app-name">
-
-
-
-                SAT Score Calculator
-
-
-
-            </div>
-
-
-
-            <div class="theme-switch-wrapper">
-
-
-
-                <label class="theme-switch" for="checkbox">
-
-
-
-                    <input type="checkbox" id="checkbox" />
-
-
-
-                    <div class="slider round">
-
-
-
-                        <span class="sun">☀️</span>
-
-
-
-                        <span class="moon">🌙</span>
-
-
-
-                    </div>
-
-
-
-                </label>
-
-
-
-            </div>
-
-
-
-        </div>
-
-
-
-    </header>
-
-
-
-    <div class="container">
-
-
-
-        <h1>SAT Score Calculator</h1>
-
-
-
-        
-
-
-
-        <div class="info-banner">
-
-
-
-            <p>Enter your raw scores for each module to calculate your estimated SAT score. 
-
-
-
-               Hover over the info icons for guidance.</p>
-
-
-
-        </div>
-
-
-
-        
-
-
-
-        <div class="calculator-section">
-
-
-
-            <div class="input-section">
-
-
-
-                <h2>Enter Your Scores</h2>
-
-
-
-                
-
-
-
-                <div class="section-group">
-
-
-
-                    <h3>
-
-
-
-                        Reading and Writing
-
-
-
-                        <span class="info-icon" 
-
-
-
-                              role="tooltip" 
-
-
-
-                              aria-label="Reading and Writing section consists of two modules, each scored out of 27 points">ⓘ</span>
-
-
-
-                    </h3>
-
-
-
-                    <div class="input-group">
-
-
-
-                        <label for="rwModule1">Module 1</label>
-
-
-
-                        <div class="input-wrapper">
-
-
-
-                            <input 
-
-
-
-                                type="number" 
-
-
-
-                                id="rwModule1" 
-
-
-
-                                min="0" 
-
-
-
-                                max="27" 
-
-
-
-                                placeholder="0-27"
-
-
-
-                                aria-label="Reading and Writing Module 1 score"
-
-
-
-                                required
-
-
-
-                            >
-
-
-
-                            <span class="max-score">/ 27</span>
-
-
-
-                            <div class="error-message" id="rwModule1Error"></div>
-
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-                    <div class="input-group">
-
-
-
-                        <label for="rwModule2">Module 2</label>
-
-
-
-                        <div class="input-wrapper">
-
-
-
-                            <input 
-
-
-
-                                type="number" 
-
-
-
-                                id="rwModule2" 
-
-
-
-                                min="0" 
-
-
-
-                                max="27" 
-
-
-
-                                placeholder="0-27"
-
-
-
-                                aria-label="Reading and Writing Module 2 score"
-
-
-
-                                required
-
-
-
-                            >
-
-
-
-                            <span class="max-score">/ 27</span>
-
-
-
-                            <div class="error-message" id="rwModule2Error"></div>
-
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-                </div>
-
-
-
-
-
-
-
-                <div class="section-group">
-
-
-
-                    <h3>
-
-
-
-                        Math
-
-
-
-                        <span class="info-icon" 
-
-
-
-                              role="tooltip" 
-
-
-
-                              aria-label="Math section consists of two modules, each scored out of 22 points">ⓘ</span>
-
-
-
-                    </h3>
-
-
-
-                    <div class="input-group">
-
-
-
-                        <label for="mathModule1">Module 1</label>
-
-
-
-                        <div class="input-wrapper">
-
-
-
-                            <input 
-
-
-
-                                type="number" 
-
-
-
-                                id="mathModule1" 
-
-
-
-                                min="0" 
-
-
-
-                                max="22" 
-
-
-
-                                placeholder="0-22"
-
-
-
-                                aria-label="Math Module 1 score"
-
-
-
-                                required
-
-
-
-                            >
-
-
-
-                            <span class="max-score">/ 22</span>
-
-
-
-                            <div class="error-message" id="mathModule1Error"></div>
-
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-                    <div class="input-group">
-
-
-
-                        <label for="mathModule2">Module 2</label>
-
-
-
-                        <div class="input-wrapper">
-
-
-
-                            <input 
-
-
-
-                                type="number" 
-
-
-
-                                id="mathModule2" 
-
-
-
-                                min="0" 
-
-
-
-                                max="22" 
-
-
-
-                                placeholder="0-22"
-
-
-
-                                aria-label="Math Module 2 score"
-
-
-
-                                required
-
-
-
-                            >
-
-
-
-                            <span class="max-score">/ 22</span>
-
-
-
-                            <div class="error-message" id="mathModule2Error"></div>
-
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-                </div>
-
-
-
-            </div>
-
-
-
-
-
-
-
-            <div class="results-section">
-
-
-
-                <h2>Your Scores</h2>
-
-
-
-                <div class="score-display">
-
-
-
-                    <div class="score-item">
-
-
-
-                        <h3>Reading and Writing</h3>
-
-
-
-                        <span id="rwScore"></span>
-
-
-
-                    </div>
-
-
-
-                    <div class="score-item">
-
-
-
-                        <h3>Math</h3>
-
-
-
-                        <span id="mathScore"></span>
-
-
-
-                    </div>
-
-
-
-                    <div class="score-item total">
-
-
-
-                        <h3>Total SAT Score</h3>
-
-
-
-                        <span id="totalScore"></span>
-
-
-
-                    </div>
-
-
-
-                </div>
-
-
-
-            </div>
-
-
-
-
-
-
-
-            <div class="chart-section">
-
-
-
-                <canvas id="scoreChart"></canvas>
-
-
-
-            </div>
-
-
-
-
-
-
-
-            <div class="score-explanation">
-
-
-
-                <h3>Understanding Your Scores</h3>
-
-
-
-                <ul>
-
-
-
-                    <li>Reading and Writing scores range from 200-800</li>
-
-
-
-                    <li>Math scores range from 200-800</li>
-
-
-
-                    <li>Total SAT scores range from 400-1600</li>
-
-
-
-                </ul>
-
-
-
-            </div>
-
-
-
-        </div>
-
-
-
-        <!-- Add after the calculator-section div -->
-        <div class="content-section">
-            <div class="content-header">
-                <h2>SAT Score Calculator: Your Path to Success</h2>
-                <p class="content-intro">
-                    The SAT Score Calculator is a user-friendly tool designed to help students estimate their potential SAT scores based on practice test results. By inputting the number of correct answers from each section of a practice test, users can receive an estimated score, aiding in identifying strengths and areas for improvement.
-                </p>
-            </div>
-
-            <div class="content-block">
-                <h3>Understanding the SAT Structure</h3>
-                <p>The SAT comprises two main sections:</p>
-                <div class="section-details">
-                    <div class="section-item">
-                        <h4>1. Evidence-Based Reading and Writing (EBRW)</h4>
-                        <p>This section evaluates reading comprehension and writing skills.</p>
-                    </div>
-                    <div class="section-item">
-                        <h4>2. Mathematics</h4>
-                        <p>This section assesses mathematical reasoning and problem-solving abilities.</p>
-                    </div>
-                </div>
-                <p class="section-note">Each section is scored on a scale of 200 to 800, combining for a total possible score ranging from 400 to 1600.</p>
-            </div>
-
-            <div class="content-block">
-                <h3>How to Use the SAT Score Calculator</h3>
-                <ol class="instruction-list">
-                    <li><strong>Complete a Practice Test:</strong> Take a full-length SAT practice test under timed conditions to simulate the actual exam environment.</li>
-                    <li><strong>Count Correct Answers:</strong> After completing the test, tally the number of correct answers in each section.</li>
-                    <li><strong>Input Scores:</strong> Enter these numbers into the SAT Score Calculator.</li>
-                    <li><strong>Receive Estimated Scores:</strong> The calculator will provide an estimated score for each section and a total score, offering insight into your current performance level.</li>
-                </ol>
-            </div>
-
-            <div class="content-block">
-                <h3>Benefits of Using the SAT Score Calculator</h3>
-                <ul class="benefits-list">
-                    <li>Identify Strengths and Weaknesses: Determine which areas require more focus and practice.</li>
-                    <li>Set Target Scores: Establish realistic goals based on current performance.</li>
-                    <li>Track Progress: Monitor improvements over time by comparing scores from multiple practice tests.</li>
-                </ul>
-            </div>
-
-            <div class="content-block">
-                <h3>Preparing for the SAT</h3>
-                <p>Regular use of the SAT Score Calculator, combined with consistent practice and review, can enhance readiness for the actual exam. Understanding the scoring system and familiarizing oneself with the test format are crucial steps toward achieving a desirable score.</p>
-            </div>
-        </div>
-
-    </div>
-
-
-
-    <script src="script.js"></script>
-
-
-
-</body>
-
-
-
-</html> 
-
-
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+
+
+<head>
+
+
+
+    <meta charset="UTF-8">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>SAT Score Calculator</title>
+
+
+
+    <link rel="stylesheet" href="styles.css">
+
+
+
+    <script type="text/javascript">
+
+
+
+        function googleTranslateElementInit() {
+
+
+
+            new google.translate.TranslateElement({
+
+
+
+                pageLanguage: 'en',
+
+
+
+                includedLanguages: 'en,de',
+
+
+
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+
+
+
+                autoDisplay: false
+
+
+
+            }, 'google_translate_element');
+
+
+
+        }
+
+
+
+    </script>
+
+
+
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    <script src="https://unpkg.com/i18next@21.8.12/dist/umd/i18next.js"></script>
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+    <div id="google_translate_element" style="display: none;"></div>
+
+
+
+    <header class="site-header">
+
+
+
+        <div class="header-container">
+
+
+
+            <div class="app-name">
+
+
+
+                SAT Score Calculator
+
+
+
+            </div>
+
+
+
+            <div class="header-controls">
+
+
+
+                <div class="language-switch-wrapper">
+
+
+
+                    <select id="languageSwitcher" class="language-select" aria-label="Select language">
+
+
+
+                        <option value="en">English</option>
+
+
+
+                        <option value="de">Deutsch</option>
+
+
+
+                        <option value="es">Español</option>
+
+
+
+                    </select>
+
+
+
+                </div>
+
+
+
+                <div class="theme-switch-wrapper">
+
+
+
+                    <label class="theme-switch" for="checkbox">
+
+
+
+                        <input type="checkbox" id="checkbox" />
+
+
+
+                        <div class="slider round">
+
+
+
+                            <span class="sun">☀️</span>
+
+
+
+                            <span class="moon">🌙</span>
+
+
+
+                        </div>
+
+
+
+                    </label>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </header>
+
+
+
+    <div class="container">
+
+
+
+        <h1 data-i18n="appTitle">SAT Score Calculator</h1>
+
+
+
+        
+
+
+
+        <div class="info-banner">
+
+
+
+            <p data-i18n="infoBanner">Enter your raw scores for each module to calculate your estimated SAT score. 
+
+
+
+               Hover over the info icons for guidance.</p>
+
+
+
+        </div>
+
+
+
+        
+
+
+
+        <div class="calculator-section">
+
+
+
+            <div class="input-section">
+
+
+
+                <h2 data-i18n="enterScores">Enter Your Scores</h2>
+
+
+
+                
+
+
+
+                <div class="section-group">
+
+
+
+                    <h3 data-i18n="readingWriting">Reading and Writing</h3>
+
+
+
+                    <span class="info-icon" 
+
+
+
+                          role="tooltip" 
+
+
+
+                          aria-label="Reading and Writing section consists of two modules, each scored out of 27 points">ⓘ</span>
+
+
+
+                    <div class="input-group">
+
+
+
+                        <label for="rwModule1">Module 1</label>
+
+
+
+                        <div class="input-wrapper">
+
+
+
+                            <input 
+
+
+
+                                type="number" 
+
+
+
+                                id="rwModule1" 
+
+
+
+                                min="0" 
+
+
+
+                                max="27" 
+
+
+
+                                placeholder="0-27"
+
+
+
+                                aria-label="Reading and Writing Module 1 score"
+
+
+
+                                required
+
+
+
+                            >
+
+
+
+                            <span class="max-score">/ 27</span>
+
+
+
+                            <div class="error-message" id="rwModule1Error"></div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <div class="input-group">
+
+
+
+                        <label for="rwModule2">Module 2</label>
+
+
+
+                        <div class="input-wrapper">
+
+
+
+                            <input 
+
+
+
+                                type="number" 
+
+
+
+                                id="rwModule2" 
+
+
+
+                                min="0" 
+
+
+
+                                max="27" 
+
+
+
+                                placeholder="0-27"
+
+
+
+                                aria-label="Reading and Writing Module 2 score"
+
+
+
+                                required
+
+
+
+                            >
+
+
+
+                            <span class="max-score">/ 27</span>
+
+
+
+                            <div class="error-message" id="rwModule2Error"></div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+                <div class="section-group">
+
+
+
+                    <h3 data-i18n="math">Math</h3>
+
+
+
+                    <span class="info-icon" 
+
+
+
+                          role="tooltip" 
+
+
+
+                          aria-label="Math section consists of two modules, each scored out of 22 points">ⓘ</span>
+
+
+
+                    <div class="input-group">
+
+
+
+                        <label for="mathModule1">Module 1</label>
+
+
+
+                        <div class="input-wrapper">
+
+
+
+                            <input 
+
+
+
+                                type="number" 
+
+
+
+                                id="mathModule1" 
+
+
+
+                                min="0" 
+
+
+
+                                max="22" 
+
+
+
+                                placeholder="0-22"
+
+
+
+                                aria-label="Math Module 1 score"
+
+
+
+                                required
+
+
+
+                            >
+
+
+
+                            <span class="max-score">/ 22</span>
+
+
+
+                            <div class="error-message" id="mathModule1Error"></div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <div class="input-group">
+
+
+
+                        <label for="mathModule2">Module 2</label>
+
+
+
+                        <div class="input-wrapper">
+
+
+
+                            <input 
+
+
+
+                                type="number" 
+
+
+
+                                id="mathModule2" 
+
+
+
+                                min="0" 
+
+
+
+                                max="22" 
+
+
+
+                                placeholder="0-22"
+
+
+
+                                aria-label="Math Module 2 score"
+
+
+
+                                required
+
+
+
+                            >
+
+
+
+                            <span class="max-score">/ 22</span>
+
+
+
+                            <div class="error-message" id="mathModule2Error"></div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="results-section">
+
+
+
+                <h2>Your Scores</h2>
+
+
+
+                <div class="score-display">
+
+
+
+                    <div class="score-item">
+
+
+
+                        <h3>Reading and Writing</h3>
+
+
+
+                        <span id="rwScore"></span>
+
+
+
+                    </div>
+
+
+
+                    <div class="score-item">
+
+
+
+                        <h3>Math</h3>
+
+
+
+                        <span id="mathScore"></span>
+
+
+
+                    </div>
+
+
+
+                    <div class="score-item total">
+
+
+
+                        <h3>Total SAT Score</h3>
+
+
+
+                        <span id="totalScore"></span>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="chart-section">
+
+
+
+                <canvas id="scoreChart"></canvas>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="score-explanation">
+
+
+
+                <h3>Understanding Your Scores</h3>
+
+
+
+                <ul>
+
+
+
+                    <li data-i18n="rwScoreRange">Reading and Writing scores range from 200-800</li>
+
+
+
+                    <li data-i18n="mathScoreRange">Math scores range from 200-800</li>
+
+
+
+                    <li data-i18n="totalScoreRange">Total SAT scores range from 400-1600</li>
+
+
+
+                </ul>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <!-- Replace the existing content section with this -->
+        <div class="content-section">
+            <div class="content-header">
+                <h2 data-i18n="contentTitle">SAT Score Calculator: Your Path to Success</h2>
+                <p class="content-intro" data-i18n="contentIntro">
+                    The SAT Score Calculator is a user-friendly tool designed to help students estimate their potential SAT scores based on practice test results. By inputting the number of correct answers from each section of a practice test, users can receive an estimated score, aiding in identifying strengths and areas for improvement.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-i18n="structureTitle">Understanding the SAT Structure</h3>
+                <p data-i18n="structureIntro">The SAT comprises two main sections:</p>
+                <div class="section-details">
+                    <div class="section-item">
+                        <h4 data-i18n="ebrwTitle">1. Evidence-Based Reading and Writing (EBRW)</h4>
+                        <p data-i18n="ebrwDesc">This section evaluates reading comprehension and writing skills.</p>
+                    </div>
+                    <div class="section-item">
+                        <h4 data-i18n="mathTitle">2. Mathematics</h4>
+                        <p data-i18n="mathDesc">This section assesses mathematical reasoning and problem-solving abilities.</p>
+                    </div>
+                </div>
+                <p class="section-note" data-i18n="sectionNote">Each section is scored on a scale of 200 to 800, combining for a total possible score ranging from 400 to 1600.</p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-i18n="howToUseTitle">How to Use the SAT Score Calculator</h3>
+                <ol class="instruction-list">
+                    <li data-i18n="step1"><strong>Complete a Practice Test:</strong> Take a full-length SAT practice test under timed conditions to simulate the actual exam environment.</li>
+                    <li data-i18n="step2"><strong>Count Correct Answers:</strong> After completing the test, tally the number of correct answers in each section.</li>
+                    <li data-i18n="step3"><strong>Input Scores:</strong> Enter these numbers into the SAT Score Calculator.</li>
+                    <li data-i18n="step4"><strong>Receive Estimated Scores:</strong> The calculator will provide an estimated score for each section and a total score, offering insight into your current performance level.</li>
+                </ol>
+            </div>
+
+            <div class="content-block">
+                <h3 data-i18n="benefitsTitle">Benefits of Using the SAT Score Calculator</h3>
+                <ul class="benefits-list">
+                    <li data-i18n="benefit1">Identify Strengths and Weaknesses: Determine which areas require more focus and practice.</li>
+                    <li data-i18n="benefit2">Set Target Scores: Establish realistic goals based on current performance.</li>
+                    <li data-i18n="benefit3">Track Progress: Monitor improvements over time by comparing scores from multiple practice tests.</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3 data-i18n="preparingTitle">Preparing for the SAT</h3>
+                <p data-i18n="preparingDesc">Regular use of the SAT Score Calculator, combined with consistent practice and review, can enhance readiness for the actual exam. Understanding the scoring system and familiarizing oneself with the test format are crucial steps toward achieving a desirable score.</p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+
+
+</body>
+
+
+
+</html> 
+
+
+

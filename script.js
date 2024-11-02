@@ -1,3 +1,195 @@
+// Add at the beginning of the file
+const translations = {
+    en: {
+        translation: {
+            appTitle: "SAT Score Calculator",
+            enterScores: "Enter Your Scores",
+            readingWriting: "Reading and Writing",
+            math: "Math",
+            module1: "Module 1",
+            module2: "Module 2",
+            yourScores: "Your Scores",
+            totalSATScore: "Total SAT Score",
+            understandingScores: "Understanding Your Scores",
+            rwScoreRange: "Reading and Writing scores range from 200-800",
+            mathScoreRange: "Math scores range from 200-800",
+            totalScoreRange: "Total SAT scores range from 400-1600",
+            infoBanner: "Enter your raw scores for each module to calculate your estimated SAT score. Hover over the info icons for guidance.",
+            rwTooltip: "Reading and Writing section consists of two modules, each scored out of 27 points",
+            mathTooltip: "Math section consists of two modules, each scored out of 22 points",
+            
+            // Content Section Translations
+            contentTitle: "SAT Score Calculator: Your Path to Success",
+            contentIntro: "The SAT Score Calculator is a user-friendly tool designed to help students estimate their potential SAT scores based on practice test results. By inputting the number of correct answers from each section of a practice test, users can receive an estimated score, aiding in identifying strengths and areas for improvement.",
+            
+            structureTitle: "Understanding the SAT Structure",
+            structureIntro: "The SAT comprises two main sections:",
+            
+            ebrwTitle: "1. Evidence-Based Reading and Writing (EBRW)",
+            ebrwDesc: "This section evaluates reading comprehension and writing skills.",
+            
+            mathTitle: "2. Mathematics",
+            mathDesc: "This section assesses mathematical reasoning and problem-solving abilities.",
+            
+            sectionNote: "Each section is scored on a scale of 200 to 800, combining for a total possible score ranging from 400 to 1600.",
+            
+            howToUseTitle: "How to Use the SAT Score Calculator",
+            step1: "Complete a Practice Test: Take a full-length SAT practice test under timed conditions to simulate the actual exam environment.",
+            step2: "Count Correct Answers: After completing the test, tally the number of correct answers in each section.",
+            step3: "Input Scores: Enter these numbers into the SAT Score Calculator.",
+            step4: "Receive Estimated Scores: The calculator will provide an estimated score for each section and a total score, offering insight into your current performance level.",
+            
+            benefitsTitle: "Benefits of Using the SAT Score Calculator",
+            benefit1: "Identify Strengths and Weaknesses: Determine which areas require more focus and practice.",
+            benefit2: "Set Target Scores: Establish realistic goals based on current performance.",
+            benefit3: "Track Progress: Monitor improvements over time by comparing scores from multiple practice tests.",
+            
+            preparingTitle: "Preparing for the SAT",
+            preparingDesc: "Regular use of the SAT Score Calculator, combined with consistent practice and review, can enhance readiness for the actual exam. Understanding the scoring system and familiarizing oneself with the test format are crucial steps toward achieving a desirable score."
+        }
+    },
+    de: {
+        translation: {
+            appTitle: "SAT-Punkterechner",
+            enterScores: "Geben Sie Ihre Punktzahlen ein",
+            readingWriting: "Lesen und Schreiben",
+            math: "Mathematik",
+            module1: "Modul 1",
+            module2: "Modul 2",
+            yourScores: "Ihre Punktzahlen",
+            totalSATScore: "Gesamt-SAT-Punktzahl",
+            understandingScores: "Verstehen Ihrer Punktzahlen",
+            rwScoreRange: "Lese- und Schreibpunktzahlen reichen von 200-800",
+            mathScoreRange: "Mathematikpunktzahlen reichen von 200-800",
+            totalScoreRange: "Gesamt-SAT-Punktzahlen reichen von 400-1600",
+            infoBanner: "Geben Sie Ihre Rohwerte für jedes Modul ein, um Ihre geschätzte SAT-Punktzahl zu berechnen. Fahren Sie mit der Maus über die Info-Symbole für Hilfe.",
+            rwTooltip: "Der Lese- und Schreibteil besteht aus zwei Modulen mit jeweils 27 Punkten",
+            mathTooltip: "Der Mathematikteil besteht aus zwei Modulen mit jeweils 22 Punkten",
+            
+            // German Content Section Translations
+            contentTitle: "SAT-Punkterechner: Ihr Weg zum Erfolg",
+            contentIntro: "Der SAT-Punkterechner ist ein benutzerfreundliches Tool, das Schülern hilft, ihre potenziellen SAT-Punktzahlen anhand von Übungstestergebnissen einzuschätzen. Durch die Eingabe der Anzahl richtiger Antworten aus jedem Abschnitt eines Übungstests können Benutzer eine geschätzte Punktzahl erhalten und dabei Stärken und Verbesserungsbereiche identifizieren.",
+            
+            structureTitle: "Verstehen der SAT-Struktur",
+            structureIntro: "Der SAT besteht aus zwei Hauptabschnitten:",
+            
+            ebrwTitle: "1. Evidenzbasiertes Lesen und Schreiben (EBRW)",
+            ebrwDesc: "Dieser Abschnitt bewertet Leseverständnis und Schreibfähigkeiten.",
+            
+            mathTitle: "2. Mathematik",
+            mathDesc: "Dieser Abschnitt bewertet mathematisches Denken und Problemlösungsfähigkeiten.",
+            
+            sectionNote: "Jeder Abschnitt wird auf einer Skala von 200 bis 800 bewertet, die sich zu einer möglichen Gesamtpunktzahl von 400 bis 1600 addiert.",
+            
+            howToUseTitle: "Wie man den SAT-Punkterechner verwendet",
+            step1: "Übungstest absolvieren: Machen Sie einen vollständigen SAT-Übungstest unter zeitlich begrenzten Bedingungen, um die tatsächliche Prüfungsumgebung zu simulieren.",
+            step2: "Richtige Antworten zählen: Zählen Sie nach Abschluss des Tests die Anzahl der richtigen Antworten in jedem Abschnitt.",
+            step3: "Punktzahlen eingeben: Geben Sie diese Zahlen in den SAT-Punkterechner ein.",
+            step4: "Geschätzte Punktzahlen erhalten: Der Rechner liefert eine geschätzte Punktzahl für jeden Abschnitt und eine Gesamtpunktzahl, die Einblick in Ihr aktuelles Leistungsniveau gibt.",
+            
+            benefitsTitle: "Vorteile der Verwendung des SAT-Punkterechners",
+            benefit1: "Stärken und Schwächen identifizieren: Bestimmen Sie, welche Bereiche mehr Fokus und Übung erfordern.",
+            benefit2: "Zielpunktzahlen festlegen: Setzen Sie realistische Ziele basierend auf der aktuellen Leistung.",
+            benefit3: "Fortschritt verfolgen: Überwachen Sie Verbesserungen im Laufe der Zeit durch den Vergleich von Punktzahlen aus mehreren Übungstests.",
+            
+            preparingTitle: "Vorbereitung auf den SAT",
+            preparingDesc: "Die regelmäßige Nutzung des SAT-Punkterechners in Kombination mit konsequentem Üben und Wiederholen kann die Bereitschaft für die tatsächliche Prüfung verbessern. Das Verständnis des Bewertungssystems und die Vertrautheit mit dem Testformat sind entscheidende Schritte zum Erreichen einer wünschenswerten Punktzahl."
+        }
+    },
+    es: {
+        translation: {
+            appTitle: "Calculadora de Puntaje SAT",
+            enterScores: "Ingrese sus Puntajes",
+            readingWriting: "Lectura y Escritura",
+            math: "Matemáticas",
+            module1: "Módulo 1",
+            module2: "Módulo 2",
+            yourScores: "Sus Puntajes",
+            totalSATScore: "Puntaje Total SAT",
+            understandingScores: "Entendiendo sus Puntajes",
+            rwScoreRange: "Los puntajes de Lectura y Escritura van de 200 a 800",
+            mathScoreRange: "Los puntajes de Matemáticas van de 200 a 800",
+            totalScoreRange: "Los puntajes totales del SAT van de 400 a 1600",
+            infoBanner: "Ingrese sus puntajes brutos para cada módulo para calcular su puntaje SAT estimado. Pase el cursor sobre los iconos de información para obtener orientación.",
+            rwTooltip: "La sección de Lectura y Escritura consta de dos módulos, cada uno con 27 puntos",
+            mathTooltip: "La sección de Matemáticas consta de dos módulos, cada uno con 22 puntos",
+            
+            // Spanish Content Section Translations
+            contentTitle: "Calculadora de Puntaje SAT: Tu Camino al Éxito",
+            contentIntro: "La Calculadora de Puntaje SAT es una herramienta fácil de usar diseñada para ayudar a los estudiantes a estimar sus puntajes potenciales del SAT basados en resultados de pruebas de práctica. Al ingresar el número de respuestas correctas de cada sección de una prueba de práctica, los usuarios pueden recibir un puntaje estimado, ayudando a identificar fortalezas y áreas de mejora.",
+            
+            structureTitle: "Entendiendo la Estructura del SAT",
+            structureIntro: "El SAT consta de dos secciones principales:",
+            
+            ebrwTitle: "1. Lectura y Escritura Basadas en Evidencia (EBRW)",
+            ebrwDesc: "Esta sección evalúa la comprensión lectora y las habilidades de escritura.",
+            
+            mathTitle: "2. Matemáticas",
+            mathDesc: "Esta sección evalúa el razonamiento matemático y las habilidades de resolución de problemas.",
+            
+            sectionNote: "Cada sección se califica en una escala de 200 a 800, combinándose para un puntaje total posible que va de 400 a 1600.",
+            
+            howToUseTitle: "Cómo Usar la Calculadora de Puntaje SAT",
+            step1: "Completar una Prueba de Práctica: Toma una prueba de práctica SAT completa bajo condiciones cronometradas para simular el ambiente real del examen.",
+            step2: "Contar Respuestas Correctas: Después de completar la prueba, cuenta el número de respuestas correctas en cada sección.",
+            step3: "Ingresar Puntajes: Ingresa estos números en la Calculadora de Puntaje SAT.",
+            step4: "Recibir Puntajes Estimados: La calculadora proporcionará un puntaje estimado para cada sección y un puntaje total, ofreciendo una visión de tu nivel de rendimiento actual.",
+            
+            benefitsTitle: "Beneficios de Usar la Calculadora de Puntaje SAT",
+            benefit1: "Identificar Fortalezas y Debilidades: Determina qué áreas requieren más enfoque y práctica.",
+            benefit2: "Establecer Puntajes Objetivo: Establece metas realistas basadas en el rendimiento actual.",
+            benefit3: "Seguir el Progreso: Monitorea las mejoras a lo largo del tiempo comparando puntajes de múltiples pruebas de práctica.",
+            
+            preparingTitle: "Preparándose para el SAT",
+            preparingDesc: "El uso regular de la Calculadora de Puntaje SAT, combinado con práctica constante y revisión, puede mejorar la preparación para el examen real. Entender el sistema de puntuación y familiarizarse con el formato de la prueba son pasos cruciales para lograr un puntaje deseable."
+        }
+    }
+};
+
+// Initialize i18next
+i18next.init({
+    lng: 'en', // default language
+    resources: translations,
+    fallbackLng: 'en'
+});
+
+// Add translation update function
+const updateContent = () => {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = i18next.t(key);
+    });
+    
+    // Update aria-labels
+    document.querySelectorAll('[data-i18n-aria]').forEach(element => {
+        const key = element.getAttribute('data-i18n-aria');
+        element.setAttribute('aria-label', i18next.t(key));
+    });
+};
+
+// Add language switcher handler
+const handleLanguageSwitch = (e) => {
+    const selectedLanguage = e.target.value;
+    i18next.changeLanguage(selectedLanguage, () => {
+        updateContent();
+        localStorage.setItem('language', selectedLanguage);
+    });
+};
+
+// Add to the DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing initialization code ...
+    
+    // Initialize language
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    const languageSwitcher = document.getElementById('languageSwitcher');
+    if (languageSwitcher) {
+        languageSwitcher.value = savedLanguage;
+        i18next.changeLanguage(savedLanguage, updateContent);
+        languageSwitcher.addEventListener('change', handleLanguageSwitch);
+    }
+});
+
 // Score conversion tables based on official SAT guidelines
 const RW_CONVERSION_TABLE = {
     54: 800, 53: 780, 52: 760, 51: 750, 50: 730, 49: 720, 48: 710, 47: 700,
