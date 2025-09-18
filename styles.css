@@ -949,4 +949,22 @@ h3 {
         border: 1px solid #ddd;
     }
 }
-
+
+
+/* Footer Styles */
+.site-footer {
+    margin-top: 48px;
+    padding: 24px 0;
+    border-top: 1px solid #eee;
+    text-align: center;
+    font-size: .95rem;
+}
+
+.site-footer nav a {
+    margin: 0 .4rem;
+    text-decoration: none;
+}
+
+.site-footer nav a:hover {
+    text-decoration: underline;
+}

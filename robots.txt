@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sat-score-calculator.vercel.app/sitemap.xml 
+Sitemap: https://satscorecalculator.io/sitemap.xml 
