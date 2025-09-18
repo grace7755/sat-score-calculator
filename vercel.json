@@ -1,18 +1,14 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
       "source": "/(.*)",
       "destination": "https://satscorecalculator.io/$1",
-      "permanent": true
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
+      "permanent": true,
+      "has": [
         {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
+          "type": "host",
+          "value": "sat-score-calculator.vercel.app"
         }
       ]
     }

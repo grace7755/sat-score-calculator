@@ -303,6 +303,24 @@
 
 
 
+    <!-- Client-side redirect for subdomain consolidation -->
+    <script>
+        (function() {
+            var hostname = window.location.hostname;
+            var targetDomain = 'satscorecalculator.io';
+            
+            // Check if we're on a subdomain that should redirect
+            if (hostname === 'sat-score-calculator.vercel.app' || 
+                (hostname.includes('sat-score-calculator') && hostname.includes('.pages.dev'))) {
+                
+                var newUrl = 'https://' + targetDomain + window.location.pathname + window.location.search + window.location.hash;
+                
+                // Use replace to avoid back button issues
+                window.location.replace(newUrl);
+            }
+        })();
+    </script>
+
     <div id="google_translate_element" style="display: none;"></div>
 
 

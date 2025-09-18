@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to SAT Score Calculator</title>
+    <meta http-equiv="refresh" content="0; url=https://satscorecalculator.io/">
+    <link rel="canonical" href="https://satscorecalculator.io/">
+    <script>
+        // JavaScript redirect as backup
+        if (window.location.hostname === 'sat-score-calculator.vercel.app' || 
+            window.location.hostname.includes('.pages.dev')) {
+            window.location.replace('https://satscorecalculator.io' + window.location.pathname + window.location.search + window.location.hash);
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to <a href="https://satscorecalculator.io/">SAT Score Calculator</a>...</p>
+    <script>
+        // Additional redirect logic
+        setTimeout(function() {
+            window.location.href = 'https://satscorecalculator.io/';
+        }, 1000);
+    </script>
+</body>
+</html>
