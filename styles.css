@@ -984,6 +984,48 @@ a:focus-visible,
 }
 
 /* ==========================================================================
+   Header Navigation Styles
+   ========================================================================== */
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    margin-right: var(--space-md);
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.nav-link:hover {
+    background-color: var(--hover-color);
+    color: white;
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+    .header-nav {
+        margin-right: var(--space-sm);
+    }
+    
+    .nav-link {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: var(--font-size-xs);
+    }
+}
+
+/* ==========================================================================
    Utility Classes
    ========================================================================== */
 
