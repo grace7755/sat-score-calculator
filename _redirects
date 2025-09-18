@@ -1,0 +1,4 @@
+# Redirect all traffic from Cloudflare Pages subdomain to main domain
+# This preserves URL paths and uses 301 redirects for SEO
+
+/* https://satscorecalculator.io/:splat 301!
