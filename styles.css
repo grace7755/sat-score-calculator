@@ -259,6 +259,7 @@ small {
     margin: 0 auto;
     flex-wrap: wrap;
     gap: var(--space-sm);
+    overflow: hidden;
 }
 
 .app-name {
@@ -268,26 +269,74 @@ small {
     flex-shrink: 0;
 }
 
-.app-name a {
-    color: inherit;
-    text-decoration: none;
-}
 
 .header-controls {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     flex-wrap: wrap;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* Mobile-specific adjustments for very small screens */
+@media (max-width: 375px) {
+    .header-container {
+        padding: var(--space-sm);
+        gap: var(--space-xs);
+    }
+    
+    .app-name {
+        font-size: var(--font-size-md);
+        flex-shrink: 1;
+        min-width: 0;
+    }
+    
+    .header-controls {
+        gap: var(--space-xs);
+    }
+    
+    .language-select {
+        min-width: 60px;
+        max-width: 75px;
+        padding: var(--space-xs) var(--space-sm);
+        font-size: var(--font-size-xs);
+    }
+    
+    .theme-switch {
+        height: 26px;
+        width: 46px;
+    }
+    
+    .slider {
+        border-radius: 26px;
+    }
+    
+    .slider:before {
+        height: 20px;
+        width: 20px;
+        bottom: 3px;
+        left: 3px;
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(20px);
+    }
 }
 
 /* Adjust header for larger screens */
 @media (min-width: 768px) {
     .header-container {
         padding: var(--space-lg);
+        gap: var(--space-md);
     }
     
     .app-name {
         font-size: var(--font-size-xl);
+    }
+    
+    .header-controls {
+        gap: var(--space-md);
     }
 }
 
@@ -309,8 +358,8 @@ small {
     font-size: var(--font-size-sm);
     cursor: pointer;
     transition: all 0.2s ease;
-    min-width: 80px;
-    max-width: 120px;
+    min-width: 70px;
+    max-width: 90px;
 }
 
 .language-select:hover {
@@ -334,9 +383,10 @@ small {
 
 .theme-switch {
     display: inline-block;
-    height: 34px;
+    height: 30px;
     position: relative;
-    width: 60px;
+    width: 54px;
+    flex-shrink: 0;
 }
 
 .theme-switch input {
@@ -352,18 +402,18 @@ small {
     right: 0;
     top: 0;
     transition: 0.4s;
-    border-radius: 34px;
+    border-radius: 30px;
 }
 
 .slider:before {
     background-color: #fff;
-    bottom: 4px;
+    bottom: 3px;
     content: "";
-    height: 26px;
-    left: 4px;
+    height: 24px;
+    left: 3px;
     position: absolute;
     transition: 0.4s;
-    width: 26px;
+    width: 24px;
     border-radius: 50%;
 }
 
@@ -372,7 +422,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(24px);
 }
 
 .slider .sun,
