@@ -55,7 +55,27 @@
     <header class="site-header">
         <div class="header-container">
             <div class="app-name">
-                <a href="/" style="text-decoration: none; color: inherit;">SAT Score Calculator</a>
+                <a href="/" aria-label="SAT Score Calculator Home">SAT Score Calculator</a>
+            </div>
+            <div class="header-controls">
+                <div class="language-switch-wrapper">
+                    <label for="languageSwitcher" class="visually-hidden">Select language</label>
+                    <select id="languageSwitcher" class="language-select" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <span class="visually-hidden">Toggle dark mode</span>
+                        <input type="checkbox" id="checkbox" aria-label="Toggle dark mode" />
+                        <div class="slider round">
+                            <span class="sun" aria-hidden="true">☀️</span>
+                            <span class="moon" aria-hidden="true">🌙</span>
+                        </div>
+                    </label>
+                </div>
             </div>
         </div>
     </header>
@@ -70,10 +90,10 @@
         </div>
     </div>
 
-    <div class="container">
+    <main class="container">
         <h1>Terms & Conditions</h1>
         
-        <div class="calculator-section">
+        <section class="calculator-section">
             <p><small>Last updated: September 18, 2025</small></p>
                 
                 <h2>Agreement to Terms</h2>
@@ -132,8 +152,8 @@
                 
                 <h2>Contact</h2>
                 <p>If you have any questions about these Terms & Conditions, please contact us at: <a href="mailto:satscorecalculator1@gmail.com">satscorecalculator1@gmail.com</a></p>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <footer class="site-footer">
         <nav aria-label="Footer">
@@ -148,5 +168,6 @@
     <script>
         (function(){ var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear(); })();
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
