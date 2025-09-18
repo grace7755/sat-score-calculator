@@ -968,3 +968,51 @@ h3 {
 .site-footer nav a:hover {
     text-decoration: underline;
 }
+
+/* Breadcrumb Styles */
+.breadcrumb {
+    background: var(--background-color);
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breadcrumb-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.breadcrumb nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.breadcrumb .separator {
+    color: var(--secondary-color);
+    margin: 0 0.25rem;
+}
+
+.breadcrumb .current {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Dark mode breadcrumb styles */
+[data-theme="dark"] .breadcrumb {
+    background: var(--background-color);
+    border-bottom-color: var(--border-color);
+}
