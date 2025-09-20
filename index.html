@@ -15,13 +15,39 @@
 
 
 <head>
-    <!-- Google tag (gtag.js) for satscorecalculator.io -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T393J35ZL"></script>
+    <!-- Lightweight Google Analytics (optimized for performance) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7T393J35ZL');
+        // Minimal analytics tracking
+        (function() {
+            // Only load analytics if user hasn't opted out
+            if (localStorage.getItem('analytics-opt-out') === 'true') return;
+            
+            // Load gtag.js asynchronously after page load
+            function loadAnalytics() {
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-7T393J35ZL';
+                document.head.appendChild(script);
+                
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', 'G-7T393J35ZL', {
+                    page_title: document.title,
+                    page_location: window.location.href
+                });
+            }
+            
+            // Load analytics after a short delay to not block rendering
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    setTimeout(loadAnalytics, 1000);
+                });
+            } else {
+                setTimeout(loadAnalytics, 1000);
+            }
+        })();
     </script>
 
 
@@ -120,7 +146,23 @@
 
 
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://translate.google.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Critical CSS (inline for fastest rendering) -->
+    <style>
+        :root{--primary-color:#000;--secondary-color:#666;--background-color:#fafafa;--text-color:#111;--border-color:#eaeaea;--input-text:#000;--error-color:red;--success-color:#0070f3;--hover-color:#0070f3;--card-shadow:0 2px 4px rgba(0,0,0,.05);--header-bg:#fafafa;--card-bg:#fff;--chart-text:#111;--gradient-start:#000;--gradient-end:#333;--info-text:#111;--content-text:#111;--heading-text:#111;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-xxl:3rem;--font-size-xs:.75rem;--font-size-sm:.875rem;--font-size-md:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-xxl:1.5rem;--font-size-3xl:2rem;--font-size-4xl:2.5rem;--container-sm:640px;--container-md:768px;--container-lg:1024px;--container-xl:1200px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background-color:var(--background-color);color:var(--text-color);line-height:1.6;min-height:100vh}.container{max-width:var(--container-lg);margin:0 auto;padding:var(--space-md)}h1{font-size:var(--font-size-3xl);text-align:center;margin-bottom:var(--space-xl);color:var(--heading-text)}
+        
+        /* Custom chart styles (lightweight replacement for Chart.js) */
+        .custom-chart{background:var(--card-bg);border-radius:8px;padding:1rem;margin:1rem 0;box-shadow:var(--card-shadow)}.chart-title{font-size:1.25rem;font-weight:bold;text-align:center;margin-bottom:1rem;color:var(--heading-text)}.chart-bars{display:flex;justify-content:space-around;align-items:end;height:200px;gap:1rem}.chart-bar{display:flex;flex-direction:column;align-items:center;flex:1;max-width:120px}.bar-label{font-size:0.875rem;font-weight:600;margin-bottom:0.5rem;text-align:center;color:var(--text-color)}.bar-container{width:100%;height:150px;background:rgba(0,0,0,0.05);border-radius:4px;position:relative;display:flex;align-items:end}.bar-fill{width:100%;border-radius:4px;transition:height 0.3s ease;min-height:2px}.bar-value{font-size:1rem;font-weight:bold;margin-top:0.5rem;color:var(--text-color)}
+    </style>
+    
+    <!-- Load non-critical CSS asynchronously (minified for performance) -->
+    <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Free SAT Score Calculator - Calculate your estimated SAT scores from raw scores. Get instant results for Reading, Writing, and Math sections. Perfect for SAT prep and practice tests.">
@@ -244,23 +286,31 @@
 
 
 
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js"></script>
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-
-
-
-
-
-    <script src="https://unpkg.com/i18next@21.8.12/dist/umd/i18next.js"></script>
+    <!-- Load scripts asynchronously to prevent render blocking -->
+    <script>
+        // Async script loader
+        function loadScript(src, callback) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            if (callback) script.onload = callback;
+            document.head.appendChild(script);
+        }
+        
+        // Load scripts after DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load i18next first
+            loadScript('https://unpkg.com/i18next@21.8.12/dist/umd/i18next.js', function() {
+                // Initialize app after i18next loads (remove Chart.js dependency)
+                if (window.initializeApp) window.initializeApp();
+            });
+            
+            // Load Google Translate separately (non-critical)
+            setTimeout(function() {
+                loadScript('https://translate.google.com/translate_a/element.js');
+            }, 100);
+        });
+    </script>
 
 
 
@@ -1643,7 +1693,7 @@
         (function(){ var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear(); })();
     </script>
 
-    <script src="script.js" defer></script>
+    <script src="script.min.js" defer></script>
 
 
 
