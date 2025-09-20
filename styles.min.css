@@ -603,6 +603,8 @@ input:checked + .slider:before {
     font-size: var(--font-size-sm);
     color: var(--error-color);
     margin-top: var(--space-xs);
+    min-height: 1.2em;
+    line-height: 1.2;
 }
 
 /* Adjust input layout for larger screens */
@@ -671,6 +673,7 @@ input:checked + .slider:before {
     grid-template-columns: 1fr;
     gap: var(--space-md);
     margin-top: var(--space-xl);
+    min-height: 200px;
 }
 
 .score-item {
@@ -680,6 +683,10 @@ input:checked + .slider:before {
     text-align: center;
     border: 1px solid var(--border-color);
     transition: transform 0.2s ease;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .score-item:hover {
@@ -698,6 +705,8 @@ input:checked + .slider:before {
     display: block;
     margin-top: var(--space-sm);
     letter-spacing: -0.02em;
+    min-width: 80px;
+    min-height: 1.2em;
 }
 
 .score-item.total {
@@ -738,6 +747,7 @@ input:checked + .slider:before {
     border: 1px solid var(--border-color);
     width: 100%;
     overflow: hidden;
+    min-height: 350px;
 }
 
 #scoreChart {

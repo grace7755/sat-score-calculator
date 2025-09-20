@@ -247,44 +247,60 @@ const MATH_CONVERSION_TABLE = {
     4: 380, 3: 360, 2: 330, 1: 290, 0: 200
 };
 
-// DOM Elements
+// DOM Elements - with null checks
 const inputs = {
-    rwModule1: document.getElementById('rwModule1'),
-    rwModule2: document.getElementById('rwModule2'),
-    mathModule1: document.getElementById('mathModule1'),
-    mathModule2: document.getElementById('mathModule2')
+    rwModule1: null,
+    rwModule2: null,
+    mathModule1: null,
+    mathModule2: null
 };
 
 const outputs = {
-    rwScore: document.getElementById('rwScore'),
-    mathScore: document.getElementById('mathScore'),
-    totalScore: document.getElementById('totalScore')
+    rwScore: null,
+    mathScore: null,
+    totalScore: null
 };
 
-const scoreChart = document.getElementById('scoreChart');
+let scoreChart = null;
+
+// Initialize DOM elements after DOM is loaded
+const initializeDOMElements = () => {
+    inputs.rwModule1 = document.getElementById('rwModule1');
+    inputs.rwModule2 = document.getElementById('rwModule2');
+    inputs.mathModule1 = document.getElementById('mathModule1');
+    inputs.mathModule2 = document.getElementById('mathModule2');
+    
+    outputs.rwScore = document.getElementById('rwScore');
+    outputs.mathScore = document.getElementById('mathScore');
+    outputs.totalScore = document.getElementById('totalScore');
+    
+    scoreChart = document.getElementById('scoreChart');
+};
 let chart = null;
 
 // Validate input with proper error handling
 const validateInput = (input, max, errorId) => {
+    if (!input) return false;
+    
     const errorElement = document.getElementById(errorId);
     const value = parseInt(input.value);
 
     if (input.value === '') {
-        errorElement.textContent = '';
+        if (errorElement) errorElement.textContent = '';
         return false;
     }
 
     if (isNaN(value)) {
-        errorElement.textContent = 'Please enter a valid number';
+        if (errorElement) errorElement.textContent = 'Please enter a valid number';
         return false;
     }
 
     if (value < 0 || value > max) {
-        errorElement.textContent = `Please enter a number between 0 and ${max}`;
+        if (errorElement) errorElement.textContent = `Please enter a number between 0 and ${max}`;
         return false;
     }
 
-    errorElement.textContent = '';
+    if (errorElement) errorElement.textContent = '';
     return true;
 };
 
@@ -296,7 +312,16 @@ const getScaledScore = (rawScore, conversionTable) => {
     return conversionTable[rawScore];
 };
 
-// Calculate scores with proper validation
+// Debounce function to prevent excessive calculations
+let calculateTimeout;
+const debounce = (func, wait) => {
+    return (...args) => {
+        clearTimeout(calculateTimeout);
+        calculateTimeout = setTimeout(() => func.apply(this, args), wait);
+    };
+};
+
+// Calculate scores with proper validation and layout shift prevention
 const calculateScores = () => {
     // Validate all inputs
     const isRWModule1Valid = validateInput(inputs.rwModule1, 27, 'rwModule1Error');
@@ -317,15 +342,21 @@ const calculateScores = () => {
         // Calculate total score
         const totalScaled = rwScaled + mathScaled;
 
-        // Update display
-        outputs.rwScore.textContent = rwScaled;
-        outputs.mathScore.textContent = mathScaled;
-        outputs.totalScore.textContent = totalScaled;
+        // Use requestAnimationFrame to prevent layout shifts
+        requestAnimationFrame(() => {
+            // Update display with null checks
+            if (outputs.rwScore) outputs.rwScore.textContent = rwScaled;
+            if (outputs.mathScore) outputs.mathScore.textContent = mathScaled;
+            if (outputs.totalScore) outputs.totalScore.textContent = totalScaled;
 
-        // Update chart
-        updateChart(rwScaled, mathScaled, totalScaled);
+            // Update chart
+            updateChart(rwScaled, mathScaled, totalScaled);
+        });
     }
 };
+
+// Debounced version for input events
+const debouncedCalculateScores = debounce(calculateScores, 150);
 
 // Lightweight custom chart implementation (replaces Chart.js)
 let chartData = { rwScore: 0, mathScore: 0, totalScore: 0 };
@@ -395,12 +426,12 @@ const addEventListeners = () => {
         if (!input) return;
         
         input.addEventListener('input', () => {
-            calculateScores();
+            debouncedCalculateScores();
         });
 
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
-                calculateScores();
+                calculateScores(); // Immediate calculation on Enter
             }
         });
     });
@@ -408,6 +439,7 @@ const addEventListeners = () => {
 
 // Main initialization function - called after dependencies load
 window.initializeApp = () => {
+    initializeDOMElements();
     initializeI18next();
     initializeChart();
     addEventListeners();
@@ -423,13 +455,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check for saved theme preference
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark') {
+        if (currentTheme === 'dark' && themeSwitch) {
             themeSwitch.checked = true;
         }
     }
 
     // Add theme switch event listener
-    themeSwitch.addEventListener('change', handleThemeSwitch);
+    if (themeSwitch) {
+        themeSwitch.addEventListener('change', handleThemeSwitch);
+    }
 });
 
 // Theme switch handler
