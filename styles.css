@@ -303,25 +303,8 @@ small {
         font-size: var(--font-size-xs);
     }
     
-    .theme-switch {
-        height: 26px;
-        width: 46px;
-    }
-    
-    .slider {
-        border-radius: 26px;
-    }
-    
-    .slider:before {
-        height: 20px;
-        width: 20px;
-        bottom: 3px;
-        left: 3px;
-    }
-    
-    input:checked + .slider:before {
-        transform: translateX(20px);
-    }
+    /* Remove responsive theme switch sizing to prevent CLS */
+    /* Theme switch will maintain consistent size across all breakpoints */
 }
 
 /* Adjust header for larger screens */
@@ -387,6 +370,9 @@ small {
     position: relative;
     width: 54px;
     flex-shrink: 0;
+    min-height: 30px;
+    min-width: 54px;
+    /* Fixed dimensions to prevent layout shift */
 }
 
 .theme-switch input {
@@ -403,6 +389,9 @@ small {
     top: 0;
     transition: 0.4s;
     border-radius: 30px;
+    /* Fixed dimensions to prevent layout shift */
+    height: 30px;
+    width: 54px;
 }
 
 .slider:before {
@@ -415,6 +404,8 @@ small {
     transition: 0.4s;
     width: 24px;
     border-radius: 50%;
+    /* Consistent sizing to prevent layout shift */
+    will-change: transform;
 }
 
 input:checked + .slider {
@@ -432,6 +423,12 @@ input:checked + .slider:before {
     transform: translateY(-50%);
     font-size: 16px;
     transition: 0.4s;
+    /* Fixed positioning to prevent layout shift */
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .slider .sun {

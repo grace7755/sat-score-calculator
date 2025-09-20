@@ -358,12 +358,23 @@ const calculateScores = () => {
 // Debounced version for input events
 const debouncedCalculateScores = debounce(calculateScores, 150);
 
-// Lightweight custom chart implementation (replaces Chart.js)
-let chartData = { rwScore: 0, mathScore: 0, totalScore: 0 };
+// Lightweight custom chart implementation (replaces Chart.js) - optimized
+let chartData = { 
+    rwScore: 0, 
+    mathScore: 0, 
+    totalScore: 0,
+    currentTheme: null
+};
 
-// Update chart with new data (custom lightweight implementation)
+// Update chart with new data (optimized to prevent reflows)
 const updateChart = (rwScore, mathScore, totalScore) => {
-    chartData = { rwScore, mathScore, totalScore };
+    // Preserve existing theme when updating scores
+    chartData = { 
+        rwScore, 
+        mathScore, 
+        totalScore,
+        currentTheme: chartData.currentTheme
+    };
     
     // Use requestAnimationFrame to prevent forced reflows
     requestAnimationFrame(() => {
@@ -381,16 +392,16 @@ const initializeChart = () => {
     renderCustomChart();
 };
 
-// Render custom bar chart using CSS
+// Render custom bar chart using CSS (optimized to prevent reflows)
 const renderCustomChart = () => {
     const chartContainer = document.getElementById('scoreChart');
     if (!chartContainer) return;
 
     const maxScore = 1600;
-    const { rwScore, mathScore, totalScore } = chartData;
+    const { rwScore, mathScore, totalScore, currentTheme } = chartData;
     
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const isDarkTheme = currentTheme === 'dark';
+    // Use cached theme to avoid DOM read that could force reflow
+    const isDarkTheme = (currentTheme || document.documentElement.getAttribute('data-theme')) === 'dark';
     
     chartContainer.innerHTML = `
         <div class="chart-title">Your SAT Scores</div>
@@ -466,21 +477,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Theme switch handler
+// Theme switch handler - optimized to prevent forced reflows
 const handleThemeSwitch = (e) => {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        updateChartColors('dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        updateChartColors('light');
-    }
+    const newTheme = e.target.checked ? 'dark' : 'light';
+    
+    // Batch all DOM operations to prevent forced reflows
+    requestAnimationFrame(() => {
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Delay chart update to next frame to avoid reflow
+        requestAnimationFrame(() => {
+            updateChartColors(newTheme);
+        });
+    });
 };
 
-// Update chart colors based on theme (works with custom chart)
+// Update chart colors based on theme (optimized to prevent reflows)
 const updateChartColors = (theme) => {
+    // Store theme to avoid DOM reads during rendering
+    chartData.currentTheme = theme;
+    
     // Re-render the custom chart with new theme colors
     requestAnimationFrame(() => {
         renderCustomChart();
