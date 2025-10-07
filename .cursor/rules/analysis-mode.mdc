@@ -1,0 +1,63 @@
+---
+alwaysApply: false
+---
+
+# Analysis First, Code Second
+
+## Description
+Analyze and plan before coding to avoid bugs and ensure proper implementation.
+
+## Before You Write Any Code
+Take ~2 minutes to think through the problem clearly.
+
+### Step 1: Understand What Needs to Be Done
+Break down the request:
+- What exactly am I building/fixing?
+- What files will I need to touch?
+- What's the expected outcome?
+
+**Quick Checklist**
+- Identify the root cause (for bugs)
+- List affected components/files
+- Note any dependencies between changes
+
+---
+
+### Step 2: Plan the Solution
+Map out your approach:
+- What order should I make changes in?
+- Are there any gotchas or edge cases?
+- Will this break anything else?
+
+**Considerations**
+- **Frontend:** Which components need updates?
+- **Backend:** Any API or database changes needed?
+- **Connections:** How do frontend and backend talk to each other?
+
+---
+
+### Step 3: Implement Systematically
+Follow this order:
+1. **Backend first (if needed)** — APIs, database, business logic  
+2. **Frontend second** — components, UI, user interactions  
+3. **Test connections** — ensure frontend and backend communicate correctly  
+4. **Verify it works** — test the actual use case end-to-end  
+
+**Keep it Simple**
+- Make one logical change at a time
+- Test as you go
+- Don’t mix unrelated fixes
+- Maintain existing design/patterns
+
+---
+
+## Red Flags to Watch For
+- Changing too many files at once
+- Not understanding why something broke
+- Skipping testing between changes
+- Breaking existing functionality
+
+---
+
+## Final Note
+Once you've thought it through, code step-by-step and test each piece as you build it.
