@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script>
+        (function() {
+            if (localStorage.getItem('analytics-opt-out') === 'true') return;
+
+            function loadAnalytics() {
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-7T393J35ZL';
+                script.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    window.gtag = gtag;
+                    gtag('js', new Date());
+                    gtag('config', 'G-7T393J35ZL', {
+                        page_title: document.title,
+                        page_location: window.location.href,
+                        send_page_view: true,
+                        anonymize_ip: true,
+                        allow_ad_personalization_signals: false
+                    });
+                };
+                document.head.appendChild(script);
+            }
+
+            let userInteracted = false;
+            const loadAfterInteraction = () => {
+                if (!userInteracted) {
+                    userInteracted = true;
+                    setTimeout(loadAnalytics, 2000);
+                }
+            };
+
+            ['click', 'scroll', 'keydown'].forEach(event => {
+                document.addEventListener(event, loadAfterInteraction, { once: true, passive: true });
+            });
+
+            setTimeout(loadAfterInteraction, 5000);
+        })();
+    </script>
+
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6578959056593527"
+         crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>SAT Superscore Calculator Free & No Sign Up Required</title>
+    <meta name="description" content="Free SAT superscore calculator. Calculate your highest combined SAT score across multiple test dates. No sign-up required. Instant results for college applications.">
+    <meta name="keywords" content="SAT superscore calculator, SAT superscore calculator free, calculate SAT superscore, digital SAT superscore, SAT section superscore">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SAT Score Calculator">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://satscorecalculator.io/tools/sat-superscore-calculator">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="SAT Superscore Calculator Free & No Sign Up Required">
+    <meta property="og:description" content="Calculate your SAT superscore instantly. Combine your highest Math and Reading & Writing scores from multiple test dates.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://satscorecalculator.io/tools/sat-superscore-calculator">
+    <meta property="og:image" content="https://satscorecalculator.io/logo/favicon.png">
+    <meta property="og:site_name" content="SAT Score Calculator">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SAT Superscore Calculator Free & No Sign Up Required">
+    <meta name="twitter:description" content="Calculate your SAT superscore instantly. Combine your highest Math and Reading & Writing scores from multiple test dates.">
+    <meta name="twitter:image" content="https://satscorecalculator.io/logo/favicon.png">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo/favicon.png">
+
+    <!-- Critical CSS -->
+    <style>
+        :root{--primary-color:#000;--secondary-color:#666;--background-color:#fafafa;--text-color:#111;--border-color:#eaeaea;--input-text:#000;--error-color:red;--success-color:#0070f3;--hover-color:#0070f3;--card-shadow:0 2px 4px rgba(0,0,0,.05);--header-bg:#fafafa;--card-bg:#fff;--chart-text:#111;--gradient-start:#000;--gradient-end:#333;--info-text:#111;--content-text:#111;--heading-text:#111;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-xxl:3rem;--font-size-xs:.75rem;--font-size-sm:.875rem;--font-size-md:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-xxl:1.5rem;--font-size-3xl:2rem;--font-size-4xl:2.5rem;--container-sm:640px;--container-md:768px;--container-lg:1024px;--container-xl:1200px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background-color:var(--background-color);color:var(--text-color);line-height:1.6;min-height:100vh}.container{max-width:var(--container-lg);margin:0 auto;padding:var(--space-md)}h1{font-size:var(--font-size-3xl);text-align:center;margin-bottom:var(--space-xl);color:var(--heading-text)}
+    </style>
+
+    <!-- Load non-critical CSS -->
+    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+
+    <!-- Structured Data - WebApplication Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "",
+      "description": "Free online SAT superscore calculator that helps students calculate their highest combined SAT scores across multiple test dates.",
+      "url": "https://satscorecalculator.io/tools/sat-superscore-calculator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SAT Score Calculator"
+      }
+    }
+    </script>
+
+    <!-- HowTo Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Your SAT Superscore",
+      "description": "Step-by-step guide to calculating your SAT superscore from multiple test dates",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter your test scores",
+          "text": "Input your Math and Reading & Writing scores from each SAT test date"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Identify highest section scores",
+          "text": "The calculator automatically identifies your highest Math score and highest Reading & Writing score across all test dates"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "View your superscore",
+          "text": "Your superscore is calculated by adding your highest Math and Reading & Writing scores together"
+        }
+      ]
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is SAT superscoring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SAT superscoring is when colleges take your highest section scores from multiple SAT test dates and combine them into one superscore. For example, if you scored 650 Math and 700 Reading & Writing on one test, then 700 Math and 680 Reading & Writing on another, your superscore would be 1400 (700 Math + 700 Reading & Writing)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do all colleges accept SAT superscores?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most colleges accept SAT superscores, including many top universities like MIT, Stanford, Duke, and Cornell. However, some schools like Harvard and Princeton consider all section scores but don't technically superscore. Always check your target college's specific SAT score policy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many times should I take the SAT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most students take the SAT 2-3 times. Taking it multiple times can improve your superscore since you can combine your best section scores. However, taking it more than 3-4 times may not provide significant benefits and could look unfavorable to some colleges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I superscore between digital and paper SAT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can superscore between digital and paper SAT tests. Colleges that superscore will combine your highest section scores regardless of which format you took. The scoring is equivalent between formats."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="app-name" style="text-decoration: none; color: inherit;">SAT Score Calculator</a>
+            <div class="header-controls">
+                <nav class="header-nav">
+                    <div class="nav-dropdown">
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <a href="/tools/sat-superscore-calculator" class="dropdown-item" role="menuitem">SAT Superscore Calculator</a>
+                            <a href="/tools/psat-to-sat-predictor" class="dropdown-item" role="menuitem">PSAT to SAT Predictor</a>
+                            <a href="/tools/master-gpa-calculator" class="dropdown-item" role="menuitem">Master GPA Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                </nav>
+                <div class="language-switch-wrapper">
+                    <select id="languageSwitcher" class="language-select" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <span class="sun">☀️</span>
+                            <span class="moon">🌙</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <h1>SAT Superscore Calculator Free</h1>
+        <p style="text-align: center; font-size: 1.125rem; color: var(--secondary-color); margin-bottom: 2rem;">
+            Calculate your SAT superscore instantly. 100% free, no sign-up required.
+        </p>
+
+        <!-- Calculator Section -->
+        <div class="calculator-section">
+            <h2>Calculate Your SAT Superscore</h2>
+            <p class="info-banner" style="background: var(--background-color); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                Enter your scores from up to 4 SAT test dates. The calculator will automatically identify your highest Math and Reading & Writing scores to calculate your superscore.
+            </p>
+
+            <div id="superscore-calculator">
+                <!-- Test Date 1 -->
+                <div class="test-date-card">
+                    <h3>Test Date 1</h3>
+                    <div class="input-group">
+                        <label for="test1-date">Test Date (Optional)</label>
+                        <input type="date" id="test1-date" class="test-date-input">
+                    </div>
+                    <div class="score-inputs">
+                        <div class="input-group">
+                            <label for="test1-math">Math Score</label>
+                            <input type="number" id="test1-math" class="score-input" min="200" max="800" step="10" placeholder="200-800">
+                            <span class="error-message" id="test1-math-error"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="test1-rw">Reading & Writing Score</label>
+                            <input type="number" id="test1-rw" class="score-input" min="200" max="800" step="10" placeholder="200-800">
+                            <span class="error-message" id="test1-rw-error"></span>
+                        </div>
+                        <div class="total-score">
+                            <strong>Total:</strong> <span id="test1-total">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Date 2 -->
+                <div class="test-date-card">
+                    <h3>Test Date 2</h3>
+                    <div class="input-group">
+                        <label for="test2-date">Test Date (Optional)</label>
+                        <input type="date" id="test2-date" class="test-date-input">
+                    </div>
+                    <div class="score-inputs">
+                        <div class="input-group">
+                            <label for="test2-math">Math Score</label>
+                            <input type="number" id="test2-math" class="score-input" min="200" max="800" step="10" placeholder="200-800">
+                            <span class="error-message" id="test2-math-error"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="test2-rw">Reading & Writing Score</label>
+                            <input type="number" id="test2-rw" class="score-input" min="200" max="800" step="10" placeholder="200-800">
+                            <span class="error-message" id="test2-rw-error"></span>
+                        </div>
+                        <div class="total-score">
+                            <strong>Total:</strong> <span id="test2-total">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Date 3 (Initially hidden) -->
+                <div class="test-date-card" id="test-date-3" style="display: none;">
+                    <h3>Test Date 3</h3>
+                    <div class="input-group">
+                        <label for="test3-date">Test Date (Optional)</label>
+                        <input type="date" id="test3-date" class="test-date-input">
+                    </div>
+                    <div class="score-inputs">
+                        <div class="input-group">
+                            <label for="test3-math">Math Score</label>
+                            <input type="number" id="test3-math" class="score-input" min="200" max="800" step="10" placeholder="200-800">
+                            <span class="error-message" id="test3-math-error"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="test3-rw">Reading & Writing Score</label>
+                            <input type="number" id="test3-rw" class="score-input" min="200" max="800" step="10" placeholder="200-800">
+                            <span class="error-message" id="test3-rw-error"></span>
+                        </div>
+                        <div class="total-score">
+                            <strong>Total:</strong> <span id="test3-total">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Date 4 (Initially hidden) -->
+                <div class="test-date-card" id="test-date-4" style="display: none;">
+                    <h3>Test Date 4</h3>
+                    <div class="input-group">
+                        <label for="test4-date">Test Date (Optional)</label>
+                        <input type="date" id="test4-date" class="test-date-input">
+                    </div>
+                    <div class="score-inputs">
+                        <div class="input-group">
+                            <label for="test4-math">Math Score</label>
+                            <input type="number" id="test4-math" class="score-input" min="200" max="800" step="10" placeholder="200-800">
+                            <span class="error-message" id="test4-math-error"></span>
+                        </div>
+                        <div class="input-group">
+                            <label for="test4-rw">Reading & Writing Score</label>
+                            <input type="number" id="test4-rw" class="score-input" min="200" max="800" step="10" placeholder="200-800">
+                            <span class="error-message" id="test4-rw-error"></span>
+                        </div>
+                        <div class="total-score">
+                            <strong>Total:</strong> <span id="test4-total">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Test Date Button -->
+                <button id="add-test-btn" class="add-test-btn">+ Add Another Test Date</button>
+
+                <!-- Results Display -->
+                <div class="superscore-results">
+                    <h2 style="text-align: center; margin-bottom: 1.5rem;">Your SAT Superscore</h2>
+
+                    <div class="score-display">
+                        <div class="score-item best-score">
+                            <h3>Best Math Score</h3>
+                            <span id="best-math">-</span>
+                            <small id="best-math-date"></small>
+                        </div>
+                        <div class="score-item best-score">
+                            <h3>Best Reading & Writing</h3>
+                            <span id="best-rw">-</span>
+                            <small id="best-rw-date"></small>
+                        </div>
+                        <div class="score-item total">
+                            <h3>SAT Superscore</h3>
+                            <span id="superscore-total">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Comparison -->
+                    <div class="comparison-section" id="comparison" style="display: none;">
+                        <h3>Comparison</h3>
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <strong>Best Single Sitting Score:</strong>
+                                <span id="best-single">-</span>
+                            </div>
+                            <div class="comparison-item">
+                                <strong>Superscore:</strong>
+                                <span id="superscore-comparison">-</span>
+                            </div>
+                            <div class="comparison-item highlight">
+                                <strong>Improvement:</strong>
+                                <span id="improvement">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="reset-btn" class="reset-btn">Reset Calculator</button>
+            </div>
+        </div>
+
+        <!-- Content Sections -->
+        <section class="content-section">
+            <h2>What Is SAT Superscoring?</h2>
+            <p>
+                SAT superscoring is a policy where colleges combine your highest section scores from multiple SAT test dates to create your best possible composite score. Instead of looking at your total score from a single test, colleges take your highest Math score and highest Reading & Writing score across all your SAT attempts.
+            </p>
+            <p>
+                For example, if you scored <strong>650 Math</strong> and <strong>700 Reading & Writing (total: 1350)</strong> on your first SAT, then <strong>720 Math</strong> and <strong>680 Reading & Writing (total: 1400)</strong> on your second attempt, your superscore would be <strong>1420</strong> (720 Math + 700 Reading & Writing). This gives you the best representation of your abilities and can significantly improve your college application profile.
+            </p>
+            <p>
+                Superscoring benefits students because it encourages retaking the SAT to improve specific sections. You can focus on strengthening your weaker section on subsequent tests while maintaining your strong section score.
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>How to Calculate Your SAT Superscore</h2>
+            <p>Calculating your SAT superscore is simple and only requires three steps:</p>
+            <ol class="instruction-list">
+                <li>
+                    <strong>Gather all your SAT score reports</strong> - Collect your official scores from each SAT test date, including both Math and Reading & Writing section scores.
+                </li>
+                <li>
+                    <strong>Identify your highest section scores</strong> - Find the highest Math score across all test dates and the highest Reading & Writing score across all test dates. These don't need to be from the same test sitting.
+                </li>
+                <li>
+                    <strong>Add them together</strong> - Your superscore is simply the sum of your best Math score and best Reading & Writing score. For quick calculation, use our free SAT Superscore Calculator above.
+                </li>
+            </ol>
+            <p>
+                Our calculator automates this process and shows you which test dates contributed to your superscore, making it easy to track your progress and plan future test attempts.
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>Which Colleges Superscore the SAT?</h2>
+            <p>
+                Most competitive colleges and universities in the United States accept SAT superscores. This includes many top-tier institutions that want to see students at their best. Colleges that superscore the SAT include:
+            </p>
+
+            <div class="college-list" style="columns: 2; column-gap: 2rem; margin: 1.5rem 0;">
+                <ul>
+                    <li>Massachusetts Institute of Technology (MIT)</li>
+                    <li>Stanford University</li>
+                    <li>Duke University</li>
+                    <li>Cornell University</li>
+                    <li>University of Pennsylvania</li>
+                    <li>Northwestern University</li>
+                    <li>Johns Hopkins University</li>
+                    <li>Vanderbilt University</li>
+                    <li>University of Southern California</li>
+                    <li>Carnegie Mellon University</li>
+                    <li>University of Notre Dame</li>
+                    <li>Emory University</li>
+                </ul>
+            </div>
+
+            <p>
+                <strong>Important exceptions:</strong> Some highly selective schools like Harvard University and Princeton University will note your highest section scores but may not officially "superscore" them in their admissions review. They may still consider all your test scores holistically.
+            </p>
+            <p>
+                <strong>Always verify:</strong> College policies can change, so always check the specific SAT score use policy on each college's admissions website or contact their admissions office directly. The <a href="https://www.collegeboard.org/" target="_blank" rel="noopener">College Board website</a> also maintains information about college score-use policies.
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>SAT Superscore vs. Single Sitting Score</h2>
+            <p>
+                Understanding the difference between your superscore and your single sitting score is crucial for college applications. Here's a comparison:
+            </p>
+
+            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+                <thead>
+                    <tr style="background: var(--background-color); font-weight: 600;">
+                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Aspect</th>
+                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Single Sitting Score</th>
+                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Superscore</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Definition</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Your highest total score from one test date</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Combination of highest section scores across all test dates</td>
+                    </tr>
+                    <tr style="background: var(--background-color);">
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>When it matters</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Colleges that don't superscore, merit scholarships</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Most competitive colleges, admissions decisions</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Typical difference</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Lower (actual score from one sitting)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Higher (best of each section)</td>
+                    </tr>
+                    <tr style="background: var(--background-color);">
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Strategy</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Balanced preparation for both sections</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Can focus on one section per test</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                <strong>Strategic retake advice:</strong> If your target colleges superscore, consider retaking the SAT to improve a weaker section. For example, if your Math score is 680 but your Reading & Writing is 750, focus your prep on Math for your next attempt. Even if your Reading & Writing score drops slightly, your superscore will improve as long as your Math score increases.
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem;">
+                <h3>What is SAT superscoring?</h3>
+                <p>
+                    SAT superscoring is when colleges take your highest section scores from multiple SAT test dates and combine them into one superscore. This gives you the best possible composite score across all your test attempts.
+                </p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem;">
+                <h3>Do all colleges accept SAT superscores?</h3>
+                <p>
+                    No, but most competitive colleges do accept superscores. Top universities like MIT, Stanford, Duke, and Cornell superscore the SAT. However, some schools may consider all your section scores without officially superscoring. Always check your target college's specific score policy.
+                </p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem;">
+                <h3>How many times should I take the SAT?</h3>
+                <p>
+                    Most students take the SAT 2-3 times. Taking it multiple times can improve your superscore, but taking it more than 3-4 times may not provide significant benefits and could look excessive to colleges. Focus on quality preparation rather than quantity of attempts.
+                </p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem;">
+                <h3>Can I superscore between digital and paper SAT?</h3>
+                <p>
+                    Yes! Colleges that superscore will combine your highest section scores regardless of whether you took the digital SAT, paper SAT, or both. The scoring is equivalent between formats.
+                </p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem;">
+                <h3>Is SAT superscoring automatic?</h3>
+                <p>
+                    It depends on the college. When you send your SAT scores through College Board, you can choose to send all scores or specific scores. If a college superscores, they will automatically calculate your superscore from the test dates they receive. Some colleges require you to send all scores.
+                </p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem;">
+                <h3>Does superscoring work for the Essay section?</h3>
+                <p>
+                    The SAT Essay was discontinued in June 2021 for the digital SAT. If you took the older paper SAT with the Essay, superscoring policies for the Essay varied by college, but this is no longer relevant for current test-takers.
+                </p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem;">
+                <h3>What's a good SAT superscore?</h3>
+                <p>
+                    A "good" superscore depends on your target colleges. For highly selective schools (Ivy League, Stanford, MIT), aim for 1500+. For competitive colleges, 1350-1500 is strong. For most state universities, 1200-1350 is competitive. Research the middle 50% SAT range for your target schools.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <nav aria-label="Footer">
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <span aria-hidden="true">·</span>
+            <a href="/terms.html">Terms & Conditions</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=satscorecalculator1@gmail.com">Contact</a>
+        </nav>
+        <small>© <span id="year"></span> SAT Score Calculator</small>
+    </footer>
+
+    <script>
+        (function(){ var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear(); })();
+    </script>
+
+    <script src="/superscore.js" defer></script>
+</body>
+</html>
