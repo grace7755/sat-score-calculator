@@ -4,15 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Master GPA Calculator - Coming Soon | SAT Score Calculator</title>
-    <meta name="description" content="Comprehensive GPA Calculator for high school, college, and cumulative GPA calculations. Coming soon.">
+    <title>GPA Calculator - Free High School, College & Cumulative GPA Calculator</title>
+    <meta name="description" content="Free GPA calculator for high school, college, and transfer students. Calculate semester, cumulative, and weighted GPA. Supports percentage grades and multiple grading scales. No sign-up required.">
+    <meta name="keywords" content="gpa calculator, cumulative gpa calculator, high school gpa calculator, college gpa calculator, weighted gpa calculator, transfer gpa calculator, gpa calculator percentage, gpa calculator without credits">
     <meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://satscorecalculator.io/tools/master-gpa-calculator">
+    <link rel="canonical" href="https://satscorecalculator.io/gpa-calculator">
     <link rel="icon" type="image/png" href="/logo/favicon.png">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="GPA Calculator - High School, College & Cumulative GPA">
+    <meta property="og:description" content="Calculate your GPA instantly. Supports weighted, unweighted, semester, cumulative, and transfer GPA. Free, no sign-up required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://satscorecalculator.io/gpa-calculator">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "GPA Calculator",
+      "applicationCategory": "EducationalApplication",
+      "description": "Free comprehensive GPA calculator for high school, college, and transfer students supporting weighted, unweighted, semester, and cumulative calculations.",
+      "url": "https://satscorecalculator.io/gpa-calculator",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Your GPA",
+      "description": "Step-by-step guide to calculating your Grade Point Average (GPA)",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "List Your Courses",
+          "text": "Write down all courses you want to include in your GPA calculation"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Record Letter Grades",
+          "text": "Note the letter grade (A, B, C, D, F) or percentage you received in each course"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Note Credit Hours",
+          "text": "Record the credit hours for each course (typically 3-4 credits per course)"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Convert to Grade Points",
+          "text": "Convert letter grades to grade points using the standard 4.0 scale (A=4.0, B=3.0, C=2.0, D=1.0, F=0.0)"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate Weighted Sum",
+          "text": "Multiply each course's grade points by its credit hours"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Divide by Total Credits",
+          "text": "Sum all weighted grade points and divide by total credit hours to get your GPA"
+        }
+      ]
+    }
+    </script>
+
     <style>
-        :root{--primary-color:#000;--secondary-color:#666;--background-color:#fafafa;--text-color:#111;--border-color:#eaeaea;--input-text:#000;--error-color:red;--success-color:#0070f3;--hover-color:#0070f3;--card-shadow:0 2px 4px rgba(0,0,0,.05);--header-bg:#fafafa;--card-bg:#fff;--chart-text:#111;--gradient-start:#000;--gradient-end:#333;--info-text:#111;--content-text:#111;--heading-text:#111;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-xxl:3rem;--font-size-xs:.75rem;--font-size-sm:.875rem;--font-size-md:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-xxl:1.5rem;--font-size-3xl:2rem;--font-size-4xl:2.5rem}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background-color:var(--background-color);color:var(--text-color);line-height:1.6;min-height:100vh}.container{max-width:var(--container-lg);margin:0 auto;padding:var(--space-md)}h1{font-size:var(--font-size-3xl);text-align:center;margin-bottom:var(--space-xl);color:var(--heading-text)}
+        :root{--primary-color:#000;--secondary-color:#666;--background-color:#fafafa;--text-color:#111;--border-color:#eaeaea;--input-text:#000;--error-color:red;--success-color:#0070f3;--hover-color:#0070f3;--card-shadow:0 2px 4px rgba(0,0,0,.05);--header-bg:#fafafa;--card-bg:#fff;--chart-text:#111;--gradient-start:#000;--gradient-end:#333;--info-text:#111;--content-text:#111;--heading-text:#111;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-xxl:3rem;--font-size-xs:.75rem;--font-size-sm:.875rem;--font-size-md:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-xxl:1.5rem;--font-size-3xl:2rem;--font-size-4xl:2.5rem}*{margin:0;padding:0;box-sizing:border-box}body{font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background-color:var(--background-color);color:var(--text-color);line-height:1.6;min-height:100vh}.container{max-width:var(--container-lg);margin:0 auto;padding:var(--space-md)}h1{font-size:var(--font-size-3xl);text-align:center;margin-bottom:var(--space-md);color:var(--heading-text);background:linear-gradient(to right,var(--gradient-start),var(--gradient-end));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .intro-text{text-align:center;font-size:var(--font-size-lg);color:var(--secondary-color);margin-bottom:var(--space-xl);max-width:800px;margin-left:auto;margin-right:auto}
     </style>
 
     <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -33,7 +100,7 @@
                         <div class="dropdown-menu" role="menu">
                             <a href="/tools/sat-superscore-calculator" class="dropdown-item" role="menuitem">SAT Superscore Calculator</a>
                             <a href="/tools/psat-to-sat-predictor" class="dropdown-item" role="menuitem">PSAT to SAT Predictor</a>
-                            <a href="/tools/master-gpa-calculator" class="dropdown-item" role="menuitem">Master GPA Calculator</a>
+                            <a href="/gpa-calculator" class="dropdown-item" role="menuitem">GPA Calculator</a>
                         </div>
                     </div>
                     <a href="/blog/" class="nav-link">Blog</a>
@@ -59,21 +126,682 @@
     </header>
 
     <main class="container">
-        <h1>Master GPA Calculator</h1>
+        <!-- Hero Section -->
+        <h1>GPA Calculator - High School, College & Cumulative GPA</h1>
+        <p class="intro-text">
+            Calculate your GPA instantly with the most comprehensive GPA calculator online.
+            Supports weighted, unweighted, semester, cumulative, and transfer GPA.
+            Works for high school, college, and middle school. Free, no sign-up required.
+        </p>
 
-        <div class="calculator-section" style="text-align: center; padding: 3rem;">
-            <div style="font-size: 4rem; margin-bottom: 2rem;">🚧</div>
-            <h2 style="margin-bottom: 1rem;">Coming Soon</h2>
-            <p style="font-size: 1.125rem; color: var(--secondary-color); margin-bottom: 2rem;">
-                We're developing the most comprehensive GPA calculator online. Calculate weighted, unweighted, semester, cumulative, and transfer GPAs all in one place.
-            </p>
-            <p style="margin-bottom: 2rem;">
-                In the meantime, check out our other tools:
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="/" style="padding: 0.75rem 1.5rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">SAT Score Calculator</a>
-                <a href="/tools/sat-superscore-calculator" style="padding: 0.75rem 1.5rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; text-decoration: none; font-weight: 600; color: var(--text-color);">SAT Superscore Calculator</a>
+        <!-- Calculator Section -->
+        <div class="calculator-section">
+            <div class="calculator-controls">
+                <!-- Mode Selection -->
+                <div class="control-group">
+                    <label class="control-label">I am a:</label>
+                    <div class="toggle-group">
+                        <button class="toggle-btn active" data-grade-level="high-school">High School Student</button>
+                        <button class="toggle-btn" data-grade-level="college">College Student</button>
+                        <button class="toggle-btn" data-grade-level="middle-school">Middle School Student</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Calculate:</label>
+                    <div class="toggle-group">
+                        <button class="toggle-btn active" data-calc-type="semester">Semester GPA</button>
+                        <button class="toggle-btn" data-calc-type="cumulative">Cumulative GPA</button>
+                        <button class="toggle-btn" data-calc-type="transfer">Transfer GPA</button>
+                    </div>
+                </div>
+
+                <!-- Configuration Toggles -->
+                <div class="config-toggles">
+                    <div class="toggle-item" id="creditToggle">
+                        <label class="switch">
+                            <input type="checkbox" id="useCredits" checked>
+                            <span class="switch-slider"></span>
+                        </label>
+                        <span class="toggle-label">Use Credit Hours</span>
+                    </div>
+
+                    <div class="toggle-item" id="weightedToggle" style="display:none;">
+                        <label class="switch">
+                            <input type="checkbox" id="useWeighted">
+                            <span class="switch-slider"></span>
+                        </label>
+                        <span class="toggle-label">Weighted GPA (AP/Honors)</span>
+                    </div>
+
+                    <div class="toggle-item">
+                        <label class="switch">
+                            <input type="checkbox" id="usePercentage">
+                            <span class="switch-slider"></span>
+                        </label>
+                        <span class="toggle-label">Enter as Percentage</span>
+                    </div>
+                </div>
             </div>
+
+            <!-- Cumulative GPA Input (shown for cumulative mode) -->
+            <div id="cumulativeInputs" style="display:none;" class="cumulative-section">
+                <h3>Previous Academic Record</h3>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Previous Cumulative GPA</label>
+                        <input type="number" id="prevGPA" step="0.01" min="0" max="5" placeholder="e.g., 3.50">
+                    </div>
+                    <div class="input-group" id="prevCreditsGroup">
+                        <label>Total Credits Completed</label>
+                        <input type="number" id="prevCredits" step="0.5" min="0" placeholder="e.g., 45">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transfer GPA Input -->
+            <div id="transferInputs" style="display:none;" class="transfer-section">
+                <h3>Previous Schools</h3>
+                <div id="schoolsList"></div>
+                <button class="btn-secondary" id="addSchoolBtn">+ Add School</button>
+            </div>
+
+            <!-- Course Entry Section -->
+            <div class="courses-section">
+                <h3 id="coursesSectionTitle">Current Semester Courses</h3>
+                <div id="coursesList"></div>
+                <button class="btn-secondary" id="addCourseBtn">+ Add Course</button>
+            </div>
+
+            <!-- Calculate Button -->
+            <button class="btn-primary" id="calculateBtn">Calculate GPA</button>
+
+            <!-- Reset Button -->
+            <button class="btn-reset" id="resetBtn">Reset All</button>
+
+            <!-- Results Section -->
+            <div id="results" style="display:none;" class="results-section">
+                <div class="gpa-display">
+                    <div class="gpa-main">
+                        <div class="gpa-label">Your GPA</div>
+                        <div class="gpa-value" id="gpaValue">0.00</div>
+                        <div class="gpa-context" id="gpaContext"></div>
+                    </div>
+                    <div class="gpa-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-labels">
+                            <span>0.0</span>
+                            <span>2.0</span>
+                            <span>3.0</span>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Breakdown -->
+                <div class="breakdown-section">
+                    <h3>Grade Point Breakdown</h3>
+                    <div id="breakdownTable"></div>
+                </div>
+
+                <!-- Additional Stats -->
+                <div class="stats-grid" id="statsGrid"></div>
+            </div>
+        </div>
+
+        <!-- Educational Content -->
+        <div class="content-section">
+            <article class="content-article">
+                <h2>How to Calculate Your GPA</h2>
+                <p>
+                    GPA (Grade Point Average) is a numerical representation of your academic performance,
+                    typically calculated on a 4.0 scale. Understanding how to calculate your GPA is essential
+                    for tracking academic progress, applying to colleges, maintaining scholarships, and meeting
+                    graduation requirements.
+                </p>
+                <p>
+                    The basic GPA formula is: <strong>GPA = Σ(Grade Points × Credits) ÷ Total Credits</strong>.
+                    Each letter grade corresponds to a point value on the 4.0 scale: A = 4.0, B = 3.0, C = 2.0,
+                    D = 1.0, and F = 0.0. For courses without credit hours (common in middle school), simply
+                    average the grade points: GPA = Σ(Grade Points) ÷ Number of Courses.
+                </p>
+                <p>
+                    <strong>Step-by-step calculation example:</strong>
+                </p>
+                <ol>
+                    <li><strong>List your courses:</strong> Math (A, 3 credits), English (B, 3 credits), History (A-, 3 credits)</li>
+                    <li><strong>Convert grades to points:</strong> A = 4.0, B = 3.0, A- = 3.7</li>
+                    <li><strong>Multiply by credits:</strong> (4.0 × 3) + (3.0 × 3) + (3.7 × 3) = 12.0 + 9.0 + 11.1 = 32.1</li>
+                    <li><strong>Divide by total credits:</strong> 32.1 ÷ 9 = 3.57 GPA</li>
+                </ol>
+                <p>
+                    For weighted GPA calculations used in high school, AP and honors courses receive bonus points.
+                    Honors courses typically add 0.5 points (A = 4.5), while AP/IB courses add 1.0 point (A = 5.0).
+                    This rewards students for taking more challenging coursework. However, most colleges recalculate
+                    GPAs using their own methods, so both weighted and unweighted GPAs matter.
+                </p>
+
+                <h2>GPA Calculator by Grade Level</h2>
+
+                <h3>Middle School GPA Calculator</h3>
+                <p>
+                    Middle school GPA calculations are typically simpler than high school or college. Most middle
+                    schools use an unweighted 4.0 scale and don't assign credit hours to courses. To calculate
+                    middle school GPA, convert each letter grade to its point value (A=4.0, B=3.0, etc.) and
+                    calculate the average. Toggle "Use Credit Hours" off in our calculator for middle school calculations.
+                    While middle school GPA rarely appears on college applications, tracking it early helps students
+                    develop good study habits and understand academic performance metrics.
+                </p>
+
+                <h3>High School GPA Calculator</h3>
+                <p>
+                    High school GPA is critical for college admissions, scholarships, and class ranking. High schools
+                    typically calculate both weighted and unweighted GPAs. The <strong>unweighted GPA</strong> uses
+                    a standard 4.0 scale regardless of course difficulty, making all A's worth 4.0 points. The
+                    <strong>weighted GPA</strong> accounts for course rigor: honors courses may boost an A to 4.5,
+                    while AP or IB courses boost it to 5.0.
+                </p>
+                <p>
+                    Most competitive colleges recalculate GPAs using their own formulas, often looking at core
+                    academic courses only (math, science, English, history, foreign language) and using unweighted
+                    scales. However, they do consider course rigor separately. Your high school transcript will
+                    typically show both weighted and unweighted GPAs. Use our calculator's weighted toggle to
+                    see both versions and understand how AP/Honors courses impact your GPA.
+                </p>
+
+                <h3>College GPA Calculator</h3>
+                <p>
+                    College GPA calculations are strictly credit-based and almost always unweighted, using a 4.0 scale.
+                    Each course is worth a specific number of credit hours (typically 3-4 per course), and your GPA
+                    is calculated by weighting grades by these credits. A 4-credit course has more impact on your GPA
+                    than a 1-credit seminar.
+                </p>
+                <p>
+                    College students track both <strong>semester GPA</strong> (for one term) and <strong>cumulative GPA</strong>
+                    (overall GPA across all completed semesters). Cumulative GPA determines academic standing,
+                    scholarship eligibility, and graduation honors. Most colleges require a minimum 2.0 cumulative GPA
+                    to remain in good standing, 3.0+ for Dean's List, and 3.5+ for honors societies like Phi Beta Kappa.
+                </p>
+
+                <h2>Understanding Weighted vs. Unweighted GPA</h2>
+                <p>
+                    The distinction between weighted and unweighted GPA is crucial for high school students.
+                    <strong>Unweighted GPA</strong> uses a strict 4.0 scale where the highest grade (A/A+) equals 4.0,
+                    regardless of course difficulty. <strong>Weighted GPA</strong> awards bonus points for advanced courses,
+                    with scales reaching 5.0 or higher.
+                </p>
+                <p>
+                    <strong>Typical weighted GPA scales:</strong>
+                </p>
+                <ul>
+                    <li><strong>Regular courses:</strong> A = 4.0, B = 3.0, C = 2.0, D = 1.0, F = 0.0</li>
+                    <li><strong>Honors courses:</strong> A = 4.5, B = 3.5, C = 2.5, D = 1.5, F = 0.0 (adds 0.5 points)</li>
+                    <li><strong>AP/IB courses:</strong> A = 5.0, B = 4.0, C = 3.0, D = 2.0, F = 0.0 (adds 1.0 point)</li>
+                </ul>
+                <p>
+                    Schools use weighted GPA to encourage students to challenge themselves with rigorous coursework.
+                    A student with a 4.2 weighted GPA has clearly taken advanced classes. However, colleges primarily
+                    look at unweighted GPA for fairness, since weighting systems vary by school. They evaluate course
+                    rigor separately through your transcript. Many top students have weighted GPAs above 4.0 but
+                    unweighted GPAs around 3.9-4.0.
+                </p>
+
+                <h2>How to Calculate Cumulative GPA</h2>
+                <p>
+                    Cumulative GPA represents your overall academic performance across multiple semesters or years.
+                    It's calculated by combining grade points and credits from all completed terms. The formula is:
+                    <strong>Cumulative GPA = Total Grade Points from All Semesters ÷ Total Credits from All Semesters</strong>.
+                </p>
+                <p>
+                    <strong>Example calculation:</strong> If you completed 30 credits in Year 1 with a 3.4 GPA and
+                    32 credits in Year 2 with a 3.7 GPA, your cumulative GPA would be:
+                    [(3.4 × 30) + (3.7 × 32)] ÷ 62 = (102 + 118.4) ÷ 62 = 3.55.
+                </p>
+                <p>
+                    Cumulative GPA matters more than semester GPA for college applications, scholarships, and graduation.
+                    A single bad semester has less impact if your overall trend is strong. To improve your cumulative GPA,
+                    you need to earn higher grades in future courses. Use our calculator's "Cumulative GPA" mode to enter
+                    your current GPA and see how future semester grades will affect your overall average.
+                </p>
+
+                <h2>Transfer GPA Calculator: Combining Multiple Schools</h2>
+                <p>
+                    Transfer students often need to calculate a combined GPA from multiple institutions. Transfer GPA
+                    combines grade points and credits from all schools attended, weighted proportionally. The formula is:
+                    <strong>Transfer GPA = Σ(GPA × Credits from Each School) ÷ Total Credits from All Schools</strong>.
+                </p>
+                <p>
+                    <strong>Example:</strong> You earned a 3.5 GPA with 45 credits at Community College A, and a 3.8 GPA
+                    with 30 credits at University B. Your combined GPA is: [(3.5 × 45) + (3.8 × 30)] ÷ 75 =
+                    (157.5 + 114) ÷ 75 = 3.62.
+                </p>
+                <p>
+                    This calculation is essential when transferring from a community college to a four-year university
+                    or when applying to graduate school after attending multiple undergraduate institutions. Note that
+                    not all credits may transfer—some schools only accept credits for courses where you earned C or better.
+                    Always check with your receiving institution's transfer credit policies. Use our "Transfer GPA" mode
+                    to combine GPAs from multiple schools accurately.
+                </p>
+
+                <h2>GPA Scales: USA vs. Canada</h2>
+                <p>
+                    While the USA primarily uses a 4.0 GPA scale, Canadian institutions use varying scales by province
+                    and university. The most common Canadian scales are 4.0 (similar to USA) and 4.33 (where A+ = 4.33).
+                </p>
+                <p>
+                    <strong>Common conversions:</strong>
+                </p>
+                <ul>
+                    <li><strong>USA 4.0 scale:</strong> A+ = 4.0, A = 4.0, A- = 3.7, B+ = 3.3, B = 3.0</li>
+                    <li><strong>Canada 4.33 scale:</strong> A+ = 4.33, A = 4.0, A- = 3.7, B+ = 3.3, B = 3.0</li>
+                    <li><strong>Percentage to GPA:</strong> 90-100% = A (4.0), 80-89% = B (3.0), 70-79% = C (2.0)</li>
+                </ul>
+                <p>
+                    When applying to schools internationally or converting between systems, check the specific institution's
+                    conversion chart. Some Canadian universities also use percentage-based systems (0-100%) rather than GPA.
+                    If you're converting percentage grades to GPA, use our calculator's "Enter as Percentage" toggle for
+                    accurate conversions.
+                </p>
+
+                <h2>What is a Good GPA?</h2>
+                <p>
+                    What constitutes a "good" GPA depends on your goals, grade level, and context. There's no universal
+                    answer, but here are general guidelines:
+                </p>
+
+                <h3>High School GPA Benchmarks</h3>
+                <ul>
+                    <li><strong>3.9-4.0 (A average):</strong> Highly competitive for top-tier colleges (Ivy League, Stanford, MIT). Typically required for merit scholarships.</li>
+                    <li><strong>3.5-3.89 (A-/B+ average):</strong> Competitive for selective colleges and many scholarships. Above-average academic performance.</li>
+                    <li><strong>3.0-3.49 (B average):</strong> Acceptable for most state universities and many colleges. Demonstrates solid academic competency.</li>
+                    <li><strong>2.5-2.99 (B-/C+ average):</strong> May limit college options but acceptable at many institutions, especially with strong test scores or extracurriculars.</li>
+                    <li><strong>Below 2.5:</strong> May struggle with college admissions; consider community college pathway or focus on improving grades.</li>
+                </ul>
+
+                <h3>College GPA Benchmarks</h3>
+                <ul>
+                    <li><strong>3.7-4.0:</strong> Summa Cum Laude honors; highly competitive for top graduate schools and prestigious scholarships.</li>
+                    <li><strong>3.5-3.69:</strong> Magna Cum Laude honors; Dean's List; strong candidate for graduate school.</li>
+                    <li><strong>3.0-3.49:</strong> Cum Laude honors (some schools); good academic standing; acceptable for many graduate programs.</li>
+                    <li><strong>2.5-2.99:</strong> Good standing; may limit graduate school options; maintain to avoid academic probation.</li>
+                    <li><strong>2.0-2.49:</strong> Minimum for good standing at most colleges; risk of academic probation.</li>
+                    <li><strong>Below 2.0:</strong> Academic probation; risk of dismissal; immediate improvement required.</li>
+                </ul>
+                <p>
+                    Remember: GPA is just one factor in college admissions and career success. Standardized test scores,
+                    extracurricular activities, essays, recommendations, leadership, and course rigor all matter. A student
+                    with a 3.6 GPA who took all AP courses is often more competitive than a 4.0 student who took easier classes.
+                </p>
+
+                <!-- Conversion Tables -->
+                <h2>GPA Conversion Tables</h2>
+
+                <h3>Letter Grade to GPA Conversion (4.0 Scale)</h3>
+                <div class="table-responsive">
+                    <table class="conversion-table">
+                        <thead>
+                            <tr>
+                                <th>Letter Grade</th>
+                                <th>Percentage</th>
+                                <th>GPA (Unweighted)</th>
+                                <th>GPA (Honors)</th>
+                                <th>GPA (AP/IB)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A+</td>
+                                <td>97-100%</td>
+                                <td>4.0</td>
+                                <td>4.5</td>
+                                <td>5.0</td>
+                            </tr>
+                            <tr>
+                                <td>A</td>
+                                <td>93-96%</td>
+                                <td>4.0</td>
+                                <td>4.5</td>
+                                <td>5.0</td>
+                            </tr>
+                            <tr>
+                                <td>A-</td>
+                                <td>90-92%</td>
+                                <td>3.7</td>
+                                <td>4.2</td>
+                                <td>4.7</td>
+                            </tr>
+                            <tr>
+                                <td>B+</td>
+                                <td>87-89%</td>
+                                <td>3.3</td>
+                                <td>3.8</td>
+                                <td>4.3</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>83-86%</td>
+                                <td>3.0</td>
+                                <td>3.5</td>
+                                <td>4.0</td>
+                            </tr>
+                            <tr>
+                                <td>B-</td>
+                                <td>80-82%</td>
+                                <td>2.7</td>
+                                <td>3.2</td>
+                                <td>3.7</td>
+                            </tr>
+                            <tr>
+                                <td>C+</td>
+                                <td>77-79%</td>
+                                <td>2.3</td>
+                                <td>2.8</td>
+                                <td>3.3</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>73-76%</td>
+                                <td>2.0</td>
+                                <td>2.5</td>
+                                <td>3.0</td>
+                            </tr>
+                            <tr>
+                                <td>C-</td>
+                                <td>70-72%</td>
+                                <td>1.7</td>
+                                <td>2.2</td>
+                                <td>2.7</td>
+                            </tr>
+                            <tr>
+                                <td>D+</td>
+                                <td>67-69%</td>
+                                <td>1.3</td>
+                                <td>1.8</td>
+                                <td>2.3</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>65-66%</td>
+                                <td>1.0</td>
+                                <td>1.5</td>
+                                <td>2.0</td>
+                            </tr>
+                            <tr>
+                                <td>F</td>
+                                <td>Below 65%</td>
+                                <td>0.0</td>
+                                <td>0.0</td>
+                                <td>0.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>GPA Interpretation Guide</h3>
+                <div class="table-responsive">
+                    <table class="conversion-table">
+                        <thead>
+                            <tr>
+                                <th>GPA Range</th>
+                                <th>Letter Grade</th>
+                                <th>Percentage</th>
+                                <th>College Competitiveness</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3.9-4.0</td>
+                                <td>A+</td>
+                                <td>97-100%</td>
+                                <td>Top tier (Ivy League, Stanford, MIT)</td>
+                            </tr>
+                            <tr>
+                                <td>3.7-3.89</td>
+                                <td>A</td>
+                                <td>93-96%</td>
+                                <td>Highly competitive (Top 50 universities)</td>
+                            </tr>
+                            <tr>
+                                <td>3.5-3.69</td>
+                                <td>A-</td>
+                                <td>90-92%</td>
+                                <td>Competitive (Most selective colleges)</td>
+                            </tr>
+                            <tr>
+                                <td>3.3-3.49</td>
+                                <td>B+</td>
+                                <td>87-89%</td>
+                                <td>Above average (Good state schools)</td>
+                            </tr>
+                            <tr>
+                                <td>3.0-3.29</td>
+                                <td>B</td>
+                                <td>83-86%</td>
+                                <td>Average (Most colleges)</td>
+                            </tr>
+                            <tr>
+                                <td>2.7-2.99</td>
+                                <td>B-</td>
+                                <td>80-82%</td>
+                                <td>Below average (Limited options)</td>
+                            </tr>
+                            <tr>
+                                <td>2.0-2.69</td>
+                                <td>C</td>
+                                <td>73-79%</td>
+                                <td>Minimum for most colleges</td>
+                            </tr>
+                            <tr>
+                                <td>Below 2.0</td>
+                                <td>D or below</td>
+                                <td>Below 73%</td>
+                                <td>Community college recommended</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Canadian GPA Conversion (4.33 Scale)</h3>
+                <div class="table-responsive">
+                    <table class="conversion-table">
+                        <thead>
+                            <tr>
+                                <th>Percentage</th>
+                                <th>Letter Grade</th>
+                                <th>GPA (4.0)</th>
+                                <th>GPA (4.33)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>90-100%</td>
+                                <td>A+</td>
+                                <td>4.0</td>
+                                <td>4.33</td>
+                            </tr>
+                            <tr>
+                                <td>85-89%</td>
+                                <td>A</td>
+                                <td>4.0</td>
+                                <td>4.0</td>
+                            </tr>
+                            <tr>
+                                <td>80-84%</td>
+                                <td>A-</td>
+                                <td>3.7</td>
+                                <td>3.7</td>
+                            </tr>
+                            <tr>
+                                <td>77-79%</td>
+                                <td>B+</td>
+                                <td>3.3</td>
+                                <td>3.3</td>
+                            </tr>
+                            <tr>
+                                <td>73-76%</td>
+                                <td>B</td>
+                                <td>3.0</td>
+                                <td>3.0</td>
+                            </tr>
+                            <tr>
+                                <td>70-72%</td>
+                                <td>B-</td>
+                                <td>2.7</td>
+                                <td>2.7</td>
+                            </tr>
+                            <tr>
+                                <td>67-69%</td>
+                                <td>C+</td>
+                                <td>2.3</td>
+                                <td>2.3</td>
+                            </tr>
+                            <tr>
+                                <td>63-66%</td>
+                                <td>C</td>
+                                <td>2.0</td>
+                                <td>2.0</td>
+                            </tr>
+                            <tr>
+                                <td>60-62%</td>
+                                <td>C-</td>
+                                <td>1.7</td>
+                                <td>1.7</td>
+                            </tr>
+                            <tr>
+                                <td>50-59%</td>
+                                <td>D</td>
+                                <td>1.0</td>
+                                <td>1.0</td>
+                            </tr>
+                            <tr>
+                                <td>Below 50%</td>
+                                <td>F</td>
+                                <td>0.0</td>
+                                <td>0.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- FAQ Section -->
+                <h2>Frequently Asked Questions About GPA</h2>
+
+                <div class="faq-item">
+                    <h3>What is a 3.5 GPA in percentage?</h3>
+                    <p>
+                        A 3.5 GPA on the 4.0 scale corresponds to approximately 90% or an A- average. It typically
+                        represents a mix of A's (93-100%, 4.0) and B's (83-89%, 3.0-3.3). A 3.5 GPA is considered
+                        very good and is competitive for most colleges and many scholarships.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How is cumulative GPA calculated?</h3>
+                    <p>
+                        Cumulative GPA combines all your grades and credits from every semester. Calculate it by:
+                        (1) multiplying each course's grade points by its credits, (2) summing all those products,
+                        and (3) dividing by your total credits. For example, if you've completed 60 credits with
+                        210 total grade points, your cumulative GPA is 210 ÷ 60 = 3.5.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do all colleges use weighted GPA?</h3>
+                    <p>
+                        No. Most colleges recalculate GPA using their own methods, often preferring unweighted GPAs
+                        for fair comparison across schools with different weighting systems. However, they do consider
+                        course rigor separately, so taking AP/Honors classes still matters even if the GPA boost isn't
+                        directly used in admissions calculations.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I calculate GPA without credits?</h3>
+                    <p>
+                        For schools that don't use credit hours (common in middle school or some high schools),
+                        simply convert each letter grade to its point value (A=4.0, B=3.0, etc.) and calculate the
+                        average. Toggle off "Use Credit Hours" in our calculator. For example, if you have grades of
+                        A (4.0), B (3.0), and A (4.0), your GPA is (4.0 + 3.0 + 4.0) ÷ 3 = 3.67.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What's the difference between semester and cumulative GPA?</h3>
+                    <p>
+                        Semester GPA (or term GPA) reflects your grades for one specific term only. Cumulative GPA
+                        is your overall GPA across all completed semesters. While semester GPA shows recent performance,
+                        cumulative GPA is what matters most for college applications, scholarships, and graduation.
+                        Your cumulative GPA changes more slowly because it includes all past semesters.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I raise my GPA significantly in one semester?</h3>
+                    <p>
+                        It depends on how many credits you've completed. Early in college (first year), one excellent
+                        semester can significantly boost your cumulative GPA. Later on, the impact diminishes. For example,
+                        raising a 2.8 cumulative GPA to 3.0 might take one 4.0 semester if you've only completed 30 credits,
+                        but could take three semesters if you've completed 90 credits. Use our cumulative GPA calculator
+                        to see the impact of future grades.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do transfer credits affect GPA?</h3>
+                    <p>
+                        This varies by institution. Many colleges accept transfer credits but don't include the grades
+                        in your GPA—they give you credit for the course but start your GPA fresh. Other schools do
+                        incorporate transfer grades into your cumulative GPA. Always check your receiving institution's
+                        transfer credit policy. Our transfer GPA calculator shows your combined GPA from multiple schools.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What GPA do I need for college?</h3>
+                    <p>
+                        It depends on the college. Community colleges often admit students with any GPA. Most public
+                        universities require around 2.5-3.0 minimum. Competitive state schools expect 3.5+. Highly
+                        selective colleges (Top 50) typically admit students with 3.7+ GPAs. Elite schools (Ivy League,
+                        Stanford) usually require 3.9-4.0. However, GPA is just one factor—test scores, essays,
+                        extracurriculars, and course rigor also matter significantly.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is a 3.0 GPA good?</h3>
+                    <p>
+                        A 3.0 GPA (B average) is solid and acceptable for most colleges. It demonstrates consistent
+                        academic competency and qualifies you for many state universities and scholarship opportunities.
+                        While it's not competitive for top-tier schools, a 3.0 GPA with strong test scores, extracurriculars,
+                        and essays can still open many doors. In college, maintaining a 3.0+ keeps you in good standing
+                        and eligible for most academic programs.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I convert my percentage to GPA?</h3>
+                    <p>
+                        Use standard conversion ranges: 90-100% = A (4.0), 80-89% = B (3.0), 70-79% = C (2.0),
+                        60-69% = D (1.0), below 60% = F (0.0). For more precision, 93-100% = A (4.0), 90-92% = A- (3.7),
+                        87-89% = B+ (3.3), etc. Toggle "Enter as Percentage" in our calculator to automatically convert
+                        percentage grades to the 4.0 scale. Note that conversion ranges can vary by institution—always
+                        check your school's specific scale.
+                    </p>
+                </div>
+
+                <!-- Internal Linking -->
+                <div class="related-tools">
+                    <h2>Related Tools</h2>
+                    <p>Explore our other academic calculators to help with college planning:</p>
+                    <ul>
+                        <li><a href="/">SAT Score Calculator</a> - Calculate your SAT score from raw scores</li>
+                        <li><a href="/tools/sat-superscore-calculator">SAT Superscore Calculator</a> - Find your highest combined SAT score</li>
+                        <li><a href="/tools/psat-to-sat-predictor">PSAT to SAT Predictor</a> - Predict your SAT score from PSAT results</li>
+                    </ul>
+                </div>
+            </article>
         </div>
     </main>
 
@@ -88,6 +816,49 @@
         <small>© <span id="year"></span> SAT Score Calculator</small>
     </footer>
 
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a 3.5 GPA in percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 3.5 GPA on the 4.0 scale corresponds to approximately 90% or an A- average. It typically represents a mix of A's (93-100%, 4.0) and B's (83-89%, 3.0-3.3). A 3.5 GPA is considered very good and is competitive for most colleges and many scholarships."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is cumulative GPA calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cumulative GPA combines all your grades and credits from every semester. Calculate it by: (1) multiplying each course's grade points by its credits, (2) summing all those products, and (3) dividing by your total credits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do all colleges use weighted GPA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Most colleges recalculate GPA using their own methods, often preferring unweighted GPAs for fair comparison across schools with different weighting systems. However, they do consider course rigor separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for college?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the college. Community colleges often admit students with any GPA. Most public universities require around 2.5-3.0 minimum. Competitive state schools expect 3.5+. Highly selective colleges typically admit students with 3.7+ GPAs. Elite schools usually require 3.9-4.0."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script src="/gpa-calculator.js"></script>
     <script>
         (function(){
             var el=document.getElementById('year');
