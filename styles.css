@@ -206,6 +206,17 @@ small {
     padding: 0 var(--space-md);
 }
 
+/* Fix Issue #1: Add spacing between header and main content */
+main.container {
+    padding-top: var(--space-xl); /* 32px on mobile */
+}
+
+@media (min-width: 768px) {
+    main.container {
+        padding-top: var(--space-xxl); /* 48px on desktop */
+    }
+}
+
 /* Progressive container widths */
 @media (min-width: 640px) {
     .container {
@@ -278,33 +289,44 @@ small {
     min-width: 0;
 }
 
-/* Mobile-specific adjustments for very small screens */
-@media (max-width: 480px) {
+/* Fix Issue #6: Mobile responsiveness for small screens (320-375px) */
+@media (max-width: 375px) {
     .header-container {
-        padding: var(--space-sm);
+        flex-direction: column;
+        align-items: stretch;
         gap: var(--space-sm);
-        align-items: flex-start;
+        padding: var(--space-sm);
     }
     
     .app-name {
-        font-size: var(--font-size-md);
-        flex-shrink: 0;
-        margin-bottom: var(--space-xs);
-        width: 100%;
         text-align: center;
+        font-size: var(--font-size-md);
     }
     
     .header-controls {
-        gap: var(--space-sm);
+        flex-wrap: wrap;
         justify-content: center;
         width: 100%;
+        gap: var(--space-xs);
+    }
+    
+    .language-select,
+    .theme-switch {
+        flex: 1;
+        min-width: 70px;
     }
     
     .language-select {
-        min-width: 70px;
         max-width: 85px;
         padding: var(--space-xs) var(--space-sm);
         font-size: var(--font-size-xs);
+    }
+    
+    /* Fix toggle buttons wrapping */
+    .toggle-btn {
+        flex: 1 1 calc(50% - var(--space-sm)); /* 2 per row */
+        min-width: 140px;
+        font-size: var(--font-size-sm);
     }
 }
 
@@ -570,15 +592,25 @@ input:checked + .slider:before {
 }
 
 .input-group input {
-    padding: var(--space-md);
+    padding: 12px var(--space-md); /* Fix Issue #2: Increase padding for better touch targets */
     border: 1px solid var(--border-color);
     border-radius: 8px;
     width: 100%;
-    max-width: 200px;
+    max-width: 250px; /* Fix Issue #3: Increase from 200px to 250px */
+    min-height: 48px; /* Fix Issue #2: Comfortable touch target */
     font-size: var(--font-size-md);
     background-color: var(--card-bg);
     color: var(--input-text);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Fix Issue #3: Make inputs full-width on mobile */
+@media (max-width: 640px) {
+    .input-group input[type="number"],
+    .input-group input[type="text"] {
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 .input-group input:focus {
@@ -589,6 +621,25 @@ input:checked + .slider:before {
 
 .input-group input:invalid {
     border-color: var(--error-color);
+}
+
+/* Fix Issue #4: Add real-time validation feedback */
+.input-group input.valid {
+    border-color: var(--success-color);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2322c55e"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 40px;
+}
+
+.input-group input.invalid {
+    border-color: var(--error-color);
+    border-width: 2px;
+}
+
+.input-group input.invalid:focus {
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
 }
 
 .max-score {
@@ -928,11 +979,59 @@ input:checked + .slider:before {
     }
 }
 
+/* Fix Issue #7: Add loading state animations */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
 .loading-indicator {
     text-align: center;
     padding: var(--space-md);
     color: var(--primary-color);
     font-weight: 600;
+}
+
+/* Fix Issue #7: Loading state for buttons */
+.btn-primary.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.btn-primary.loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+/* Loading indicator for results */
+.results-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    font-size: var(--font-size-lg);
+    color: var(--secondary-color);
+}
+
+.results-loading::before {
+    content: "Calculating...";
+    animation: pulse 1.5s ease-in-out infinite;
 }
 
 /* ==========================================================================
@@ -1912,7 +2011,8 @@ footer {
 .toggle-btn {
     flex: 1;
     min-width: 140px;
-    padding: var(--space-sm) var(--space-md);
+    padding: 12px var(--space-md); /* Fix Issue #2: Increase vertical padding */
+    min-height: 44px; /* Fix Issue #2: Enforce minimum touch target */
     border: 1px solid var(--border-color);
     background-color: var(--background-color);
     color: var(--text-color);
@@ -2097,9 +2197,11 @@ footer {
 
 /* Remove Button */
 .btn-remove {
-    padding: var(--space-sm);
-    width: 36px;
-    height: 36px;
+    padding: 10px; /* Fix Issue #2: Increase padding */
+    width: 44px; /* Fix Issue #2: Increase from 36px to 44px */
+    height: 44px; /* Fix Issue #2: Increase from 36px to 44px */
+    min-width: 44px; /* Fix Issue #2: Enforce minimum */
+    min-height: 44px; /* Fix Issue #2: Enforce minimum */
     border: 1px solid var(--border-color);
     background-color: var(--background-color);
     color: var(--error-color);
@@ -2127,9 +2229,8 @@ footer {
 .btn-primary,
 .btn-secondary,
 .btn-reset {
-    padding: var(--space-md) var(--space-xl);
+    padding: 14px var(--space-xl); /* Fix Issue #2: Increase padding */
     border-radius: 8px;
-    font-size: var(--font-size-md);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -2138,41 +2239,53 @@ footer {
     text-align: center;
 }
 
+/* Fix Issue #5: Make primary button more prominent */
 .btn-primary {
     background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
     color: #ffffff;
     width: 100%;
     margin-bottom: var(--space-md);
+    font-size: var(--font-size-lg); /* Fix Issue #5: Larger text */
+    font-weight: 700; /* Fix Issue #5: Bolder */
+    min-height: 52px; /* Fix Issue #5: Taller button */
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3); /* Fix Issue #5: Subtle shadow */
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 112, 243, 0.4);
 }
 
+/* Fix Issue #5: Make secondary buttons less prominent */
 .btn-secondary {
-    background-color: var(--background-color);
-    border: 1px solid var(--border-color);
+    background-color: transparent;
+    border: 2px dashed var(--border-color); /* Fix Issue #5: Dashed border */
     color: var(--text-color);
     margin-bottom: var(--space-md);
+    font-size: var(--font-size-md);
+    min-height: 48px; /* Fix Issue #2: Touch target */
 }
 
 .btn-secondary:hover {
+    border-style: solid; /* Fix Issue #5: Solid on hover */
+    background-color: var(--background-color);
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
 
+/* Fix Issue #5: Make reset button destructive-looking */
 .btn-reset {
     background-color: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--secondary-color);
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
     width: 100%;
+    font-size: var(--font-size-sm);
+    min-height: 44px; /* Fix Issue #2: Touch target */
 }
 
 .btn-reset:hover {
-    background-color: var(--background-color);
-    border-color: var(--error-color);
-    color: var(--error-color);
+    background-color: var(--error-color);
+    color: white;
 }
 
 .btn-primary:focus-visible,

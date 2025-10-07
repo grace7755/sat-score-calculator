@@ -813,9 +813,19 @@
                     psatTotal = psatMath + psatRW;
                 }
 
-                // Calculate predictions
-                const prediction = calculateSATFromPSAT(psatTotal, psatMath, psatRW);
-                displayResults(prediction, psatTotal, psatMath, psatRW);
+                // Fix Issue #7: Show loading state
+                calculateBtn.classList.add('loading');
+                calculateBtn.disabled = true;
+
+                // Calculate predictions with slight delay for smooth UX
+                setTimeout(() => {
+                    const prediction = calculateSATFromPSAT(psatTotal, psatMath, psatRW);
+                    displayResults(prediction, psatTotal, psatMath, psatRW);
+                    
+                    // Fix Issue #7: Hide loading state
+                    calculateBtn.classList.remove('loading');
+                    calculateBtn.disabled = false;
+                }, 150);
             });
 
             // PSAT to SAT Conversion Table (based on official College Board data)

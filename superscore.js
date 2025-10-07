@@ -40,12 +40,18 @@ class SuperscoreCalculator {
             const dateInput = document.getElementById(`test${i}-date`);
 
             if (mathInput) {
-                mathInput.addEventListener('input', () => this.handleScoreInput(i, 'math'));
+                mathInput.addEventListener('input', () => {
+                    this.handleScoreInput(i, 'math');
+                    this.validateScoreRealtime(i, 'math'); // Fix Issue #4: Real-time validation
+                });
                 mathInput.addEventListener('blur', () => this.validateScore(i, 'math'));
             }
 
             if (rwInput) {
-                rwInput.addEventListener('input', () => this.handleScoreInput(i, 'rw'));
+                rwInput.addEventListener('input', () => {
+                    this.handleScoreInput(i, 'rw');
+                    this.validateScoreRealtime(i, 'rw'); // Fix Issue #4: Real-time validation
+                });
                 rwInput.addEventListener('blur', () => this.validateScore(i, 'rw'));
             }
 
@@ -93,6 +99,33 @@ class SuperscoreCalculator {
         this.calculateSuperscore(); // Recalculate to update date labels
     }
 
+    // Fix Issue #4: Real-time validation feedback as user types
+    validateScoreRealtime(testNum, section) {
+        const input = document.getElementById(`test${testNum}-${section}`);
+        const errorEl = document.getElementById(`test${testNum}-${section}-error`);
+        const value = parseInt(input.value);
+
+        // Clear previous states
+        input.classList.remove('valid', 'invalid');
+        errorEl.textContent = '';
+
+        if (input.value === '') {
+            return; // Empty is neutral
+        }
+
+        // Check if valid
+        if (!isNaN(value) && value >= 200 && value <= 800 && value % 10 === 0) {
+            input.classList.add('valid');
+        } else if (input.value !== '') {
+            input.classList.add('invalid');
+            if (isNaN(value) || value < 200 || value > 800) {
+                errorEl.textContent = 'Enter a score between 200-800 (multiples of 10)';
+            } else if (value % 10 !== 0) {
+                errorEl.textContent = 'Score must be a multiple of 10';
+            }
+        }
+    }
+
     validateScore(testNum, section) {
         const input = document.getElementById(`test${testNum}-${section}`);
         const errorEl = document.getElementById(`test${testNum}-${section}-error`);
@@ -100,6 +133,7 @@ class SuperscoreCalculator {
 
         // Clear previous error
         errorEl.textContent = '';
+        input.classList.remove('valid', 'invalid');
         input.style.borderColor = '';
 
         if (input.value === '') {
@@ -109,22 +143,28 @@ class SuperscoreCalculator {
         // Validate range (200-800, multiples of 10)
         if (isNaN(value) || value < 200 || value > 800) {
             errorEl.textContent = 'Score must be between 200 and 800';
-            input.style.borderColor = 'var(--error-color)';
+            input.classList.add('invalid');
             return false;
         }
 
         if (value % 10 !== 0) {
             errorEl.textContent = 'Score must be a multiple of 10';
-            input.style.borderColor = 'var(--error-color)';
+            input.classList.add('invalid');
             // Auto-round to nearest 10
             const rounded = Math.round(value / 10) * 10;
             input.value = Math.min(800, Math.max(200, rounded));
             this.scores[`test${testNum}`][section] = parseInt(input.value);
             this.calculateTestTotal(testNum);
-            this.calculateSuperscore();
+            // Add loading state before calculation
+            this.showLoadingState();
+            setTimeout(() => {
+                this.calculateSuperscore();
+                this.hideLoadingState();
+            }, 100);
             return false;
         }
 
+        input.classList.add('valid');
         return true;
     }
 
@@ -332,12 +372,14 @@ class SuperscoreCalculator {
                 mathInput.style.borderColor = '';
                 mathInput.style.backgroundColor = '';
                 mathInput.style.borderWidth = '';
+                mathInput.classList.remove('valid', 'invalid'); // Fix Issue #4: Clear validation classes
             }
             if (rwInput) {
                 rwInput.value = '';
                 rwInput.style.borderColor = '';
                 rwInput.style.backgroundColor = '';
                 rwInput.style.borderWidth = '';
+                rwInput.classList.remove('valid', 'invalid'); // Fix Issue #4: Clear validation classes
             }
             if (dateInput) dateInput.value = '';
             if (totalEl) totalEl.textContent = '-';
@@ -358,6 +400,21 @@ class SuperscoreCalculator {
         document.getElementById('best-rw-date').textContent = '';
         document.getElementById('superscore-total').textContent = '-';
         document.getElementById('comparison').style.display = 'none';
+    }
+
+    // Fix Issue #7: Add loading state methods
+    showLoadingState() {
+        const resultsSection = document.querySelector('.superscore-results');
+        if (resultsSection && !resultsSection.querySelector('.results-loading')) {
+            resultsSection.style.opacity = '0.6';
+        }
+    }
+
+    hideLoadingState() {
+        const resultsSection = document.querySelector('.superscore-results');
+        if (resultsSection) {
+            resultsSection.style.opacity = '1';
+        }
     }
 }
 

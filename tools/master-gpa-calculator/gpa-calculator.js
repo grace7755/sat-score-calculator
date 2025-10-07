@@ -374,18 +374,43 @@
     // Calculate GPA
     function calculateGPA() {
         try {
-            let result;
+            // Fix Issue #7: Show loading state
+            const calculateBtn = document.getElementById('calculateBtn');
+            calculateBtn.classList.add('loading');
+            calculateBtn.disabled = true;
 
-            if (state.calcType === 'transfer') {
-                result = calculateTransferGPA();
-            } else if (state.calcType === 'cumulative') {
-                result = calculateCumulativeGPA();
-            } else {
-                result = calculateSemesterGPA();
+            // Perform calculation with slight delay for smooth UX
+            setTimeout(() => {
+                try {
+                    let result;
+
+                    if (state.calcType === 'transfer') {
+                        result = calculateTransferGPA();
+                    } else if (state.calcType === 'cumulative') {
+                        result = calculateCumulativeGPA();
+                    } else {
+                        result = calculateSemesterGPA();
+                    }
+
+                    displayResults(result);
+
+                    // Fix Issue #7: Hide loading state
+                    calculateBtn.classList.remove('loading');
+                    calculateBtn.disabled = false;
+                } catch (innerError) {
+                    calculateBtn.classList.remove('loading');
+                    calculateBtn.disabled = false;
+                    throw innerError;
+                }
+            }, 150);
+        } catch (error) {
+            // Fix Issue #7: Remove loading state on error
+            const calculateBtn = document.getElementById('calculateBtn');
+            if (calculateBtn) {
+                calculateBtn.classList.remove('loading');
+                calculateBtn.disabled = false;
             }
 
-            displayResults(result);
-        } catch (error) {
             alert('Please check your inputs and try again. Make sure all required fields are filled.');
             console.error('Calculation error:', error);
         }
