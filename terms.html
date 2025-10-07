@@ -174,5 +174,31 @@
         (function(){ var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear(); })();
     </script>
     <script src="/script.js" defer></script>
+
+    <!-- xnx3/translate - Automatic Translation Library -->
+    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
+    <script>
+        // Configure xnx3/translate for automatic translation
+        translate.language.setLocal('english');
+        translate.service.use('client.edge');
+        translate.selectLanguageTag.show = false;
+        
+        // Auto-translate based on saved language preference
+        const savedLang = localStorage.getItem('userLanguage') || 'en';
+        const langMap = {'en': 'english', 'de': 'german', 'es': 'spanish'};
+        
+        if (savedLang !== 'en') {
+            document.addEventListener('DOMContentLoaded', function() {
+                translate.changeLanguage(langMap[savedLang]);
+                translate.listener.start();
+                translate.execute();
+            });
+        } else {
+            document.addEventListener('DOMContentLoaded', function() {
+                translate.listener.start();
+                translate.execute();
+            });
+        }
+    </script>
 </body>
 </html>

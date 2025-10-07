@@ -238,114 +238,67 @@
 
 
 
-    <script type="text/javascript">
-
-
-
-
-
-
-
-        function googleTranslateElementInit() {
-
-
-
-
-
-
-
-            new google.translate.TranslateElement({
-
-
-
-
-
-
-
-                pageLanguage: 'en',
-
-
-
-
-
-
-
-                includedLanguages: 'en,de',
-
-
-
-
-
-
-
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-
-
-
-
-
-
-
-                autoDisplay: false
-
-
-
-
-
-
-
-            }, 'google_translate_element');
-
-
-
-
-
-
-
-        }
-
-
-
-
-
-
-
-    </script>
-
-
-
-
-
-
-
-    <!-- Load scripts asynchronously to prevent render blocking -->
+    <!-- xnx3/translate - Automatic Translation Library -->
+    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
     <script>
-        // Async script loader
-        function loadScript(src, callback) {
-            const script = document.createElement('script');
-            script.src = src;
-            script.async = true;
-            if (callback) script.onload = callback;
-            document.head.appendChild(script);
-        }
+        // Configure xnx3/translate for automatic translation
+        translate.language.setLocal('english'); // Set the current page language
+        translate.service.use('client.edge'); // Use edge translation service (fast & reliable)
         
-        // Load scripts after DOM is ready
+        // Configure to show only German and Spanish in addition to English
+        translate.selectLanguageTag.show = true;
+        
+        // Customize the language options to show only required languages
+        translate.selectLanguageTag.languages = {
+            'english': 'English',
+            'german': 'Deutsch',
+            'spanish': 'Español'
+        };
+        
+        // Hide the default select tag and use custom one
+        translate.selectLanguageTag.show = false;
+        
+        // Initialize translation when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Load i18next first
-            loadScript('https://unpkg.com/i18next@21.8.12/dist/umd/i18next.js', function() {
-                // Initialize app after i18next loads (remove Chart.js dependency)
-                if (window.initializeApp) window.initializeApp();
-            });
-            
-            // Load Google Translate only when language switcher is used
+            // Connect custom language switcher to xnx3/translate
             const languageSwitcher = document.getElementById('languageSwitcher');
             if (languageSwitcher) {
+                // Load saved language preference
+                const savedLang = localStorage.getItem('userLanguage') || 'en';
+                languageSwitcher.value = savedLang;
+                
+                // Map between select values and translate.js language codes
+                const langMap = {
+                    'en': 'english',
+                    'de': 'german',
+                    'es': 'spanish'
+                };
+                
+                // If saved language is not English, translate immediately
+                if (savedLang !== 'en') {
+                    translate.changeLanguage(langMap[savedLang]);
+                }
+                
+                // Handle language change
                 languageSwitcher.addEventListener('change', function() {
-                    if (this.value !== 'en' && !window.google?.translate) {
-                        loadScript('https://translate.google.com/translate_a/element.js');
+                    const selectedLang = this.value;
+                    localStorage.setItem('userLanguage', selectedLang);
+                    
+                    if (selectedLang === 'en') {
+                        // Reset to original English
+                        translate.changeLanguage('english');
+                    } else {
+                        // Translate to selected language
+                        translate.changeLanguage(langMap[selectedLang]);
                     }
-                }, { once: true });
+                });
             }
+            
+            // Start monitoring for dynamic content changes
+            translate.listener.start();
+            
+            // Execute initial translation
+            translate.execute();
         });
     </script>
 
@@ -420,7 +373,7 @@
         })();
     </script>
 
-    <div id="google_translate_element" style="display: none;"></div>
+
 
 
 

@@ -557,5 +557,37 @@
     </script>
 
     <script src="/superscore.js" defer></script>
+
+    <!-- xnx3/translate - Automatic Translation Library -->
+    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
+    <script>
+        // Configure xnx3/translate for automatic translation
+        translate.language.setLocal('english');
+        translate.service.use('client.edge');
+        translate.selectLanguageTag.show = false;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSwitcher = document.getElementById('languageSwitcher');
+            if (languageSwitcher) {
+                const savedLang = localStorage.getItem('userLanguage') || 'en';
+                languageSwitcher.value = savedLang;
+                
+                const langMap = {'en': 'english', 'de': 'german', 'es': 'spanish'};
+                
+                if (savedLang !== 'en') {
+                    translate.changeLanguage(langMap[savedLang]);
+                }
+                
+                languageSwitcher.addEventListener('change', function() {
+                    const selectedLang = this.value;
+                    localStorage.setItem('userLanguage', selectedLang);
+                    translate.changeLanguage(selectedLang === 'en' ? 'english' : langMap[selectedLang]);
+                });
+            }
+            
+            translate.listener.start();
+            translate.execute();
+        });
+    </script>
 </body>
 </html>
