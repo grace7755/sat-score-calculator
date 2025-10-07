@@ -102,6 +102,21 @@
   ],
   "redirects": [
     {
+      "source": "/sat-superscore-calculator.html",
+      "destination": "/tools/sat-superscore-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/psat-to-sat-predictor.html",
+      "destination": "/tools/psat-to-sat-predictor",
+      "permanent": true
+    },
+    {
+      "source": "/gpa-calculator.html",
+      "destination": "/tools/master-gpa-calculator",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "destination": "https://satscorecalculator.io/$1",
       "permanent": true,
@@ -111,6 +126,20 @@
           "value": "sat-score-calculator.vercel.app"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/tools/sat-superscore-calculator",
+      "destination": "/sat-superscore-calculator.html"
+    },
+    {
+      "source": "/tools/psat-to-sat-predictor",
+      "destination": "/psat-to-sat-predictor.html"
+    },
+    {
+      "source": "/tools/master-gpa-calculator",
+      "destination": "/gpa-calculator.html"
     }
   ]
 }

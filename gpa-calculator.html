@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Master GPA Calculator - Coming Soon | SAT Score Calculator</title>
+    <meta name="description" content="Comprehensive GPA Calculator for high school, college, and cumulative GPA calculations. Coming soon.">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://satscorecalculator.io/tools/master-gpa-calculator">
+    <link rel="icon" type="image/png" href="logo/favicon.png">
+
+    <style>
+        :root{--primary-color:#000;--secondary-color:#666;--background-color:#fafafa;--text-color:#111;--border-color:#eaeaea;--input-text:#000;--error-color:red;--success-color:#0070f3;--hover-color:#0070f3;--card-shadow:0 2px 4px rgba(0,0,0,.05);--header-bg:#fafafa;--card-bg:#fff;--chart-text:#111;--gradient-start:#000;--gradient-end:#333;--info-text:#111;--content-text:#111;--heading-text:#111;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-xxl:3rem;--font-size-xs:.75rem;--font-size-sm:.875rem;--font-size-md:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-xxl:1.5rem;--font-size-3xl:2rem;--font-size-4xl:2.5rem}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background-color:var(--background-color);color:var(--text-color);line-height:1.6;min-height:100vh}.container{max-width:var(--container-lg);margin:0 auto;padding:var(--space-md)}h1{font-size:var(--font-size-3xl);text-align:center;margin-bottom:var(--space-xl);color:var(--heading-text)}
+    </style>
+
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="app-name" style="text-decoration: none; color: inherit;">SAT Score Calculator</a>
+            <div class="header-controls">
+                <nav class="header-nav">
+                    <div class="nav-dropdown">
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <a href="/tools/sat-superscore-calculator" class="dropdown-item" role="menuitem">SAT Superscore Calculator</a>
+                            <a href="/tools/psat-to-sat-predictor" class="dropdown-item" role="menuitem">PSAT to SAT Predictor</a>
+                            <a href="/tools/master-gpa-calculator" class="dropdown-item" role="menuitem">Master GPA Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                </nav>
+                <div class="language-switch-wrapper">
+                    <select id="languageSwitcher" class="language-select" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <span class="sun">☀️</span>
+                            <span class="moon">🌙</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Master GPA Calculator</h1>
+
+        <div class="calculator-section" style="text-align: center; padding: 3rem;">
+            <div style="font-size: 4rem; margin-bottom: 2rem;">🚧</div>
+            <h2 style="margin-bottom: 1rem;">Coming Soon</h2>
+            <p style="font-size: 1.125rem; color: var(--secondary-color); margin-bottom: 2rem;">
+                We're developing the most comprehensive GPA calculator online. Calculate weighted, unweighted, semester, cumulative, and transfer GPAs all in one place.
+            </p>
+            <p style="margin-bottom: 2rem;">
+                In the meantime, check out our other tools:
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/" style="padding: 0.75rem 1.5rem; background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">SAT Score Calculator</a>
+                <a href="/tools/sat-superscore-calculator" style="padding: 0.75rem 1.5rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; text-decoration: none; font-weight: 600; color: var(--text-color);">SAT Superscore Calculator</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <nav aria-label="Footer">
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <span aria-hidden="true">·</span>
+            <a href="/terms.html">Terms & Conditions</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=satscorecalculator1@gmail.com">Contact</a>
+        </nav>
+        <small>© <span id="year"></span> SAT Score Calculator</small>
+    </footer>
+
+    <script>
+        (function(){
+            var el=document.getElementById('year');
+            if(el) el.textContent=new Date().getFullYear();
+
+            // Theme toggle
+            const checkbox = document.getElementById('checkbox');
+            const htmlElement = document.documentElement;
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') checkbox.checked = true;
+            checkbox.addEventListener('change', function() {
+                const theme = this.checked ? 'dark' : 'light';
+                htmlElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            });
+        })();
+    </script>
+</body>
+</html>
