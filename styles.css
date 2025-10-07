@@ -254,7 +254,7 @@ main.container {
     box-shadow: var(--card-shadow);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     backdrop-filter: blur(10px);
     transition: background-color 0.3s ease;
 }
@@ -1315,6 +1315,8 @@ a:focus-visible,
     margin: 0 auto;
     padding: var(--space-lg);
     line-height: 1.7;
+    position: relative;
+    z-index: 1;
 }
 
 .blog-post .featured-image {
@@ -1326,6 +1328,8 @@ a:focus-visible,
     border-radius: 12px;
     box-shadow: var(--card-shadow);
     object-fit: cover;
+    position: relative;
+    z-index: 1;
 }
 
 .blog-post h1 {
@@ -1339,6 +1343,8 @@ a:focus-visible,
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
     background-clip: unset;
+    position: relative;
+    z-index: 1;
 }
 
 .blog-post .post-meta {
@@ -1478,7 +1484,7 @@ header {
     box-shadow: var(--card-shadow);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     backdrop-filter: blur(10px);
 }
 
