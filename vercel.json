@@ -102,21 +102,6 @@
   ],
   "redirects": [
     {
-      "source": "/sat-superscore-calculator.html",
-      "destination": "/tools/sat-superscore-calculator",
-      "permanent": true
-    },
-    {
-      "source": "/psat-to-sat-predictor.html",
-      "destination": "/tools/psat-to-sat-predictor",
-      "permanent": true
-    },
-    {
-      "source": "/gpa-calculator.html",
-      "destination": "/tools/master-gpa-calculator",
-      "permanent": true
-    },
-    {
       "source": "/(.*)",
       "destination": "https://satscorecalculator.io/$1",
       "permanent": true,
