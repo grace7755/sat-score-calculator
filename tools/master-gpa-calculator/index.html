@@ -181,6 +181,14 @@
                         </label>
                         <span class="toggle-label">Enter as Percentage</span>
                     </div>
+
+                    <div class="toggle-item">
+                        <label class="control-label" style="margin-right: 0.5rem;">Regional Scale:</label>
+                        <select id="regionalScale" class="regional-scale-select">
+                            <option value="usa">USA (4.0)</option>
+                            <option value="canada">Canada (4.33)</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -195,6 +203,10 @@
                     <div class="input-group" id="prevCreditsGroup">
                         <label>Total Credits Completed</label>
                         <input type="number" id="prevCredits" step="0.5" min="0" placeholder="e.g., 45">
+                    </div>
+                    <div class="input-group" id="prevCoursesGroup" style="display:none;">
+                        <label>Number of Previous Courses</label>
+                        <input type="number" id="prevCourses" min="0" placeholder="e.g., 12">
                     </div>
                 </div>
             </div>

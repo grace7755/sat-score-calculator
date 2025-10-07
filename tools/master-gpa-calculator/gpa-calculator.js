@@ -11,6 +11,7 @@
         useCredits: true,
         useWeighted: false,
         usePercentage: false,
+        regionalScale: 'usa',
         courses: [],
         schools: [],
         prevGPA: 0,
@@ -19,18 +20,18 @@
 
     // Grade conversion tables
     const gradeConversions = {
-        'A+': { unweighted: 4.0, honors: 4.5, ap: 5.0, percentage: 97 },
-        'A': { unweighted: 4.0, honors: 4.5, ap: 5.0, percentage: 95 },
-        'A-': { unweighted: 3.7, honors: 4.2, ap: 4.7, percentage: 91 },
-        'B+': { unweighted: 3.3, honors: 3.8, ap: 4.3, percentage: 88 },
-        'B': { unweighted: 3.0, honors: 3.5, ap: 4.0, percentage: 85 },
-        'B-': { unweighted: 2.7, honors: 3.2, ap: 3.7, percentage: 81 },
-        'C+': { unweighted: 2.3, honors: 2.8, ap: 3.3, percentage: 78 },
-        'C': { unweighted: 2.0, honors: 2.5, ap: 3.0, percentage: 75 },
-        'C-': { unweighted: 1.7, honors: 2.2, ap: 2.7, percentage: 71 },
-        'D+': { unweighted: 1.3, honors: 1.8, ap: 2.3, percentage: 68 },
-        'D': { unweighted: 1.0, honors: 1.5, ap: 2.0, percentage: 65 },
-        'F': { unweighted: 0.0, honors: 0.0, ap: 0.0, percentage: 0 }
+        'A+': { unweighted: 4.0, honors: 4.5, ap: 5.0, canadian: 4.33, percentage: 97 },
+        'A': { unweighted: 4.0, honors: 4.5, ap: 5.0, canadian: 4.0, percentage: 95 },
+        'A-': { unweighted: 3.7, honors: 4.2, ap: 4.7, canadian: 3.7, percentage: 91 },
+        'B+': { unweighted: 3.3, honors: 3.8, ap: 4.3, canadian: 3.3, percentage: 88 },
+        'B': { unweighted: 3.0, honors: 3.5, ap: 4.0, canadian: 3.0, percentage: 85 },
+        'B-': { unweighted: 2.7, honors: 3.2, ap: 3.7, canadian: 2.7, percentage: 81 },
+        'C+': { unweighted: 2.3, honors: 2.8, ap: 3.3, canadian: 2.3, percentage: 78 },
+        'C': { unweighted: 2.0, honors: 2.5, ap: 3.0, canadian: 2.0, percentage: 75 },
+        'C-': { unweighted: 1.7, honors: 2.2, ap: 2.7, canadian: 1.7, percentage: 71 },
+        'D+': { unweighted: 1.3, honors: 1.8, ap: 2.3, canadian: 1.3, percentage: 68 },
+        'D': { unweighted: 1.0, honors: 1.5, ap: 2.0, canadian: 1.0, percentage: 65 },
+        'F': { unweighted: 0.0, honors: 0.0, ap: 0.0, canadian: 0.0, percentage: 0 }
     };
 
     // Initialize calculator
@@ -76,6 +77,11 @@
             updateUI();
         });
 
+        document.getElementById('regionalScale').addEventListener('change', function() {
+            state.regionalScale = this.value;
+            updateUI();
+        });
+
         // Action buttons
         document.getElementById('addCourseBtn').addEventListener('click', addCourse);
         document.getElementById('addSchoolBtn').addEventListener('click', addSchool);
@@ -113,10 +119,13 @@
         if (state.calcType === 'cumulative') {
             cumulativeInputs.style.display = 'block';
             coursesSectionTitle.textContent = 'Current Semester Courses';
+            const prevCoursesGroup = document.getElementById('prevCoursesGroup');
             if (state.useCredits) {
                 prevCreditsGroup.style.display = 'block';
+                prevCoursesGroup.style.display = 'none';
             } else {
                 prevCreditsGroup.style.display = 'none';
+                prevCoursesGroup.style.display = 'block';
             }
         } else if (state.calcType === 'transfer') {
             transferInputs.style.display = 'block';
@@ -347,11 +356,18 @@
     function getGradePoints(grade, courseType = 'regular') {
         if (!grade || !gradeConversions[grade]) return 0;
 
+        // Use weighted scale for high school if enabled
         if (state.useWeighted && state.gradeLevel === 'high-school') {
             if (courseType === 'ap') return gradeConversions[grade].ap;
             if (courseType === 'honors') return gradeConversions[grade].honors;
         }
 
+        // Use Canadian scale if selected
+        if (state.regionalScale === 'canada') {
+            return gradeConversions[grade].canadian;
+        }
+
+        // Default to USA unweighted scale
         return gradeConversions[grade].unweighted;
     }
 
@@ -394,7 +410,7 @@
             }
 
             const gradePoints = getGradePoints(grade, course.type);
-            const credits = state.useCredits ? parseFloat(course.credits) || 0 : 1;
+            const credits = state.useCredits ? parseFloat(course.credits) || 3 : 1;
 
             if (credits > 0 && gradePoints >= 0) {
                 const weightedPoints = gradePoints * credits;
@@ -429,13 +445,16 @@
     function calculateCumulativeGPA() {
         const prevGPA = parseFloat(document.getElementById('prevGPA').value) || 0;
         const prevCredits = state.useCredits ? parseFloat(document.getElementById('prevCredits').value) || 0 : 0;
+        const prevCourses = !state.useCredits ? parseFloat(document.getElementById('prevCourses').value) || 0 : 0;
 
         const semesterResult = calculateSemesterGPA();
 
         let cumulativeGPA;
         let totalCredits;
+        let totalCourses;
 
         if (state.useCredits) {
+            // With credits: weighted by credit hours
             const prevGradePoints = prevGPA * prevCredits;
             const newGradePoints = semesterResult.gpa * semesterResult.totalCredits;
             totalCredits = prevCredits + semesterResult.totalCredits;
@@ -446,8 +465,17 @@
                 cumulativeGPA = semesterResult.gpa;
             }
         } else {
-            // Without credits, simple average
-            cumulativeGPA = semesterResult.gpa; // Simplified for now
+            // Without credits: simple average across all courses
+            const prevGradePoints = prevGPA * prevCourses;
+            const newGradePoints = semesterResult.gpa * semesterResult.totalCredits; // totalCredits here is actually number of courses
+            totalCourses = prevCourses + semesterResult.totalCredits;
+
+            if (totalCourses > 0) {
+                cumulativeGPA = (prevGradePoints + newGradePoints) / totalCourses;
+            } else {
+                cumulativeGPA = semesterResult.gpa;
+            }
+            totalCredits = totalCourses; // For display purposes
         }
 
         return {
@@ -457,7 +485,7 @@
             breakdown: semesterResult.breakdown,
             type: 'cumulative',
             prevGPA: prevGPA,
-            prevCredits: prevCredits
+            prevCredits: state.useCredits ? prevCredits : prevCourses
         };
     }
 
@@ -561,9 +589,20 @@
         const context = getGPAContext(result.gpa);
         gpaContext.textContent = context;
 
-        // Progress bar
-        const percentage = Math.min((result.gpa / 4.0) * 100, 100);
+        // Progress bar (use 4.33 max for Canada, 4.0 for USA)
+        const maxGPA = state.regionalScale === 'canada' ? 4.33 : 4.0;
+        const percentage = Math.min((result.gpa / maxGPA) * 100, 100);
         progressFill.style.width = percentage + '%';
+
+        // Update progress bar labels
+        const progressLabels = document.querySelector('.progress-labels');
+        if (progressLabels) {
+            if (state.regionalScale === 'canada') {
+                progressLabels.innerHTML = '<span>0.0</span><span>2.0</span><span>3.0</span><span>4.33</span>';
+            } else {
+                progressLabels.innerHTML = '<span>0.0</span><span>2.0</span><span>3.0</span><span>4.0</span>';
+            }
+        }
 
         // Color coding
         if (result.gpa >= 3.5) {
@@ -625,16 +664,39 @@
         resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // Get GPA context message
+    // Get GPA context message with class rank estimate
     function getGPAContext(gpa) {
-        if (gpa >= 3.9) return 'Excellent! A+ average - Top tier performance';
-        if (gpa >= 3.7) return 'Outstanding! A average - Highly competitive';
-        if (gpa >= 3.5) return 'Great! A- average - Competitive for selective colleges';
-        if (gpa >= 3.3) return 'Very Good! B+ average - Above average performance';
-        if (gpa >= 3.0) return 'Good! B average - Solid academic standing';
-        if (gpa >= 2.7) return 'Fair - B- average';
-        if (gpa >= 2.0) return 'Needs improvement - Maintain good standing';
-        return 'Below average - Focus on improvement';
+        let context = '';
+        let rank = '';
+        
+        // Qualitative description
+        if (gpa >= 3.9) {
+            context = 'Excellent! A+ average - Top tier performance';
+            rank = 'Top 5% of students nationally';
+        } else if (gpa >= 3.7) {
+            context = 'Outstanding! A average - Highly competitive';
+            rank = 'Top 10% of students nationally';
+        } else if (gpa >= 3.5) {
+            context = 'Great! A- average - Competitive for selective colleges';
+            rank = 'Top 25% of students typically have 3.5+ GPA';
+        } else if (gpa >= 3.3) {
+            context = 'Very Good! B+ average - Above average performance';
+            rank = 'Top 35% of students';
+        } else if (gpa >= 3.0) {
+            context = 'Good! B average - Solid academic standing';
+            rank = 'Top 50% of students (average range)';
+        } else if (gpa >= 2.7) {
+            context = 'Fair - B- average';
+            rank = 'Below average range';
+        } else if (gpa >= 2.0) {
+            context = 'Needs improvement - Maintain good standing';
+            rank = 'Bottom 25% - Focus on raising GPA';
+        } else {
+            context = 'Below average - Significant improvement needed';
+            rank = 'Bottom 15% - Immediate action required';
+        }
+        
+        return context + ' • ' + rank;
     }
 
     // Reset calculator
@@ -650,6 +712,7 @@
         document.getElementById('schoolsList').innerHTML = '';
         document.getElementById('prevGPA').value = '';
         document.getElementById('prevCredits').value = '';
+        document.getElementById('prevCourses').value = '';
         document.getElementById('results').style.display = 'none';
 
         // Add initial courses
