@@ -215,7 +215,7 @@
         }
     </style>
 
-    <!-- JSON-LD Schema Markup -->
+    <!-- JSON-LD Schema Markup for Blog -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -235,6 +235,17 @@
         "@type": "WebPage",
         "@id": "https://satscorecalculator.io/blog/"
       }
+    }
+    </script>
+
+    <!-- WebSite Structured Data for Site Name -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SAT Score Calculator",
+      "alternateName": ["satscorecalculator.io", "SAT Calculator"],
+      "url": "https://satscorecalculator.io/"
     }
     </script>
 </head>
@@ -257,12 +268,43 @@
 
     <header class="site-header">
         <div class="header-container">
-            <div class="app-name">
-                <a href="/" style="color: inherit; text-decoration: none;">SAT Score Calculator</a>
+            <a href="/" class="app-name" style="text-decoration: none; color: inherit;">
+                SAT Score Calculator
+            </a>
+            <div class="header-controls">
+                <nav class="header-nav">
+                    <div class="nav-dropdown">
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <a href="/tools/sat-superscore-calculator" class="dropdown-item" role="menuitem">SAT Superscore Calculator</a>
+                            <a href="/tools/psat-to-sat-predictor" class="dropdown-item" role="menuitem">PSAT to SAT Predictor</a>
+                            <a href="/tools/master-gpa-calculator" class="dropdown-item" role="menuitem">Master GPA Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                </nav>
+
+                <div class="language-switch-wrapper">
+                    <select id="languageSwitcher" class="language-select notranslate" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <span class="sun">☀️</span>
+                            <span class="moon">🌙</span>
+                        </div>
+                    </label>
+                </div>
             </div>
-            <nav class="header-nav">
-                <a href="/blog/" class="nav-link">Blog</a>
-            </nav>
         </div>
     </header>
 
@@ -448,22 +490,51 @@
         translate.service.use('client.edge');
         translate.selectLanguageTag.show = false;
         
-        // Auto-translate based on saved language preference
-        const savedLang = localStorage.getItem('userLanguage') || 'en';
-        const langMap = {'en': 'english', 'de': 'deutsch', 'es': 'spanish'};
-        
-        if (savedLang !== 'en') {
-            document.addEventListener('DOMContentLoaded', function() {
-                translate.changeLanguage(langMap[savedLang]);
-                translate.listener.start();
-                translate.execute();
-            });
-        } else {
-            document.addEventListener('DOMContentLoaded', function() {
-                translate.listener.start();
-                translate.execute();
-            });
-        }
+        // Initialize translation when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Connect custom language switcher to xnx3/translate
+            const languageSwitcher = document.getElementById('languageSwitcher');
+            if (languageSwitcher) {
+                // Load saved language preference
+                const savedLang = localStorage.getItem('userLanguage') || 'en';
+                languageSwitcher.value = savedLang;
+                
+                // Map between select values and translate.js language codes
+                const langMap = {
+                    'en': 'english',
+                    'de': 'deutsch',
+                    'es': 'spanish'
+                };
+                
+                // If saved language is not English, translate immediately
+                if (savedLang !== 'en') {
+                    translate.changeLanguage(langMap[savedLang]);
+                }
+                
+                // Handle language change
+                languageSwitcher.addEventListener('change', function() {
+                    const selectedLang = this.value;
+                    localStorage.setItem('userLanguage', selectedLang);
+                    
+                    if (selectedLang === 'en') {
+                        // Reset to original English
+                        translate.changeLanguage('english');
+                    } else {
+                        // Translate to selected language
+                        translate.changeLanguage(langMap[selectedLang]);
+                    }
+                });
+            }
+            
+            // Start monitoring for dynamic content changes
+            translate.listener.start();
+            
+            // Execute initial translation
+            translate.execute();
+        });
     </script>
+
+    <!-- Load script.js for dropdown functionality and dark mode toggle -->
+    <script src="../script.js" defer></script>
 </body>
 </html>

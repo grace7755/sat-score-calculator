@@ -7,14 +7,15 @@
     <meta name="description" content="Discover how accurate SAT score calculators really are. Learn what affects precision, compare tools, and get tips for using calculators effectively.">
     <meta name="keywords" content="accurate sat score calculator, sat score calculator, sat score predictor, sat calculator, score calculator sat">
     <link rel="stylesheet" href="../styles.css">
-    <link rel="canonical" href="https://satscorecalculator.net/blog/accurate-sat-score-calculator.html">
+    <link rel="canonical" href="https://satscorecalculator.io/blog/accurate-sat-score-calculator.html">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Accurate SAT Score Calculator: How Precise Are Online Tools?">
     <meta property="og:description" content="Discover how accurate SAT score calculators really are. Learn what affects precision, compare tools, and get tips for using calculators effectively.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://satscorecalculator.net/blog/accurate-sat-score-calculator.html">
-    <meta property="og:image" content="https://satscorecalculator.net/blog_images/Accurate SAT Score Calculator.webp">
+    <meta property="og:url" content="https://satscorecalculator.io/blog/accurate-sat-score-calculator.html">
+    <meta property="og:image" content="https://satscorecalculator.io/blog_images/Accurate SAT Score Calculator.webp">
+    <meta property="og:site_name" content="SAT Score Calculator">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="../logo/favicon.png">
@@ -37,38 +38,59 @@
             "name": "SAT Score Calculator",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://satscorecalculator.net/logo.png"
+                "url": "https://satscorecalculator.io/logo.png"
             }
         },
         "datePublished": "2025-01-19",
         "dateModified": "2025-01-19",
-        "image": "https://satscorecalculator.net/blog_images/Accurate SAT Score Calculator.webp",
+        "image": "https://satscorecalculator.io/blog_images/Accurate SAT Score Calculator.webp",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://satscorecalculator.net/blog/accurate-sat-score-calculator.html"
+            "@id": "https://satscorecalculator.io/blog/accurate-sat-score-calculator.html"
         }
     }
     </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav class="nav-container">
-                <div class="logo">
-                    <a href="../index.html">SAT Score Calculator</a>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="app-name" style="text-decoration: none; color: inherit;">
+                SAT Score Calculator
+            </a>
+            <div class="header-controls">
+                <nav class="header-nav">
+                    <div class="nav-dropdown">
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <a href="/tools/sat-superscore-calculator" class="dropdown-item" role="menuitem">SAT Superscore Calculator</a>
+                            <a href="/tools/psat-to-sat-predictor" class="dropdown-item" role="menuitem">PSAT to SAT Predictor</a>
+                            <a href="/tools/master-gpa-calculator" class="dropdown-item" role="menuitem">Master GPA Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                </nav>
+
+                <div class="language-switch-wrapper">
+                    <select id="languageSwitcher" class="language-select notranslate" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="es">Español</option>
+                    </select>
                 </div>
-                <div class="nav-menu" id="nav-menu">
-                    <a href="../index.html" class="nav-link">Calculator</a>
-                    <a href="../about.html" class="nav-link">About</a>
-                    <a href="index.html" class="nav-link">Blog</a>
-                    <a href="../contact.html" class="nav-link">Contact</a>
+
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <span class="sun">☀️</span>
+                            <span class="moon">🌙</span>
+                        </div>
+                    </label>
                 </div>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
+            </div>
         </div>
     </header>
 
@@ -284,6 +306,58 @@
             </div>
         </div>
     </footer>
+
+    <!-- xnx3/translate - Automatic Translation Library -->
+    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
+    <script>
+        // Configure xnx3/translate for automatic translation
+        translate.language.setLocal('english');
+        translate.service.use('client.edge');
+        translate.selectLanguageTag.show = false;
+        
+        // Initialize translation when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Connect custom language switcher to xnx3/translate
+            const languageSwitcher = document.getElementById('languageSwitcher');
+            if (languageSwitcher) {
+                // Load saved language preference
+                const savedLang = localStorage.getItem('userLanguage') || 'en';
+                languageSwitcher.value = savedLang;
+                
+                // Map between select values and translate.js language codes
+                const langMap = {
+                    'en': 'english',
+                    'de': 'deutsch',
+                    'es': 'spanish'
+                };
+                
+                // If saved language is not English, translate immediately
+                if (savedLang !== 'en') {
+                    translate.changeLanguage(langMap[savedLang]);
+                }
+                
+                // Handle language change
+                languageSwitcher.addEventListener('change', function() {
+                    const selectedLang = this.value;
+                    localStorage.setItem('userLanguage', selectedLang);
+                    
+                    if (selectedLang === 'en') {
+                        // Reset to original English
+                        translate.changeLanguage('english');
+                    } else {
+                        // Translate to selected language
+                        translate.changeLanguage(langMap[selectedLang]);
+                    }
+                });
+            }
+            
+            // Start monitoring for dynamic content changes
+            translate.listener.start();
+            
+            // Execute initial translation
+            translate.execute();
+        });
+    </script>
 
     <script src="../script.js" defer></script>
 </body>
