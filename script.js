@@ -253,7 +253,6 @@ const initializeDOMElements = () => {
     
     scoreChart = document.getElementById('scoreChart');
 };
-let chart = null;
 
 // Validate input with proper error handling
 const validateInput = (input, max, errorId) => {

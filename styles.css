@@ -2066,6 +2066,8 @@ footer {
 
 .blog-sidebar-item {
     margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--space-sm);
 }
 
 .blog-sidebar-link {
@@ -2097,7 +2099,7 @@ footer {
 .blog-sidebar-cta {
     display: block;
     width: 100%;
-    padding: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
     background: transparent;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
