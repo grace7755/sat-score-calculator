@@ -89,93 +89,110 @@
     <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/styles.css"></noscript>
 
-    <!-- Structured Data - WebApplication Schema -->
+    <!-- Structured Data - Combined Schema with @graph -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "",
-      "description": "Free online SAT superscore calculator that helps students calculate their highest combined SAT scores across multiple test dates.",
-      "url": "https://satscorecalculator.io/tools/sat-superscore-calculator",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Any",
-      "browserRequirements": "Requires JavaScript",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "SAT Score Calculator"
-      }
-    }
-    </script>
-
-    <!-- HowTo Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate Your SAT Superscore",
-      "description": "Step-by-step guide to calculating your SAT superscore from multiple test dates",
-      "step": [
+      "@graph": [
         {
-          "@type": "HowToStep",
-          "name": "Enter your test scores",
-          "text": "Input your Math and Reading & Writing scores from each SAT test date"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Identify highest section scores",
-          "text": "The calculator automatically identifies your highest Math score and highest Reading & Writing score across all test dates"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "View your superscore",
-          "text": "Your superscore is calculated by adding your highest Math and Reading & Writing scores together"
-        }
-      ]
-    }
-    </script>
-
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is SAT superscoring?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "SAT superscoring is when colleges take your highest section scores from multiple SAT test dates and combine them into one superscore. For example, if you scored 650 Math and 700 Reading & Writing on one test, then 700 Math and 680 Reading & Writing on another, your superscore would be 1400 (700 Math + 700 Reading & Writing)."
+          "@type": "WebApplication",
+          "name": "SAT Superscore Calculator",
+          "description": "Free online SAT superscore calculator that helps students calculate their highest combined SAT scores across multiple test dates.",
+          "url": "https://satscorecalculator.io/tools/sat-superscore-calculator",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "creator": {
+            "@type": "Organization",
+            "name": "SAT Score Calculator"
           }
         },
         {
-          "@type": "Question",
-          "name": "Do all colleges accept SAT superscores?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Most colleges accept SAT superscores, including many top universities like MIT, Stanford, Duke, and Cornell. However, some schools like Harvard and Princeton consider all section scores but don't technically superscore. Always check your target college's specific SAT score policy."
-          }
+          "@type": "HowTo",
+          "name": "How to Calculate Your SAT Superscore",
+          "description": "Step-by-step guide to calculating your SAT superscore from multiple test dates",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Enter your test scores",
+              "text": "Input your Math and Reading & Writing scores from each SAT test date"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Identify highest section scores",
+              "text": "The calculator automatically identifies your highest Math score and highest Reading & Writing score across all test dates"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "View your superscore",
+              "text": "Your superscore is calculated by adding your highest Math and Reading & Writing scores together"
+            }
+          ]
         },
         {
-          "@type": "Question",
-          "name": "How many times should I take the SAT?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Most students take the SAT 2-3 times. Taking it multiple times can improve your superscore since you can combine your best section scores. However, taking it more than 3-4 times may not provide significant benefits and could look unfavorable to some colleges."
-          }
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is SAT superscoring?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SAT superscoring is when colleges take your highest section scores from multiple SAT test dates and combine them into one superscore. For example, if you scored 650 Math and 700 Reading & Writing on one test, then 700 Math and 680 Reading & Writing on another, your superscore would be 1400 (700 Math + 700 Reading & Writing)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do all colleges accept SAT superscores?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most colleges accept SAT superscores, including many top universities like MIT, Stanford, Duke, and Cornell. However, some schools like Harvard and Princeton consider all section scores but don't technically superscore. Always check your target college's specific SAT score policy."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How many times should I take the SAT?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most students take the SAT 2-3 times. Taking it multiple times can improve your superscore since you can combine your best section scores. However, taking it more than 3-4 times may not provide significant benefits and could look unfavorable to some colleges."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I superscore between digital and paper SAT?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, you can superscore between digital and paper SAT tests. Colleges that superscore will combine your highest section scores regardless of which format you took. The scoring is equivalent between formats."
+              }
+            }
+          ]
         },
         {
-          "@type": "Question",
-          "name": "Can I superscore between digital and paper SAT?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, you can superscore between digital and paper SAT tests. Colleges that superscore will combine your highest section scores regardless of which format you took. The scoring is equivalent between formats."
-          }
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://satscorecalculator.io/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Tools",
+              "item": "https://satscorecalculator.io/tools/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "SAT Superscore Calculator",
+              "item": "https://satscorecalculator.io/tools/sat-superscore-calculator"
+            }
+          ]
         }
       ]
     }
@@ -223,6 +240,15 @@
 
     <main class="container page-with-sidebar">
         <div class="main-content">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: var(--space-lg);">
+            <a href="/">Home</a>
+            <span aria-hidden="true"> / </span>
+            <a href="/tools/">Tools</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">SAT Superscore Calculator</span>
+        </nav>
+
         <!-- Hero Section -->
         <h1>SAT Superscore Calculator Free</h1>
         <p style="text-align: center; font-size: 1.125rem; color: var(--secondary-color); margin-bottom: 2rem;">
