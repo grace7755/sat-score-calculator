@@ -572,7 +572,7 @@
                 const savedLang = localStorage.getItem('userLanguage') || 'en';
                 languageSwitcher.value = savedLang;
                 
-                const langMap = {'en': 'english', 'de': 'german', 'es': 'spanish'};
+                const langMap = {'en': 'english', 'de': 'deutsch', 'es': 'spanish'};
                 
                 if (savedLang !== 'en') {
                     translate.changeLanguage(langMap[savedLang]);
