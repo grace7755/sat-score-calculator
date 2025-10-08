@@ -475,6 +475,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeSwitch) {
         themeSwitch.addEventListener('change', handleThemeSwitch);
     }
+
+    // Initialize the calculator app
+    initializeApp();
 });
 
 // Theme switch handler - optimized to prevent forced reflows
