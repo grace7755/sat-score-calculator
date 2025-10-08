@@ -1,34 +1,59 @@
-// Mobile Navigation functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
+// Dropdown menu functionality for Tools navigation
+const initializeDropdown = () => {
+    const dropdown = document.querySelector('.nav-dropdown');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
     
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
+    if (dropdownToggle && dropdownMenu && dropdown) {
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = dropdownMenu.classList.toggle('active');
+            dropdownToggle.setAttribute('aria-expanded', isActive.toString());
         });
         
-        // Close menu when clicking on a nav link
-        const navLinks = navMenu.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
             }
         });
     }
-});
+};
 
-// Add at the beginning of the file
+// Language switcher integration with xnx3/translate (keeping only what's needed)
+const initializeLanguageSwitcher = () => {
+    const languageSwitcher = document.getElementById('languageSwitcher');
+    if (languageSwitcher) {
+        const savedLang = localStorage.getItem('userLanguage') || 'en';
+        languageSwitcher.value = savedLang;
+        
+        const langMap = {
+            'en': 'english',
+            'de': 'deutsch',
+            'es': 'spanish'
+        };
+        
+        if (savedLang !== 'en' && typeof translate !== 'undefined') {
+            translate.changeLanguage(langMap[savedLang]);
+        }
+        
+        languageSwitcher.addEventListener('change', function() {
+            const selectedLang = this.value;
+            localStorage.setItem('userLanguage', selectedLang);
+            
+            if (typeof translate !== 'undefined') {
+                if (selectedLang === 'en') {
+                    translate.changeLanguage('english');
+                } else {
+                    translate.changeLanguage(langMap[selectedLang]);
+                }
+            }
+        });
+    }
+};
+
+// Legacy translations object (kept for backwards compatibility but not actively used)
 const translations = {
     en: {
         translation: {
@@ -176,56 +201,8 @@ const translations = {
     }
 };
 
-// Initialize i18next (will be called after script loads)
-const initializeI18next = () => {
-    if (typeof i18next === 'undefined') return;
-    
-    i18next.init({
-        lng: 'en', // default language
-        resources: translations,
-        fallbackLng: 'en'
-    });
-};
-
-// Add translation update function
-const updateContent = () => {
-    if (typeof i18next === 'undefined') return;
-    
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        element.textContent = i18next.t(key);
-    });
-    
-    // Update aria-labels
-    document.querySelectorAll('[data-i18n-aria]').forEach(element => {
-        const key = element.getAttribute('data-i18n-aria');
-        element.setAttribute('aria-label', i18next.t(key));
-    });
-};
-
-// Add language switcher handler
-const handleLanguageSwitch = (e) => {
-    if (typeof i18next === 'undefined') return;
-    
-    const selectedLanguage = e.target.value;
-    i18next.changeLanguage(selectedLanguage, () => {
-        updateContent();
-        localStorage.setItem('language', selectedLanguage);
-    });
-};
-
-// Initialize language functionality
-const initializeLanguage = () => {
-    if (typeof i18next === 'undefined') return;
-    
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    const languageSwitcher = document.getElementById('languageSwitcher');
-    if (languageSwitcher) {
-        languageSwitcher.value = savedLanguage;
-        i18next.changeLanguage(savedLanguage, updateContent);
-        languageSwitcher.addEventListener('change', handleLanguageSwitch);
-    }
-};
+// Note: Translation is handled by xnx3/translate library loaded in HTML
+// The language switcher functionality is implemented in initializeLanguageSwitcher()
 
 // Score conversion tables based on official SAT guidelines
 const RW_CONVERSION_TABLE = {
@@ -323,35 +300,47 @@ const debounce = (func, wait) => {
 
 // Calculate scores with proper validation and layout shift prevention
 const calculateScores = () => {
-    // Validate all inputs
-    const isRWModule1Valid = validateInput(inputs.rwModule1, 27, 'rwModule1Error');
-    const isRWModule2Valid = validateInput(inputs.rwModule2, 27, 'rwModule2Error');
-    const isMathModule1Valid = validateInput(inputs.mathModule1, 22, 'mathModule1Error');
-    const isMathModule2Valid = validateInput(inputs.mathModule2, 22, 'mathModule2Error');
+    try {
+        // Validate all inputs
+        const isRWModule1Valid = validateInput(inputs.rwModule1, 27, 'rwModule1Error');
+        const isRWModule2Valid = validateInput(inputs.rwModule2, 27, 'rwModule2Error');
+        const isMathModule1Valid = validateInput(inputs.mathModule1, 22, 'mathModule1Error');
+        const isMathModule2Valid = validateInput(inputs.mathModule2, 22, 'mathModule2Error');
 
-    // Only calculate if all inputs are valid
-    if (isRWModule1Valid && isRWModule2Valid && isMathModule1Valid && isMathModule2Valid) {
-        // Calculate Reading and Writing score
-        const rwRawScore = parseInt(inputs.rwModule1.value) + parseInt(inputs.rwModule2.value);
-        const rwScaled = getScaledScore(rwRawScore, RW_CONVERSION_TABLE);
+        // Only calculate if all inputs are valid
+        if (isRWModule1Valid && isRWModule2Valid && isMathModule1Valid && isMathModule2Valid) {
+            // Calculate Reading and Writing score
+            const rwRawScore = parseInt(inputs.rwModule1.value) + parseInt(inputs.rwModule2.value);
+            const rwScaled = getScaledScore(rwRawScore, RW_CONVERSION_TABLE);
 
-        // Calculate Math score
-        const mathRawScore = parseInt(inputs.mathModule1.value) + parseInt(inputs.mathModule2.value);
-        const mathScaled = getScaledScore(mathRawScore, MATH_CONVERSION_TABLE);
+            // Calculate Math score
+            const mathRawScore = parseInt(inputs.mathModule1.value) + parseInt(inputs.mathModule2.value);
+            const mathScaled = getScaledScore(mathRawScore, MATH_CONVERSION_TABLE);
 
-        // Calculate total score
-        const totalScaled = rwScaled + mathScaled;
+            // Calculate total score
+            const totalScaled = rwScaled + mathScaled;
 
-        // Use requestAnimationFrame to prevent layout shifts
-        requestAnimationFrame(() => {
-            // Update display with null checks
-            if (outputs.rwScore) outputs.rwScore.textContent = rwScaled;
-            if (outputs.mathScore) outputs.mathScore.textContent = mathScaled;
-            if (outputs.totalScore) outputs.totalScore.textContent = totalScaled;
+            console.log('SAT Calculator: Scores calculated', {
+                rwRaw: rwRawScore,
+                rwScaled: rwScaled,
+                mathRaw: mathRawScore,
+                mathScaled: mathScaled,
+                total: totalScaled
+            });
 
-            // Update chart
-            updateChart(rwScaled, mathScaled, totalScaled);
-        });
+            // Use requestAnimationFrame to prevent layout shifts
+            requestAnimationFrame(() => {
+                // Update display with null checks
+                if (outputs.rwScore) outputs.rwScore.textContent = rwScaled;
+                if (outputs.mathScore) outputs.mathScore.textContent = mathScaled;
+                if (outputs.totalScore) outputs.totalScore.textContent = totalScaled;
+
+                // Update chart
+                updateChart(rwScaled, mathScaled, totalScaled);
+            });
+        }
+    } catch (error) {
+        console.error('SAT Calculator: Error calculating scores', error);
     }
 };
 
@@ -450,11 +439,21 @@ const addEventListeners = () => {
 
 // Main initialization function - called after dependencies load
 window.initializeApp = () => {
+    console.log('SAT Calculator: Initializing application...');
+    
     initializeDOMElements();
-    initializeI18next();
+    console.log('SAT Calculator: DOM elements initialized', {
+        inputsFound: Object.values(inputs).every(el => el !== null),
+        outputsFound: Object.values(outputs).every(el => el !== null),
+        chartFound: scoreChart !== null
+    });
+    
     initializeChart();
     addEventListeners();
-    initializeLanguage();
+    initializeLanguageSwitcher();
+    initializeDropdown();
+    
+    console.log('SAT Calculator: Application initialized successfully');
 };
 
 // Initialize basic functionality immediately (doesn't require dependencies)
