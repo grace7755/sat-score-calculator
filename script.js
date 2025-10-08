@@ -24,33 +24,55 @@ const initializeDropdown = () => {
 // Language switcher integration with xnx3/translate (keeping only what's needed)
 const initializeLanguageSwitcher = () => {
     const languageSwitcher = document.getElementById('languageSwitcher');
-    if (languageSwitcher) {
-        const savedLang = localStorage.getItem('userLanguage') || 'en';
-        languageSwitcher.value = savedLang;
-        
-        const langMap = {
-            'en': 'english',
-            'de': 'deutsch',
-            'es': 'spanish'
-        };
-        
-        if (savedLang !== 'en' && typeof translate !== 'undefined') {
-            translate.changeLanguage(langMap[savedLang]);
-        }
-        
-        languageSwitcher.addEventListener('change', function() {
-            const selectedLang = this.value;
-            localStorage.setItem('userLanguage', selectedLang);
-            
-            if (typeof translate !== 'undefined') {
-                if (selectedLang === 'en') {
-                    translate.changeLanguage('english');
-                } else {
-                    translate.changeLanguage(langMap[selectedLang]);
-                }
-            }
-        });
+    if (!languageSwitcher || typeof translate === 'undefined') {
+        console.log('Language switcher or translate library not found');
+        return;
     }
+    
+    const langMap = {
+        'en': 'english',
+        'de': 'deutsch',
+        'es': 'spanish'
+    };
+    
+    // Load saved language preference
+    const savedLang = localStorage.getItem('userLanguage') || 'en';
+    languageSwitcher.value = savedLang;
+    
+    console.log('Initializing translation with saved language:', savedLang);
+    
+    // Apply saved language on initial load (only if not English)
+    if (savedLang !== 'en') {
+        setTimeout(() => {
+            translate.changeLanguage(langMap[savedLang]);
+        }, 100);
+    }
+    
+    // Handle language change events
+    languageSwitcher.addEventListener('change', function(e) {
+        const selectedLang = this.value;
+        console.log('Language changed to:', selectedLang);
+        
+        // Save preference
+        localStorage.setItem('userLanguage', selectedLang);
+        
+        // Change language
+        if (selectedLang === 'en') {
+            // For English, reload the page to reset to original
+            window.location.reload();
+        } else {
+            // For other languages, use translate
+            translate.changeLanguage(langMap[selectedLang]);
+        }
+    });
+    
+    // Execute translation after a short delay to ensure DOM is ready
+    setTimeout(() => {
+        if (savedLang !== 'en') {
+            translate.execute();
+            console.log('Translation executed for:', savedLang);
+        }
+    }, 150);
 };
 
 // Legacy translations object (kept for backwards compatibility but not actively used)

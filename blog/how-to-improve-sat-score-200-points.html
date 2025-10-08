@@ -982,45 +982,32 @@
 
         // Initialize translation when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Connect custom language switcher to xnx3/translate
             const languageSwitcher = document.getElementById('languageSwitcher');
-            if (languageSwitcher) {
-                // Load saved language preference
-                const savedLang = localStorage.getItem('userLanguage') || 'en';
-                languageSwitcher.value = savedLang;
-
-                // Map between select values and translate.js language codes
-                const langMap = {
-                    'en': 'english',
-                    'de': 'deutsch',
-                    'es': 'spanish'
-                };
-
-                // If saved language is not English, translate immediately
-                if (savedLang !== 'en') {
+            if (!languageSwitcher) return;
+            
+            const langMap = {'en': 'english', 'de': 'deutsch', 'es': 'spanish'};
+            const savedLang = localStorage.getItem('userLanguage') || 'en';
+            languageSwitcher.value = savedLang;
+            
+            // Apply saved language on initial load
+            if (savedLang !== 'en') {
+                setTimeout(() => {
                     translate.changeLanguage(langMap[savedLang]);
-                }
-
-                // Handle language change
-                languageSwitcher.addEventListener('change', function() {
-                    const selectedLang = this.value;
-                    localStorage.setItem('userLanguage', selectedLang);
-
-                    if (selectedLang === 'en') {
-                        // Reset to original English
-                        translate.changeLanguage('english');
-                    } else {
-                        // Translate to selected language
-                        translate.changeLanguage(langMap[selectedLang]);
-                    }
-                });
+                    translate.execute();
+                }, 100);
             }
-
-            // Start monitoring for dynamic content changes
-            translate.listener.start();
-
-            // Execute initial translation
-            translate.execute();
+            
+            // Handle language change
+            languageSwitcher.addEventListener('change', function() {
+                const selectedLang = this.value;
+                localStorage.setItem('userLanguage', selectedLang);
+                
+                if (selectedLang === 'en') {
+                    window.location.reload();
+                } else {
+                    translate.changeLanguage(langMap[selectedLang]);
+                }
+            });
         });
     </script>
 

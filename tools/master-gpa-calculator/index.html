@@ -943,25 +943,31 @@
         
         document.addEventListener('DOMContentLoaded', function() {
             const languageSwitcher = document.getElementById('languageSwitcher');
-            if (languageSwitcher) {
-                const savedLang = localStorage.getItem('userLanguage') || 'en';
-                languageSwitcher.value = savedLang;
-                
-                const langMap = {'en': 'english', 'de': 'deutsch', 'es': 'spanish'};
-                
-                if (savedLang !== 'en') {
+            if (!languageSwitcher) return;
+            
+            const langMap = {'en': 'english', 'de': 'deutsch', 'es': 'spanish'};
+            const savedLang = localStorage.getItem('userLanguage') || 'en';
+            languageSwitcher.value = savedLang;
+            
+            // Apply saved language on initial load
+            if (savedLang !== 'en') {
+                setTimeout(() => {
                     translate.changeLanguage(langMap[savedLang]);
-                }
-                
-                languageSwitcher.addEventListener('change', function() {
-                    const selectedLang = this.value;
-                    localStorage.setItem('userLanguage', selectedLang);
-                    translate.changeLanguage(selectedLang === 'en' ? 'english' : langMap[selectedLang]);
-                });
+                    translate.execute();
+                }, 100);
             }
             
-            translate.listener.start();
-            translate.execute();
+            // Handle language change
+            languageSwitcher.addEventListener('change', function() {
+                const selectedLang = this.value;
+                localStorage.setItem('userLanguage', selectedLang);
+                
+                if (selectedLang === 'en') {
+                    window.location.reload();
+                } else {
+                    translate.changeLanguage(langMap[selectedLang]);
+                }
+            });
         });
     </script>
 </body>

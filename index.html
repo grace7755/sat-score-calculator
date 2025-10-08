@@ -242,64 +242,11 @@
     <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
     <script>
         // Configure xnx3/translate for automatic translation
-        translate.language.setLocal('english'); // Set the current page language
-        translate.service.use('client.edge'); // Use edge translation service (fast & reliable)
-        
-        // Configure to show only German and Spanish in addition to English
-        translate.selectLanguageTag.show = true;
-        
-        // Customize the language options to show only required languages
-        translate.selectLanguageTag.languages = {
-            'english': 'English',
-            'deutsch': 'Deutsch',
-            'spanish': 'Español'
-        };
-        
-        // Hide the default select tag and use custom one
+        translate.language.setLocal('english');
+        translate.service.use('client.edge');
         translate.selectLanguageTag.show = false;
         
-        // Initialize translation when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            // Connect custom language switcher to xnx3/translate
-            const languageSwitcher = document.getElementById('languageSwitcher');
-            if (languageSwitcher) {
-                // Load saved language preference
-                const savedLang = localStorage.getItem('userLanguage') || 'en';
-                languageSwitcher.value = savedLang;
-                
-                // Map between select values and translate.js language codes
-                const langMap = {
-                    'en': 'english',
-                    'de': 'deutsch',
-                    'es': 'spanish'
-                };
-                
-                // If saved language is not English, translate immediately
-                if (savedLang !== 'en') {
-                    translate.changeLanguage(langMap[savedLang]);
-                }
-                
-                // Handle language change
-                languageSwitcher.addEventListener('change', function() {
-                    const selectedLang = this.value;
-                    localStorage.setItem('userLanguage', selectedLang);
-                    
-                    if (selectedLang === 'en') {
-                        // Reset to original English
-                        translate.changeLanguage('english');
-                    } else {
-                        // Translate to selected language
-                        translate.changeLanguage(langMap[selectedLang]);
-                    }
-                });
-            }
-            
-            // Start monitoring for dynamic content changes
-            translate.listener.start();
-            
-            // Execute initial translation
-            translate.execute();
-        });
+        // Translation initialization is handled by script.js to avoid duplicate handlers
     </script>
 
 

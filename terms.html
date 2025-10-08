@@ -246,14 +246,10 @@
         
         if (savedLang !== 'en') {
             document.addEventListener('DOMContentLoaded', function() {
-                translate.changeLanguage(langMap[savedLang]);
-                translate.listener.start();
-                translate.execute();
-            });
-        } else {
-            document.addEventListener('DOMContentLoaded', function() {
-                translate.listener.start();
-                translate.execute();
+                setTimeout(() => {
+                    translate.changeLanguage(langMap[savedLang]);
+                    translate.execute();
+                }, 100);
             });
         }
     </script>
