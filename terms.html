@@ -59,25 +59,41 @@
 
     <header class="site-header">
         <div class="header-container">
-            <div class="app-name">
-                <a href="/" aria-label="SAT Score Calculator Home">SAT Score Calculator</a>
-            </div>
+            <a href="/" class="app-name" style="text-decoration: none; color: inherit;">
+                SAT Score Calculator
+            </a>
             <div class="header-controls">
+                <nav class="header-nav">
+                    <div class="nav-dropdown">
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <a href="/tools/sat-superscore-calculator" class="dropdown-item" role="menuitem">SAT Superscore Calculator</a>
+                            <a href="/tools/psat-to-sat-predictor" class="dropdown-item" role="menuitem">PSAT to SAT Predictor</a>
+                            <a href="/tools/master-gpa-calculator" class="dropdown-item" role="menuitem">Master GPA Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/contact.html" class="nav-link">Contact</a>
+                </nav>
+
                 <div class="language-switch-wrapper">
-                    <label for="languageSwitcher" class="visually-hidden">Select language</label>
                     <select id="languageSwitcher" class="language-select notranslate" aria-label="Select language">
                         <option value="en">English</option>
                         <option value="de">Deutsch</option>
                         <option value="es">Español</option>
                     </select>
                 </div>
+
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="checkbox">
-                        <span class="visually-hidden">Toggle dark mode</span>
-                        <input type="checkbox" id="checkbox" aria-label="Toggle dark mode" />
+                        <input type="checkbox" id="checkbox" />
                         <div class="slider round">
-                            <span class="sun" aria-hidden="true">☀️</span>
-                            <span class="moon" aria-hidden="true">🌙</span>
+                            <span class="sun">☀️</span>
+                            <span class="moon">🌙</span>
                         </div>
                     </label>
                 </div>
@@ -162,11 +178,13 @@
 
     <footer class="site-footer">
         <nav aria-label="Footer">
+            <a href="/about.html">About Us</a>
+            <span aria-hidden="true">·</span>
+            <a href="/contact.html">Contact Us</a>
+            <span aria-hidden="true">·</span>
             <a href="/privacy-policy.html">Privacy Policy</a>
             <span aria-hidden="true">·</span>
             <a href="/terms.html">Terms & Conditions</a>
-            <span aria-hidden="true">·</span>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=satscorecalculator1@gmail.com">Contact</a>
         </nav>
         <small>© <span id="year"></span> SAT Score Calculator</small>
     </footer>

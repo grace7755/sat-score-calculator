@@ -2375,6 +2375,99 @@ footer {
     padding: 0 var(--space-sm);
 }
 
+/* About Us & Contact Pages */
+.content-page {
+    max-width: var(--container-md);
+    margin: 0 auto;
+}
+
+.content-page h1 {
+    text-align: center;
+    margin-bottom: var(--space-xxl);
+    color: var(--heading-text);
+}
+
+.about-section {
+    margin-bottom: var(--space-xxl);
+}
+
+.about-section h2 {
+    font-size: var(--font-size-xxl);
+    color: var(--heading-text);
+    margin-bottom: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.about-section h3 {
+    font-size: var(--font-size-lg);
+    color: var(--heading-text);
+    margin-bottom: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.about-section p {
+    color: var(--content-text);
+    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-size-md);
+}
+
+.values-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.values-list li {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    background: var(--card-bg);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+}
+
+.values-list li strong {
+    color: var(--heading-text);
+    font-size: var(--font-size-lg);
+}
+
+.cta-box {
+    background: var(--card-bg);
+    padding: var(--space-xl);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    margin-top: var(--space-xxl);
+}
+
+.cta-box h3 {
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--space-md);
+    color: var(--heading-text);
+}
+
+.cta-box p {
+    margin-bottom: var(--space-lg);
+    color: var(--secondary-color);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: var(--space-md) var(--space-xl);
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: var(--font-size-lg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 /* Mobile-specific adjustments for gpa-context */
 @media (max-width: 768px) {
     .gpa-context {
