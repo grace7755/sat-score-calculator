@@ -2008,6 +2008,150 @@ footer {
 }
 
 /* ==========================================================================
+   Blog Sidebar Widget Styles
+   ========================================================================== */
+
+.page-with-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    max-width: var(--container-xl);
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .page-with-sidebar {
+        grid-template-columns: 1fr 300px;
+        gap: var(--space-xxl);
+    }
+}
+
+.main-content {
+    min-width: 0; /* Prevents overflow on flex/grid items */
+}
+
+.blog-sidebar {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: var(--space-xl);
+    box-shadow: var(--card-shadow);
+    position: sticky;
+    top: calc(60px + var(--space-md)); /* Header height + spacing */
+    height: fit-content;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.blog-sidebar h1 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+    color: var(--heading-text);
+    text-align: left;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--space-sm);
+}
+
+.blog-sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg) 0;
+}
+
+.blog-sidebar-item {
+    margin-bottom: var(--space-md);
+}
+
+.blog-sidebar-link {
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    padding: var(--space-sm);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    padding-left: var(--space-md);
+}
+
+.blog-sidebar-link:hover {
+    background-color: var(--background-color);
+    border-left-color: var(--hover-color);
+    color: var(--hover-color);
+    text-decoration: none;
+    transform: translateX(4px);
+}
+
+.blog-sidebar-link:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.blog-sidebar-cta {
+    display: block;
+    width: 100%;
+    padding: var(--space-md);
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    transition: all 0.2s ease;
+    margin-top: var(--space-md);
+}
+
+.blog-sidebar-cta:hover {
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+}
+
+.blog-sidebar-cta:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Mobile: Hide sidebar or show at bottom */
+@media (max-width: 1023px) {
+    .blog-sidebar {
+        position: static;
+        max-height: none;
+        margin-top: var(--space-xl);
+    }
+}
+
+/* Smooth scrollbar for sidebar on desktop */
+.blog-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.blog-sidebar::-webkit-scrollbar-track {
+    background: var(--background-color);
+    border-radius: 3px;
+}
+
+.blog-sidebar::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.blog-sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* ==========================================================================
    GPA Calculator Styles
    ========================================================================== */
 
