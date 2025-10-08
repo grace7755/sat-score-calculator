@@ -437,6 +437,20 @@ const addEventListeners = () => {
     });
 };
 
+// Check for pre-filled values and calculate immediately
+const calculateIfValuesExist = () => {
+    const hasValues = Object.values(inputs).every(input => {
+        return input && input.value && input.value.trim() !== '';
+    });
+    
+    if (hasValues) {
+        console.log('SAT Calculator: Pre-filled values detected, calculating...');
+        calculateScores();
+    } else {
+        console.log('SAT Calculator: No pre-filled values, waiting for user input');
+    }
+};
+
 // Main initialization function - called after dependencies load
 window.initializeApp = () => {
     console.log('SAT Calculator: Initializing application...');
@@ -452,6 +466,9 @@ window.initializeApp = () => {
     addEventListeners();
     initializeLanguageSwitcher();
     initializeDropdown();
+    
+    // Check if there are pre-filled values and calculate immediately
+    calculateIfValuesExist();
     
     console.log('SAT Calculator: Application initialized successfully');
 };
