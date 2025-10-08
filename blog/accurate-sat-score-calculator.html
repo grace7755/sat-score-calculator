@@ -276,36 +276,21 @@
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>SAT Score Calculator</h3>
-                    <p>Accurate SAT score predictions based on official College Board data.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="../index.html">Calculator</a></li>
-                        <li><a href="../about.html">About</a></li>
-                        <li><a href="index.html">Blog</a></li>
-                        <li><a href="../contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="sat-score-calculator-guide.html">Calculator Guide</a></li>
-                        <li><a href="sat-math-score-calculator.html">Math Calculator</a></li>
-                        <li><a href="sat-score-predictor.html">Score Predictor</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 SAT Score Calculator. All rights reserved.</p>
-            </div>
-        </div>
+    <footer class="site-footer">
+        <nav aria-label="Footer">
+            <a href="/about.html">About Us</a>
+            <span aria-hidden="true">·</span>
+            <a href="/contact.html">Contact Us</a>
+            <span aria-hidden="true">·</span>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <span aria-hidden="true">·</span>
+            <a href="/terms.html">Terms & Conditions</a>
+        </nav>
+        <small>© <span id="year"></span> SAT Score Calculator</small>
     </footer>
+    <script>
+        (function(){ var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear(); })();
+    </script>
 
     <!-- xnx3/translate - Automatic Translation Library -->
     <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
