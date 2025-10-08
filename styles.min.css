@@ -1198,6 +1198,8 @@ a:focus-visible,
     z-index: 1000;
     margin-top: 0.5rem;
     white-space: nowrap;
+    /* Ensure dropdown doesn't overflow viewport on any device */
+    box-sizing: border-box;
 }
 
 [data-theme="dark"] .dropdown-menu {
@@ -1246,6 +1248,15 @@ a:focus-visible,
     color: white;
 }
 
+/* Tablet devices (481px - 767px) */
+@media (max-width: 767px) and (min-width: 481px) {
+    .dropdown-menu {
+        min-width: 220px;
+        max-width: 300px;
+    }
+}
+
+/* Mobile devices (max 767px) */
 @media (max-width: 767px) {
     .header-nav {
         gap: var(--space-sm);
@@ -1257,20 +1268,39 @@ a:focus-visible,
         font-size: var(--font-size-sm);
     }
 
+    /* Fix: Align dropdown to left edge on mobile to prevent cutoff */
     .dropdown-menu {
         min-width: 200px;
-        left: 50%;
-        transform: translateX(-50%) translateY(-8px);
+        max-width: calc(100vw - 2rem); /* Prevent overflow on right */
+        left: 0;
+        right: auto;
+        transform: translateY(-8px);
     }
 
     .nav-dropdown:hover .dropdown-menu,
     .nav-dropdown:focus-within .dropdown-menu {
-        transform: translateX(-50%) translateY(0);
+        transform: translateY(0);
     }
 
     .dropdown-item {
         padding: var(--space-sm) var(--space-md);
         font-size: var(--font-size-sm);
+        white-space: normal; /* Allow text wrapping on very small screens */
+        word-wrap: break-word;
+    }
+}
+
+/* Very small mobile devices (320px - 480px) */
+@media (max-width: 480px) {
+    .dropdown-menu {
+        min-width: 180px;
+        max-width: calc(100vw - 1rem); /* Even tighter constraint for small screens */
+        font-size: var(--font-size-sm);
+    }
+    
+    .dropdown-item {
+        padding: var(--space-sm) var(--space-sm);
+        line-height: 1.4;
     }
 }
 
