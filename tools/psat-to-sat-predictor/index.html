@@ -255,7 +255,7 @@
                     <input type="number" id="psatTotal" min="320" max="1520" step="10" placeholder="e.g., 1200"
                            style="width: 100%; padding: var(--space-md); border: 1px solid var(--border-color); border-radius: 8px; font-size: var(--font-size-md); background: var(--background-color); color: var(--input-text);"
                            aria-label="Enter PSAT total score">
-                    <small style="display: block; margin-top: var(--space-xs); color: var(--secondary-color);">Enter your PSAT total score (must be a multiple of 10)</small>
+                    <small style="display: block; margin-top: var(--space-xs); color: var(--secondary-color);">💡 PSAT scores are in 10-point increments (320, 330, 340...1510, 1520)</small>
                 </div>
             </div>
 
@@ -269,6 +269,7 @@
                         <input type="number" id="psatMath" min="160" max="760" step="10" placeholder="e.g., 600"
                                style="width: 100%; padding: var(--space-md); border: 1px solid var(--border-color); border-radius: 8px; font-size: var(--font-size-md); background: var(--background-color); color: var(--input-text);"
                                aria-label="Enter PSAT Math score">
+                        <small style="display: block; margin-top: var(--space-xs); color: var(--secondary-color);">💡 Must be in 10-point increments (160, 170, 180...750, 760)</small>
                     </div>
                     <div class="input-group">
                         <label for="psatRW" style="display: block; margin-bottom: var(--space-sm); font-weight: 600; color: var(--text-color);">
@@ -277,6 +278,7 @@
                         <input type="number" id="psatRW" min="160" max="760" step="10" placeholder="e.g., 600"
                                style="width: 100%; padding: var(--space-md); border: 1px solid var(--border-color); border-radius: 8px; font-size: var(--font-size-md); background: var(--background-color); color: var(--input-text);"
                                aria-label="Enter PSAT Reading and Writing score">
+                        <small style="display: block; margin-top: var(--space-xs); color: var(--secondary-color);">💡 Must be in 10-point increments (160, 170, 180...750, 760)</small>
                     </div>
                 </div>
             </div>
@@ -830,7 +832,9 @@
                         return;
                     }
                     if (psatTotal % 10 !== 0) {
-                        showError('PSAT scores must be in increments of 10.');
+                        const suggestedLower = Math.floor(psatTotal / 10) * 10;
+                        const suggestedHigher = Math.ceil(psatTotal / 10) * 10;
+                        showError(`PSAT scores must be in increments of 10. Did you mean ${suggestedLower} or ${suggestedHigher}?`);
                         return;
                     }
 
@@ -852,7 +856,18 @@
                         return;
                     }
                     if (psatMath % 10 !== 0 || psatRW % 10 !== 0) {
-                        showError('PSAT section scores must be in increments of 10.');
+                        let errorMsg = 'PSAT section scores must be in increments of 10.';
+                        if (psatMath % 10 !== 0) {
+                            const suggestedMathLower = Math.floor(psatMath / 10) * 10;
+                            const suggestedMathHigher = Math.ceil(psatMath / 10) * 10;
+                            errorMsg += ` Math: Did you mean ${suggestedMathLower} or ${suggestedMathHigher}?`;
+                        }
+                        if (psatRW % 10 !== 0) {
+                            const suggestedRWLower = Math.floor(psatRW / 10) * 10;
+                            const suggestedRWHigher = Math.ceil(psatRW / 10) * 10;
+                            errorMsg += ` Reading & Writing: Did you mean ${suggestedRWLower} or ${suggestedRWHigher}?`;
+                        }
+                        showError(errorMsg);
                         return;
                     }
 
