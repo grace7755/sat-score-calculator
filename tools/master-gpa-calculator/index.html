@@ -110,8 +110,8 @@
         .intro-text{text-align:center;font-size:var(--font-size-lg);color:var(--secondary-color);margin-bottom:var(--space-xl);max-width:800px;margin-left:auto;margin-right:auto}
     </style>
 
-    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+    <link rel="preload" href="/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.min.css"></noscript>
 </head>
 
 <body>
@@ -970,13 +970,22 @@
         })();
     </script>
 
-    <!-- xnx3/translate - Automatic Translation Library -->
-    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
+    <!-- xnx3/translate - Automatic Translation Library (Deferred for performance) -->
     <script>
-        // Configure xnx3/translate for automatic translation
-        translate.language.setLocal('english');
-        translate.service.use('client.edge');
-        translate.selectLanguageTag.show = false;
+        // Defer translate.js loading to improve performance
+        window.addEventListener('load', function() {
+            var translateScript = document.createElement('script');
+            translateScript.src = 'https://cdn.staticfile.net/translate.js/3.17.0/translate.js';
+            translateScript.onload = function() {
+                if (typeof translate !== 'undefined') {
+                    // Configure xnx3/translate for automatic translation
+                    translate.language.setLocal('english');
+                    translate.service.use('client.edge');
+                    translate.selectLanguageTag.show = false;
+                }
+            };
+            document.head.appendChild(translateScript);
+        });
         
         document.addEventListener('DOMContentLoaded', function() {
             const languageSwitcher = document.getElementById('languageSwitcher');

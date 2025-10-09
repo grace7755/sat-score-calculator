@@ -50,8 +50,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../logo/favicon.png">
     <link rel="shortcut icon" href="../logo/favicon.png">
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="../styles.css">
+    <!-- CSS (minified for performance) -->
+    <link rel="stylesheet" href="../styles.min.css">
     <style>
         .blog-container {
             max-width: 1200px;
@@ -599,13 +599,22 @@
         (function(){ var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear(); })();
     </script>
 
-    <!-- xnx3/translate - Automatic Translation Library -->
-    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
+    <!-- xnx3/translate - Automatic Translation Library (Deferred for performance) -->
     <script>
-        // Configure xnx3/translate for automatic translation
-        translate.language.setLocal('english');
-        translate.service.use('client.edge');
-        translate.selectLanguageTag.show = false;
+        // Defer translate.js loading to improve performance
+        window.addEventListener('load', function() {
+            var translateScript = document.createElement('script');
+            translateScript.src = 'https://cdn.staticfile.net/translate.js/3.17.0/translate.js';
+            translateScript.onload = function() {
+                // Configure xnx3/translate for automatic translation
+                if (typeof translate !== 'undefined') {
+                    translate.language.setLocal('english');
+                    translate.service.use('client.edge');
+                    translate.selectLanguageTag.show = false;
+                }
+            };
+            document.head.appendChild(translateScript);
+        });
         
         // Initialize translation when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {

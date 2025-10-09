@@ -42,9 +42,17 @@
         })();
     </script>
 
-    <!-- AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6578959056593527"
-         crossorigin="anonymous"></script>
+    <!-- AdSense (Deferred for performance) -->
+    <script>
+        // Defer AdSense loading to improve performance
+        window.addEventListener('load', function() {
+            var adsenseScript = document.createElement('script');
+            adsenseScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6578959056593527';
+            adsenseScript.async = true;
+            adsenseScript.crossOrigin = 'anonymous';
+            document.head.appendChild(adsenseScript);
+        });
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,9 +93,9 @@
         :root{--primary-color:#000;--secondary-color:#666;--background-color:#fafafa;--text-color:#111;--border-color:#eaeaea;--input-text:#000;--error-color:red;--success-color:#0070f3;--hover-color:#0070f3;--card-shadow:0 2px 4px rgba(0,0,0,.05);--header-bg:#fafafa;--card-bg:#fff;--chart-text:#111;--gradient-start:#000;--gradient-end:#333;--info-text:#111;--content-text:#111;--heading-text:#111;--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-xxl:3rem;--font-size-xs:.75rem;--font-size-sm:.875rem;--font-size-md:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-xxl:1.5rem;--font-size-3xl:2rem;--font-size-4xl:2.5rem;--container-sm:640px;--container-md:768px;--container-lg:1024px;--container-xl:1200px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background-color:var(--background-color);color:var(--text-color);line-height:1.6;min-height:100vh}.container{max-width:var(--container-lg);margin:0 auto;padding:var(--space-md)}h1{font-size:var(--font-size-3xl);text-align:center;margin-bottom:var(--space-xl);color:var(--heading-text)}
     </style>
 
-    <!-- Load non-critical CSS -->
-    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+    <!-- Load non-critical CSS (minified for performance) -->
+    <link rel="preload" href="/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.min.css"></noscript>
 
     <!-- Structured Data - Combined Schema with @graph -->
     <script type="application/ld+json">
@@ -627,13 +635,22 @@
 
     <script src="/superscore.js" defer></script>
 
-    <!-- xnx3/translate - Automatic Translation Library -->
-    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
+    <!-- xnx3/translate - Automatic Translation Library (Deferred for performance) -->
     <script>
-        // Configure xnx3/translate for automatic translation
-        translate.language.setLocal('english');
-        translate.service.use('client.edge');
-        translate.selectLanguageTag.show = false;
+        // Defer translate.js loading to improve performance
+        window.addEventListener('load', function() {
+            var translateScript = document.createElement('script');
+            translateScript.src = 'https://cdn.staticfile.net/translate.js/3.17.0/translate.js';
+            translateScript.onload = function() {
+                // Configure xnx3/translate for automatic translation
+                if (typeof translate !== 'undefined') {
+                    translate.language.setLocal('english');
+                    translate.service.use('client.edge');
+                    translate.selectLanguageTag.show = false;
+                }
+            };
+            document.head.appendChild(translateScript);
+        });
         
         document.addEventListener('DOMContentLoaded', function() {
             const languageSwitcher = document.getElementById('languageSwitcher');

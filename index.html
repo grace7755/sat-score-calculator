@@ -136,9 +136,17 @@
 
 
 
-    <!-- AdSense code -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6578959056593527"
-         crossorigin="anonymous"></script>
+    <!-- AdSense code (Deferred for performance) -->
+    <script>
+        // Defer AdSense loading to improve performance (reduces unused JS)
+        window.addEventListener('load', function() {
+            var adsenseScript = document.createElement('script');
+            adsenseScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6578959056593527';
+            adsenseScript.async = true;
+            adsenseScript.crossOrigin = 'anonymous';
+            document.head.appendChild(adsenseScript);
+        });
+    </script>
 
     <meta charset="UTF-8">
 
@@ -192,9 +200,9 @@
         .custom-chart{background:var(--card-bg);border-radius:8px;padding:1rem;margin:1rem 0;box-shadow:var(--card-shadow);min-height:280px}.chart-title{font-size:1.25rem;font-weight:bold;text-align:center;margin-bottom:1rem;color:var(--heading-text)}.chart-bars{display:flex;justify-content:space-around;align-items:end;height:200px;gap:1rem}.chart-bar{display:flex;flex-direction:column;align-items:center;flex:1;max-width:120px}.bar-label{font-size:0.875rem;font-weight:600;margin-bottom:0.5rem;text-align:center;color:var(--text-color)}.bar-container{width:100%;height:150px;background:rgba(0,0,0,0.05);border-radius:4px;position:relative;display:flex;align-items:end}.bar-fill{width:100%;border-radius:4px;transition:height 0.3s ease;min-height:2px}.bar-value{font-size:1rem;font-weight:bold;margin-top:0.5rem;color:var(--text-color)}
     </style>
     
-    <!-- Load non-critical CSS asynchronously -->
-    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+    <!-- Load non-critical CSS asynchronously (using minified version) -->
+    <link rel="preload" href="/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.min.css"></noscript>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Free SAT Score Calculator - Calculate your estimated Digital SAT scores instantly from raw scores. Get section scores for Reading, Writing & Math. Includes college admission score guides, prep resources & expert tips.">
@@ -238,15 +246,22 @@
 
 
 
-    <!-- xnx3/translate - Automatic Translation Library -->
-    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
+    <!-- xnx3/translate - Automatic Translation Library (Deferred for performance) -->
     <script>
-        // Configure xnx3/translate for automatic translation
-        translate.language.setLocal('english');
-        translate.service.use('client.edge');
-        translate.selectLanguageTag.show = false;
-        
-        // Translation initialization is handled by script.js to avoid duplicate handlers
+        // Defer translate.js loading to improve performance (saves 1,550ms render-blocking)
+        window.addEventListener('load', function() {
+            var translateScript = document.createElement('script');
+            translateScript.src = 'https://cdn.staticfile.net/translate.js/3.17.0/translate.js';
+            translateScript.onload = function() {
+                // Configure xnx3/translate for automatic translation
+                if (typeof translate !== 'undefined') {
+                    translate.language.setLocal('english');
+                    translate.service.use('client.edge');
+                    translate.selectLanguageTag.show = false;
+                }
+            };
+            document.head.appendChild(translateScript);
+        });
     </script>
 
 
@@ -1755,7 +1770,7 @@
                     </a>
                 </li>
             </ul>
-            <a href="/blog/" class="blog-sidebar-cta">See More</a>
+            <a href="/blog/" class="blog-sidebar-cta">View All Blog Posts</a>
         </aside>
 
     </main>
