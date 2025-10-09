@@ -200,7 +200,7 @@
                     <a href="/blog/" class="nav-link">Blog</a>
                 </nav>
                 <div class="language-switch-wrapper">
-                    <select id="languageSwitcher" class="language-select" aria-label="Select language">
+                    <select id="languageSwitcher" class="language-select notranslate" aria-label="Select language">
                         <option value="en">English</option>
                         <option value="de">Deutsch</option>
                         <option value="es">Español</option>
@@ -709,6 +709,31 @@
         </nav>
         <small>© <span id="year"></span> SAT Score Calculator</small>
     </footer>
+
+    <!-- xnx3/translate - Automatic Translation Library (Deferred for performance) -->
+    <script>
+        // Defer translate.js loading to improve performance
+        window.addEventListener('load', function() {
+            var translateScript = document.createElement('script');
+            translateScript.src = 'https://cdn.staticfile.net/translate.js/3.17.0/translate.js';
+            translateScript.onload = function() {
+                // Configure xnx3/translate for automatic translation
+                if (typeof translate !== 'undefined') {
+                    translate.language.setLocal('english');
+                    translate.service.use('client.edge');
+                    translate.selectLanguageTag.show = false;
+                    // Initialize language switcher after translate library is loaded
+                    if (typeof window.initializeLanguageSwitcher === 'function') {
+                        window.initializeLanguageSwitcher();
+                    }
+                }
+            };
+            document.head.appendChild(translateScript);
+        });
+    </script>
+
+    <!-- Load main script.js for shared functionality including language switching -->
+    <script src="/script.js" defer></script>
 
     <script>
         (function(){
