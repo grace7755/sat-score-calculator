@@ -2927,3 +2927,240 @@ footer {
         border-width: 2px;
     }
 }
+
+/* ==========================================================================
+   Content Section Styles (Homepage SEO Content)
+   ========================================================================== */
+
+.content-section {
+    margin-top: var(--space-xxl);
+    padding: var(--space-xl) 0;
+    background: var(--background-color);
+}
+
+.content-header {
+    margin-bottom: var(--space-xxl);
+}
+
+.content-header h2 {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: var(--heading-text);
+    margin-bottom: var(--space-md);
+    line-height: 1.3;
+}
+
+.content-intro {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--content-text);
+    margin-bottom: var(--space-lg);
+}
+
+.content-block {
+    margin-bottom: var(--space-xxl);
+    padding: var(--space-xl);
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.content-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .content-block:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.content-block h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--heading-text);
+    margin-bottom: var(--space-lg);
+    line-height: 1.4;
+}
+
+.content-block h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--heading-text);
+    margin-bottom: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.content-block p {
+    font-size: var(--font-size-md);
+    line-height: 1.8;
+    color: var(--content-text);
+    margin-bottom: var(--space-lg);
+}
+
+.content-block p:last-child {
+    margin-bottom: 0;
+}
+
+.content-block a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.content-block a:hover {
+    color: var(--hover-color);
+}
+
+[data-theme="dark"] .content-block a {
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .content-block a:hover {
+    color: var(--hover-color);
+}
+
+.content-block ul,
+.content-block ol {
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-xl);
+}
+
+.content-block li {
+    font-size: var(--font-size-md);
+    line-height: 1.8;
+    color: var(--content-text);
+    margin-bottom: var(--space-md);
+}
+
+.content-block li:last-child {
+    margin-bottom: 0;
+}
+
+.section-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin: var(--space-lg) 0;
+}
+
+.section-item {
+    padding: var(--space-lg);
+    background: var(--background-color);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.section-note {
+    padding: var(--space-lg);
+    background: var(--background-color);
+    border-radius: 8px;
+    margin-top: var(--space-lg);
+    font-weight: 500;
+}
+
+.instruction-list,
+.benefits-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.instruction-list li,
+.benefits-list li {
+    position: relative;
+    padding-left: var(--space-xl);
+}
+
+.instruction-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: var(--font-size-lg);
+}
+
+.benefits-list li::before {
+    content: "•";
+    position: absolute;
+    left: var(--space-md);
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: var(--font-size-xl);
+}
+
+/* FAQ Section Styles */
+.faq-item {
+    margin-bottom: var(--space-xl);
+    padding: var(--space-lg);
+    background: var(--background-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .faq-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.faq-item h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--heading-text);
+    margin-bottom: var(--space-md);
+}
+
+.faq-item p {
+    font-size: var(--font-size-md);
+    line-height: 1.8;
+    color: var(--content-text);
+    margin-bottom: 0;
+}
+
+/* Responsive Content Styles */
+@media (max-width: 767px) {
+    .content-section {
+        padding: var(--space-lg) 0;
+    }
+
+    .content-block {
+        padding: var(--space-lg);
+        margin-bottom: var(--space-xl);
+    }
+
+    .content-header h2 {
+        font-size: var(--font-size-xl);
+    }
+
+    .content-intro {
+        font-size: var(--font-size-md);
+    }
+
+    .content-block h3 {
+        font-size: var(--font-size-lg);
+    }
+
+    .content-block h4 {
+        font-size: var(--font-size-md);
+    }
+
+    .instruction-list li,
+    .benefits-list li {
+        padding-left: var(--space-lg);
+    }
+}
+
+@media (min-width: 768px) {
+    .section-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content-block {
+        padding: var(--space-xxl);
+    }
+}
