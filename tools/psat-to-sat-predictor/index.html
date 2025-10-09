@@ -1101,6 +1101,11 @@
                     translate.language.setLocal('english');
                     translate.service.use('client.edge');
                     translate.selectLanguageTag.show = false;
+                    
+                    // Initialize language switcher after translate library is loaded
+                    if (typeof window.initializeLanguageSwitcher === 'function') {
+                        window.initializeLanguageSwitcher();
+                    }
                 }
             };
             document.head.appendChild(translateScript);

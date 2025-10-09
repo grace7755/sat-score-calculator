@@ -22,10 +22,16 @@ const initializeDropdown = () => {
 };
 
 // Language switcher integration with xnx3/translate (keeping only what's needed)
-const initializeLanguageSwitcher = () => {
+// Expose as global function so it can be called after translate.js loads
+window.initializeLanguageSwitcher = () => {
     const languageSwitcher = document.getElementById('languageSwitcher');
-    if (!languageSwitcher || typeof translate === 'undefined') {
-        console.log('Language switcher or translate library not found');
+    if (!languageSwitcher) {
+        console.log('Language switcher element not found');
+        return;
+    }
+    
+    if (typeof translate === 'undefined') {
+        console.log('Translate library not loaded yet');
         return;
     }
     
@@ -485,7 +491,7 @@ window.initializeApp = () => {
     
     initializeChart();
     addEventListeners();
-    initializeLanguageSwitcher();
+    // Note: initializeLanguageSwitcher() is now called after translate.js loads
     initializeDropdown();
     
     // Check if there are pre-filled values and calculate immediately
