@@ -2934,7 +2934,7 @@ footer {
 
 .content-section {
     margin-top: var(--space-xxl);
-    padding: var(--space-xl);
+    padding: var(--space-xl) 0;
     background: var(--background-color);
 }
 
@@ -3125,7 +3125,7 @@ footer {
 /* Responsive Content Styles */
 @media (max-width: 767px) {
     .content-section {
-        padding: var(--space-lg);
+        padding: var(--space-lg) 0;
     }
 
     .content-block {
