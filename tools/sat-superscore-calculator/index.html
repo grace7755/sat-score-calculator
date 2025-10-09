@@ -656,35 +656,6 @@
             };
             document.head.appendChild(translateScript);
         });
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const languageSwitcher = document.getElementById('languageSwitcher');
-            if (!languageSwitcher) return;
-            
-            const langMap = {'en': 'english', 'de': 'deutsch', 'es': 'spanish'};
-            const savedLang = localStorage.getItem('userLanguage') || 'en';
-            languageSwitcher.value = savedLang;
-            
-            // Apply saved language on initial load
-            if (savedLang !== 'en') {
-                setTimeout(() => {
-                    translate.changeLanguage(langMap[savedLang]);
-                    translate.execute();
-                }, 100);
-            }
-            
-            // Handle language change
-            languageSwitcher.addEventListener('change', function() {
-                const selectedLang = this.value;
-                localStorage.setItem('userLanguage', selectedLang);
-                
-                if (selectedLang === 'en') {
-                    window.location.reload();
-                } else {
-                    translate.changeLanguage(langMap[selectedLang]);
-                }
-            });
-        });
     </script>
 </body>
 </html>
