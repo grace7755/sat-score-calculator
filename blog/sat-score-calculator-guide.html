@@ -86,20 +86,20 @@
         }
         .article-meta {
             text-align: center;
-            color: #666;
+            color: var(--secondary-color);
             margin-bottom: 30px;
             font-size: 14px;
         }
         .toc {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
             margin: 30px 0;
         }
         .toc h3 {
             margin-top: 0;
-            color: #1e40af;
+            color: var(--primary-color);
         }
         .toc ul {
             list-style: none;
@@ -109,7 +109,7 @@
             margin: 8px 0;
         }
         .toc a {
-            color: #1e40af;
+            color: var(--primary-color);
             text-decoration: none;
         }
         .toc a:hover {
@@ -119,17 +119,17 @@
             margin: 40px 0;
         }
         .content-section h2 {
-            color: #1e40af;
-            border-bottom: 2px solid #e9ecef;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 10px;
         }
         .content-section h3 {
-            color: #2563eb;
+            color: var(--primary-color);
             margin-top: 30px;
         }
         .highlight-box {
-            background: #f0f9ff;
-            border-left: 4px solid #1e40af;
+            background: var(--background-color);
+            border-left: 4px solid var(--primary-color);
             padding: 20px;
             margin: 20px 0;
             border-radius: 0 8px 8px 0;
@@ -139,13 +139,13 @@
         }
         .faq-item {
             margin: 25px 0;
-            border: 1px solid #e9ecef;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
         }
         .faq-question {
             font-weight: bold;
-            color: #1e40af;
+            color: var(--primary-color);
             margin-bottom: 10px;
         }
         .comparison-table {
@@ -155,22 +155,22 @@
         }
         .comparison-table th,
         .comparison-table td {
-            border: 1px solid #e9ecef;
+            border: 1px solid var(--border-color);
             padding: 12px;
             text-align: left;
         }
         .comparison-table th {
-            background: #f8f9fa;
+            background: var(--background-color);
             font-weight: bold;
-            color: #1e40af;
+            color: var(--heading-text);
         }
         .breadcrumb {
             font-size: 14px;
-            color: #666;
+            color: var(--secondary-color);
             margin-bottom: 20px;
         }
         .breadcrumb a {
-            color: #1e40af;
+            color: var(--primary-color);
             text-decoration: none;
         }
         .breadcrumb a:hover {
@@ -182,7 +182,7 @@
         }
         .back-to-calculator a {
             display: inline-block;
-            background: #1e40af;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
             color: white;
             padding: 12px 24px;
             text-decoration: none;
@@ -190,7 +190,8 @@
             font-weight: bold;
         }
         .back-to-calculator a:hover {
-            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         @media (max-width: 768px) {
             .blog-container {
