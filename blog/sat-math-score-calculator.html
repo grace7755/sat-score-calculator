@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) for satscorecalculator.io -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T393J35ZL"></script>
+    <!-- Google Consent Mode v2 (Must load BEFORE any analytics or ads) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7T393J35ZL');
+        // Initialize Google Consent Mode v2 with default denied state
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Set default consent state - all denied until user accepts
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'granted',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+        
+        // Note: Analytics and AdSense will be loaded by consent-config.js after user consent
     </script>
 
     <meta charset="UTF-8">
@@ -296,6 +308,7 @@
             </a>
             <div class="header-controls">
                 <nav class="header-nav">
+                    <a href="/methodology.html" class="nav-link">Methodology</a>
                     <div class="nav-dropdown">
                         <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                             Tools
@@ -815,5 +828,81 @@
     </script>
 
     <script src="/script.js" defer></script>
+    <!-- Google Consent Banner & Configuration -->
+    <script src="/consent-config.js"></script>
+    
+    <!-- Consent Banner UI (Inline for all pages) -->
+    <style>
+        #consent-banner{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;box-shadow:0 -2px 10px rgba(0,0,0,.1);padding:1.5rem;z-index:999999;border-top:3px solid var(--primary-color,#000);animation:slideUp .3s ease-out}@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}.consent-content{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}.consent-text{flex:1;min-width:300px}.consent-text h3{margin:0 0 .5rem 0;font-size:1.125rem;color:var(--heading-text,#111)}.consent-text p{margin:0;font-size:.9375rem;color:var(--text-color,#666);line-height:1.6}.consent-text a{color:var(--hover-color,#0070f3);text-decoration:underline}.consent-buttons{display:flex;gap:.75rem;flex-wrap:wrap}.consent-btn{padding:.75rem 1.5rem;border:none;border-radius:6px;font-size:.9375rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}.consent-btn-primary{background:var(--primary-color,#000);color:#fff}.consent-btn-primary:hover{background:#333;transform:translateY(-1px)}.consent-btn-secondary{background:transparent;color:var(--text-color,#111);border:2px solid var(--border-color,#eaeaea)}.consent-btn-secondary:hover{border-color:var(--primary-color,#000);background:var(--background-color,#fafafa)}.consent-btn-link{background:transparent;color:var(--hover-color,#0070f3);padding:.75rem 1rem;text-decoration:underline}#consent-settings-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:1000000;align-items:center;justify-content:center;padding:1rem}.consent-modal-content{background:#fff;border-radius:12px;padding:2rem;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 10px 40px rgba(0,0,0,.2)}.consent-modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--border-color,#eaeaea)}.consent-modal-header h2{margin:0;font-size:1.5rem;color:var(--heading-text,#111)}.consent-close-btn{background:transparent;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-color,#666);padding:.25rem;line-height:1}.consent-close-btn:hover{color:var(--primary-color,#000)}.consent-option{padding:1.25rem;margin-bottom:1rem;border:1px solid var(--border-color,#eaeaea);border-radius:8px;background:var(--background-color,#fafafa)}.consent-option-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}.consent-option-header h4{margin:0;font-size:1.0625rem;color:var(--heading-text,#111)}.consent-toggle{position:relative;width:50px;height:26px}.consent-toggle input[type="checkbox"]{opacity:0;width:0;height:0}.consent-toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;border-radius:26px;transition:.3s}.consent-toggle-slider:before{position:absolute;content:"";height:20px;width:20px;left:3px;bottom:3px;background-color:#fff;border-radius:50%;transition:.3s}.consent-toggle input:checked+.consent-toggle-slider{background-color:var(--success-color,#0070f3)}.consent-toggle input:checked+.consent-toggle-slider:before{transform:translateX(24px)}.consent-toggle input:disabled+.consent-toggle-slider{opacity:.5;cursor:not-allowed}.consent-option-description{font-size:.875rem;color:var(--secondary-color,#666);line-height:1.6}.consent-modal-footer{margin-top:1.5rem;padding-top:1rem;border-top:2px solid var(--border-color,#eaeaea);display:flex;gap:.75rem;justify-content:flex-end}@media (max-width:768px){.consent-content{flex-direction:column;align-items:stretch}.consent-buttons{justify-content:stretch}.consent-btn{flex:1;text-align:center}.consent-modal-content{padding:1.5rem}.consent-modal-footer{flex-direction:column}}
+    </style>
+    
+    <div id="consent-banner">
+        <div class="consent-content">
+            <div class="consent-text">
+                <h3>🍪 We Value Your Privacy</h3>
+                <p>We use cookies to enhance your experience, analyze site traffic, and serve personalized ads. By clicking "Accept All", you consent to our use of cookies. <a href="/privacy-policy.html">Learn more</a></p>
+            </div>
+            <div class="consent-buttons">
+                <button id="consent-accept-all" class="consent-btn consent-btn-primary">Accept All</button>
+                <button id="consent-reject-all" class="consent-btn consent-btn-secondary">Reject All</button>
+                <button id="consent-settings-btn" class="consent-btn consent-btn-link">Customize</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="consent-settings-modal">
+        <div class="consent-modal-content">
+            <div class="consent-modal-header">
+                <h2>Cookie Preferences</h2>
+                <button id="consent-settings-close" class="consent-close-btn" aria-label="Close">×</button>
+            </div>
+            <div class="consent-options">
+                <div class="consent-option">
+                    <div class="consent-option-header">
+                        <h4>Essential Cookies</h4>
+                        <label class="consent-toggle">
+                            <input type="checkbox" checked disabled>
+                            <span class="consent-toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p class="consent-option-description">These cookies are necessary for the website to function and cannot be switched off.</p>
+                </div>
+                <div class="consent-option">
+                    <div class="consent-option-header">
+                        <h4>Analytics Cookies</h4>
+                        <label class="consent-toggle">
+                            <input type="checkbox" id="consent-analytics">
+                            <span class="consent-toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p class="consent-option-description">These cookies help us understand how visitors interact with our website by collecting information anonymously.</p>
+                </div>
+                <div class="consent-option">
+                    <div class="consent-option-header">
+                        <h4>Advertising Cookies</h4>
+                        <label class="consent-toggle">
+                            <input type="checkbox" id="consent-ads">
+                            <span class="consent-toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p class="consent-option-description">These cookies may be set by our advertising partners to build a profile of your interests and show you relevant ads.</p>
+                </div>
+                <div class="consent-option">
+                    <div class="consent-option-header">
+                        <h4>Personalization Cookies</h4>
+                        <label class="consent-toggle">
+                            <input type="checkbox" id="consent-personalization">
+                            <span class="consent-toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p class="consent-option-description">These cookies enable enhanced functionality and personalization, such as remembering your preferences.</p>
+                </div>
+            </div>
+            <div class="consent-modal-footer">
+                <button id="consent-save-settings" class="consent-btn consent-btn-primary">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

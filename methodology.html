@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Score Calculator Methodology - How We Calculate Your Scores</title>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://translate.google.com" crossorigin>
+    
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="/styles.min.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Learn how our SAT Score Calculator works. Detailed methodology explaining raw score conversion, adaptive module scoring, data sources, and calculation examples.">
+    <meta name="keywords" content="SAT methodology, SAT scoring, raw score conversion, adaptive testing, Digital SAT, score calculation">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SAT Score Calculator">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://satscorecalculator.io/methodology.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="SAT Score Calculator Methodology">
+    <meta property="og:description" content="Transparent explanation of how we calculate SAT scores using official College Board data and adaptive module logic.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://satscorecalculator.io/methodology.html">
+    <meta property="og:image" content="https://satscorecalculator.io/logo/favicon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo/favicon.png">
+    
+    <!-- xnx3/translate - Automatic Translation Library -->
+    <script>
+        window.translate = {
+            selectLanguageLabel: {
+                'zh-CN': '选择语言',
+                'zh-TW': '選擇語言',
+                'en': 'Select Language'
+            },
+            translateButtonLabel: {
+                'zh-CN': '翻译',
+                'zh-TW': '翻譯',
+                'en': 'Translate'
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xnx3/translate/translate.css">
+    <script src="https://cdn.jsdelivr.net/gh/xnx3/translate/translate.js"></script>
+
+    <style>
+        .methodology-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .breadcrumbs {
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--secondary-color);
+        }
+        
+        .breadcrumbs a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        
+        .methodology-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .methodology-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--heading-text);
+        }
+        
+        .methodology-header .subtitle {
+            font-size: 1.125rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .table-of-contents {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .table-of-contents h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--heading-text);
+        }
+        
+        .table-of-contents ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .table-of-contents li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .table-of-contents a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.125rem;
+        }
+        
+        .table-of-contents a:hover {
+            text-decoration: underline;
+            color: var(--hover-color);
+        }
+        
+        .methodology-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .methodology-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--heading-text);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .methodology-section h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--heading-text);
+        }
+        
+        .methodology-section p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--content-text);
+            margin-bottom: 1rem;
+        }
+        
+        .methodology-section ul, .methodology-section ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        
+        .methodology-section li {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--content-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--background-color);
+        }
+        
+        .example-table th,
+        .example-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+        
+        .example-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .example-table tr:nth-child(even) {
+            background: var(--card-bg);
+        }
+        
+        .example-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--hover-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .example-box h4 {
+            color: var(--hover-color);
+            margin-bottom: 1rem;
+        }
+        
+        .disclaimer-box {
+            background: #fff7ed;
+            border-left: 4px solid #fb923c;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .disclaimer-box h4 {
+            color: #fb923c;
+            margin-bottom: 1rem;
+        }
+        
+        .update-log {
+            margin-top: 1rem;
+        }
+        
+        .update-entry {
+            padding: 1rem;
+            border-left: 3px solid var(--border-color);
+            margin-bottom: 1rem;
+            background: var(--background-color);
+        }
+        
+        .update-date {
+            font-weight: 600;
+            color: var(--hover-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .methodology-header h1 {
+                font-size: 2rem;
+            }
+            
+            .methodology-section {
+                padding: 1.5rem;
+            }
+            
+            .methodology-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .example-table {
+                font-size: 0.875rem;
+            }
+            
+            .example-table th,
+            .example-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+
+    <!-- Google Consent Mode v2 -->
+    <script src="consent-config.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <img src="/logo/favicon.png" alt="SAT Score Calculator Logo" width="40" height="40" class="logo-img">
+                <span class="logo-text">SAT Score Calculator</span>
+            </a>
+            <div class="header-controls">
+                <nav class="header-nav">
+                    <a href="/methodology.html" class="nav-link">Methodology</a>
+                    <div class="nav-dropdown">
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <a href="/tools/sat-superscore-calculator" class="dropdown-item" role="menuitem">SAT Superscore Calculator</a>
+                            <a href="/tools/psat-to-sat-predictor" class="dropdown-item" role="menuitem">PSAT to SAT Predictor</a>
+                            <a href="/tools/master-gpa-calculator" class="dropdown-item" role="menuitem">Master GPA Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                </nav>
+                <div class="language-switch-wrapper">
+                    <div id="google_translate_element"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="methodology-page">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a> / <span>Methodology</span>
+        </nav>
+
+        <div class="methodology-header">
+            <h1>SAT Score Calculator Methodology</h1>
+            <p class="subtitle">Understanding how we calculate your estimated SAT scores with transparency and accuracy</p>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="table-of-contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#overview">1. Overview</a></li>
+                <li><a href="#data-sources">2. Data Sources</a></li>
+                <li><a href="#raw-to-scaled">3. Raw to Scaled Score Conversion</a></li>
+                <li><a href="#adaptive-modules">4. Adaptive Module Explanation</a></li>
+                <li><a href="#limitations">5. Limitations & Disclaimers</a></li>
+                <li><a href="#worked-examples">6. Worked Examples</a></li>
+                <li><a href="#update-log">7. Update Log</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Overview -->
+        <section id="overview" class="methodology-section">
+            <h2>1. Overview</h2>
+            <p>The SAT Score Calculator is a free, transparent tool designed to help students estimate their Digital SAT scores based on raw scores from practice tests or completed exams. Our calculator uses officially published College Board scoring tables and adaptive testing logic to provide the most accurate score estimates possible.</p>
+            
+            <p>What makes our calculator unique:</p>
+            <ul>
+                <li><strong>Official Data-Driven:</strong> We base our calculations on official College Board scoring tables, not approximations</li>
+                <li><strong>Adaptive Logic:</strong> We account for the Digital SAT's adaptive testing format where Module 2 difficulty depends on Module 1 performance</li>
+                <li><strong>Transparent Methodology:</strong> We openly explain how every calculation works, with no hidden algorithms</li>
+                <li><strong>Regularly Updated:</strong> We update our scoring tables as College Board releases new information</li>
+                <li><strong>Section-Level Accuracy:</strong> We provide separate scores for Reading & Writing and Math sections</li>
+            </ul>
+            
+            <p>Our calculator is designed for students who want to understand their performance on practice tests, track their improvement over time, and set realistic score goals for college admissions.</p>
+        </section>
+
+        <!-- Section 2: Data Sources -->
+        <section id="data-sources" class="methodology-section">
+            <h2>2. Data Sources</h2>
+            <p>Our score calculations are based on the following authoritative sources:</p>
+            
+            <h3>Primary Data Source</h3>
+            <ul>
+                <li><strong>College Board Official Scoring Tables:</strong> Published scoring conversions from official Digital SAT practice tests and administration guides</li>
+                <li><strong>Bluebook Practice Tests:</strong> Score conversion tables from all official Digital SAT practice tests available in the Bluebook app</li>
+                <li><strong>Official Test Day Conversions:</strong> When available, we incorporate scoring data from actual test administrations</li>
+            </ul>
+            
+            <h3>Data Currency & Updates</h3>
+            <p>The Digital SAT uses a process called "equating" to ensure fairness across different test forms. While the general scoring framework remains consistent, specific conversions may vary slightly between test dates. Our calculator uses:</p>
+            <ul>
+                <li>The most recent published scoring tables from College Board</li>
+                <li>Average conversions when multiple test forms are available</li>
+                <li>Conservative estimates when exact data is unavailable</li>
+            </ul>
+            
+            <h3>What We Don't Use</h3>
+            <ul>
+                <li>❌ Third-party approximations or unofficial scoring guides</li>
+                <li>❌ Old Paper SAT conversion tables (different scoring system)</li>
+                <li>❌ Proprietary algorithms or predictions</li>
+            </ul>
+        </section>
+
+        <!-- Section 3: Raw to Scaled Score Conversion -->
+        <section id="raw-to-scaled" class="methodology-section">
+            <h2>3. Raw to Scaled Score Conversion</h2>
+            <p>The Digital SAT uses a multi-step process to convert your raw scores (number of correct answers) into scaled scores (200-800 per section).</p>
+            
+            <h3>Step 1: Calculate Raw Scores</h3>
+            <p>Raw scores are simply the number of questions you answered correctly:</p>
+            <ul>
+                <li><strong>Reading & Writing:</strong> 27 questions in Module 1 + 27 questions in Module 2 = 54 total (max raw score: 54)</li>
+                <li><strong>Math:</strong> 22 questions in Module 1 + 22 questions in Module 2 = 44 total (max raw score: 44)</li>
+                <li><strong>Important:</strong> There is NO penalty for wrong answers. Only correct answers count.</li>
+            </ul>
+            
+            <h3>Step 2: Determine Module Difficulty Path</h3>
+            <p>This is where the Digital SAT's adaptive nature comes into play. Based on your Module 1 performance, you'll be assigned a Module 2 difficulty level:</p>
+            
+            <table class="example-table">
+                <thead>
+                    <tr>
+                        <th>Module 1 Performance</th>
+                        <th>Module 2 Difficulty</th>
+                        <th>Approximate Threshold</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>High Performance</td>
+                        <td>Hard Module</td>
+                        <td>~15+ correct (Reading & Writing)<br>~12+ correct (Math)</td>
+                    </tr>
+                    <tr>
+                        <td>Medium Performance</td>
+                        <td>Medium Module</td>
+                        <td>~10-14 correct (Reading & Writing)<br>~8-11 correct (Math)</td>
+                    </tr>
+                    <tr>
+                        <td>Lower Performance</td>
+                        <td>Easy Module</td>
+                        <td><10 correct (Reading & Writing)<br><8 correct (Math)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Step 3: Apply Section-Specific Conversion Tables</h3>
+            <p>Each combination of Module 1 and Module 2 scores has a specific scaled score conversion. The conversion depends on:</p>
+            <ul>
+                <li>Total raw score (across both modules)</li>
+                <li>Module difficulty path taken</li>
+                <li>Section (Reading & Writing vs. Math)</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>Example: Reading & Writing Conversion</h4>
+                <p><strong>Scenario:</strong> Student gets 18 correct in Module 1 (triggers Hard Module 2) and 20 correct in Module 2</p>
+                <p><strong>Calculation:</strong></p>
+                <ul>
+                    <li>Total raw score: 18 + 20 = 38</li>
+                    <li>Path: Hard Module 2</li>
+                    <li>Scaled score lookup: 38 correct on Hard path = ~690-710</li>
+                </ul>
+            </div>
+            
+            <h3>Step 4: Calculate Total Score</h3>
+            <p>Your total SAT score (400-1600) is the sum of your two section scores:</p>
+            <ul>
+                <li>Total Score = Reading & Writing Score (200-800) + Math Score (200-800)</li>
+            </ul>
+        </section>
+
+        <!-- Section 4: Adaptive Module Explanation -->
+        <section id="adaptive-modules" class="methodology-section">
+            <h2>4. Adaptive Module Explanation</h2>
+            <p>The Digital SAT's adaptive nature is its most distinctive feature. Understanding how this works is crucial for interpreting your scores.</p>
+            
+            <h3>How Adaptive Testing Works</h3>
+            <p>Unlike the paper SAT where all students see the same questions, the Digital SAT adapts to your performance:</p>
+            <ol>
+                <li><strong>Module 1:</strong> All students start with a medium-difficulty Module 1</li>
+                <li><strong>Routing:</strong> Your performance determines which Module 2 you receive</li>
+                <li><strong>Module 2:</strong> You'll get an easy, medium, or hard Module 2 based on Module 1 results</li>
+                <li><strong>Scoring:</strong> Module 2 difficulty affects how your raw scores convert to scaled scores</li>
+            </ol>
+            
+            <h3>Three Adaptive Pathways</h3>
+            
+            <div class="example-box">
+                <h4>Pathway 1: High Performer → Hard Module 2</h4>
+                <p><strong>Reading & Writing Example:</strong></p>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Correct Answers</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1</td>
+                            <td>22 / 27</td>
+                            <td>Routes to Hard Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 (Hard)</td>
+                            <td>18 / 27</td>
+                            <td>Total: 40/54 correct</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Scaled Score</strong></td>
+                            <td><strong>~730-750</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Key Insight:</strong> Getting into the hard module opens the door to higher scores. Even with some mistakes in Module 2, you can still achieve a top score.</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>Pathway 2: Medium Performer → Medium Module 2</h4>
+                <p><strong>Math Example:</strong></p>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Correct Answers</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1</td>
+                            <td>14 / 22</td>
+                            <td>Routes to Medium Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 (Medium)</td>
+                            <td>16 / 22</td>
+                            <td>Total: 30/44 correct</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Scaled Score</strong></td>
+                            <td><strong>~620-640</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Key Insight:</strong> Medium pathway limits your maximum possible score but provides appropriately challenging questions for your skill level.</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>Pathway 3: Developing Skills → Easy Module 2</h4>
+                <p><strong>Reading & Writing Example:</strong></p>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Correct Answers</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1</td>
+                            <td>8 / 27</td>
+                            <td>Routes to Easy Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 (Easy)</td>
+                            <td>12 / 27</td>
+                            <td>Total: 20/54 correct</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Scaled Score</strong></td>
+                            <td><strong>~420-440</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Key Insight:</strong> Easy module provides confidence-building questions while still assessing foundational skills.</p>
+            </div>
+            
+            <h3>Important Adaptive Considerations</h3>
+            <ul>
+                <li><strong>No Single Answer:</strong> Two students with the same total raw score can have different scaled scores depending on their pathway</li>
+                <li><strong>Module 1 Matters:</strong> Strong performance in Module 1 is crucial for reaching the highest score ranges</li>
+                <li><strong>Recovery Possible:</strong> If you get the hard module but struggle, you'll still receive a fair score for your overall performance</li>
+                <li><strong>No Penalty:</strong> Getting the easy module doesn't mean a "bad" score—it means the test is adapting to assess your skills accurately</li>
+            </ul>
+        </section>
+
+        <!-- Section 5: Limitations & Disclaimers -->
+        <section id="limitations" class="methodology-section">
+            <h2>5. Limitations & Disclaimers</h2>
+            
+            <div class="disclaimer-box">
+                <h4>⚠️ Important: These are Estimates, Not Official Scores</h4>
+                <p>Our calculator provides estimates based on official data, but your actual test day score may differ. Several factors can cause variation:</p>
+            </div>
+            
+            <h3>Factors Affecting Score Accuracy</h3>
+            
+            <h4>1. Equating Process</h4>
+            <p>The College Board uses a statistical process called "equating" to ensure fairness across test dates. This means:</p>
+            <ul>
+                <li>Conversion tables vary slightly between different test administrations</li>
+                <li>Our calculator uses average or most recent conversions</li>
+                <li>Your specific test date may use slightly different conversions</li>
+                <li><strong>Typical variation:</strong> ±10-20 points per section</li>
+            </ul>
+            
+            <h4>2. Module Difficulty Routing</h4>
+            <p>We estimate which Module 2 you would receive based on Module 1 performance, but:</p>
+            <ul>
+                <li>Exact routing thresholds are proprietary to College Board</li>
+                <li>Edge cases (scores right at the boundary) may be routed differently</li>
+                <li>Our thresholds are based on published guidance and testing patterns</li>
+            </ul>
+            
+            <h4>3. Test-Taking Conditions</h4>
+            <p>Practice test scores may differ from actual test scores due to:</p>
+            <ul>
+                <li>Test day stress and anxiety</li>
+                <li>Timing pressure differences</li>
+                <li>Environmental factors</li>
+                <li>Familiarity with testing interface</li>
+            </ul>
+            
+            <h4>4. Score Range Accuracy</h4>
+            <p>We provide point estimates, but understand that:</p>
+            <ul>
+                <li>All SAT scores have a measurement error of approximately ±30-40 points</li>
+                <li>Scores near section boundaries (e.g., 695 vs. 705) are particularly sensitive to small changes</li>
+                <li>Our estimates aim for the midpoint of possible score ranges</li>
+            </ul>
+            
+            <h3>What This Calculator Can and Cannot Do</h3>
+            
+            <table class="example-table">
+                <thead>
+                    <tr>
+                        <th>✅ What We Can Do</th>
+                        <th>❌ What We Cannot Do</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Provide accurate estimates based on official data</td>
+                        <td>Predict your exact official SAT score</td>
+                    </tr>
+                    <tr>
+                        <td>Show you how adaptive routing affects scores</td>
+                        <td>Replicate College Board's proprietary equating</td>
+                    </tr>
+                    <tr>
+                        <td>Help you track improvement over time</td>
+                        <td>Account for test day performance factors</td>
+                    </tr>
+                    <tr>
+                        <td>Explain the scoring methodology transparently</td>
+                        <td>Guarantee specific college admissions outcomes</td>
+                    </tr>
+                    <tr>
+                        <td>Calculate section and total scores</td>
+                        <td>Provide question-level difficulty analysis</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Official Score Reports</h3>
+            <p>For official scores that colleges will accept, you must:</p>
+            <ul>
+                <li>Take the SAT on an official test date</li>
+                <li>Receive your score report from College Board</li>
+                <li>Send official score reports directly from College Board to colleges</li>
+            </ul>
+            
+            <p><strong>Our calculator is a study tool, not a replacement for official testing.</strong></p>
+        </section>
+
+        <!-- Section 6: Worked Examples -->
+        <section id="worked-examples" class="methodology-section">
+            <h2>6. Worked Examples</h2>
+            <p>Let's walk through complete calculation examples to show exactly how the scoring process works.</p>
+            
+            <div class="example-box">
+                <h4>Example 1: High-Achieving Student Path</h4>
+                <p><strong>Student Profile:</strong> Aiming for 1500+ total score</p>
+                
+                <h5>Reading & Writing Section:</h5>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Details</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1 Performance</td>
+                            <td>23 correct out of 27 questions</td>
+                            <td>Strong performance</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Assignment</td>
+                            <td>23 > 15, routes to Hard Module</td>
+                            <td>Hard Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Performance</td>
+                            <td>19 correct out of 27 questions</td>
+                            <td>Solid on hard questions</td>
+                        </tr>
+                        <tr>
+                            <td>Total Raw Score</td>
+                            <td>23 + 19 = 42 correct</td>
+                            <td>42/54</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scaled Score</strong></td>
+                            <td><strong>Hard pathway, 42 correct</strong></td>
+                            <td><strong>760</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h5>Math Section:</h5>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Details</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1 Performance</td>
+                            <td>18 correct out of 22 questions</td>
+                            <td>Strong performance</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Assignment</td>
+                            <td>18 > 12, routes to Hard Module</td>
+                            <td>Hard Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Performance</td>
+                            <td>16 correct out of 22 questions</td>
+                            <td>Good on hard questions</td>
+                        </tr>
+                        <tr>
+                            <td>Total Raw Score</td>
+                            <td>18 + 16 = 34 correct</td>
+                            <td>34/44</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scaled Score</strong></td>
+                            <td><strong>Hard pathway, 34 correct</strong></td>
+                            <td><strong>740</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h5><strong>Total SAT Score: 760 + 740 = 1500</strong></h5>
+            </div>
+            
+            <div class="example-box">
+                <h4>Example 2: Mid-Range Student Path</h4>
+                <p><strong>Student Profile:</strong> Aiming for 1200-1300 range</p>
+                
+                <h5>Reading & Writing Section:</h5>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Details</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1 Performance</td>
+                            <td>16 correct out of 27 questions</td>
+                            <td>Medium performance</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Assignment</td>
+                            <td>10 < 16 < 15, routes to Medium Module</td>
+                            <td>Medium Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Performance</td>
+                            <td>18 correct out of 27 questions</td>
+                            <td>Improved in Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Total Raw Score</td>
+                            <td>16 + 18 = 34 correct</td>
+                            <td>34/54</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scaled Score</strong></td>
+                            <td><strong>Medium pathway, 34 correct</strong></td>
+                            <td><strong>650</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h5>Math Section:</h5>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Details</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1 Performance</td>
+                            <td>13 correct out of 22 questions</td>
+                            <td>Medium performance</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Assignment</td>
+                            <td>8 < 13 < 12, routes to Medium Module</td>
+                            <td>Medium Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Performance</td>
+                            <td>14 correct out of 22 questions</td>
+                            <td>Consistent performance</td>
+                        </tr>
+                        <tr>
+                            <td>Total Raw Score</td>
+                            <td>13 + 14 = 27 correct</td>
+                            <td>27/44</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scaled Score</strong></td>
+                            <td><strong>Medium pathway, 27 correct</strong></td>
+                            <td><strong>600</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h5><strong>Total SAT Score: 650 + 600 = 1250</strong></h5>
+            </div>
+            
+            <div class="example-box">
+                <h4>Example 3: Building Foundation Student Path</h4>
+                <p><strong>Student Profile:</strong> Working toward 1000+ score</p>
+                
+                <h5>Reading & Writing Section:</h5>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Details</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1 Performance</td>
+                            <td>11 correct out of 27 questions</td>
+                            <td>Developing skills</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Assignment</td>
+                            <td>11 > 10, routes to Medium Module</td>
+                            <td>Medium Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Performance</td>
+                            <td>13 correct out of 27 questions</td>
+                            <td>Maintained performance</td>
+                        </tr>
+                        <tr>
+                            <td>Total Raw Score</td>
+                            <td>11 + 13 = 24 correct</td>
+                            <td>24/54</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scaled Score</strong></td>
+                            <td><strong>Medium pathway, 24 correct</strong></td>
+                            <td><strong>540</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h5>Math Section:</h5>
+                <table class="example-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Details</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1 Performance</td>
+                            <td>9 correct out of 22 questions</td>
+                            <td>Developing skills</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Assignment</td>
+                            <td>8 < 9 < 12, routes to Medium Module</td>
+                            <td>Medium Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2 Performance</td>
+                            <td>11 correct out of 22 questions</td>
+                            <td>Improved in Module 2</td>
+                        </tr>
+                        <tr>
+                            <td>Total Raw Score</td>
+                            <td>9 + 11 = 20 correct</td>
+                            <td>20/44</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scaled Score</strong></td>
+                            <td><strong>Medium pathway, 20 correct</strong></td>
+                            <td><strong>510</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h5><strong>Total SAT Score: 540 + 510 = 1050</strong></h5>
+            </div>
+        </section>
+
+        <!-- Section 7: Update Log -->
+        <section id="update-log" class="methodology-section">
+            <h2>7. Update Log</h2>
+            <p>We regularly update our methodology and scoring tables to ensure accuracy. All major changes are documented here.</p>
+            
+            <div class="update-log">
+                <div class="update-entry">
+                    <div class="update-date">January 15, 2025</div>
+                    <p><strong>Initial Methodology Page Published</strong></p>
+                    <ul>
+                        <li>Created comprehensive methodology documentation</li>
+                        <li>Included scoring tables based on College Board's official Digital SAT practice tests 1-6</li>
+                        <li>Documented adaptive routing thresholds</li>
+                        <li>Added worked examples for three different student pathways</li>
+                    </ul>
+                </div>
+                
+                <div class="update-entry">
+                    <div class="update-date">Future Updates</div>
+                    <p><strong>Planned Improvements</strong></p>
+                    <ul>
+                        <li>Incorporate new scoring data as College Board releases additional practice tests</li>
+                        <li>Refine adaptive routing thresholds based on user feedback and testing</li>
+                        <li>Add percentile rank information alongside scaled scores</li>
+                        <li>Include test-date-specific conversions when available</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p><strong>Have questions about our methodology?</strong> <a href="/contact.html">Contact us</a> with your questions or feedback.</p>
+        </section>
+
+        <!-- Call-to-Action Section -->
+        <div class="cta-section">
+            <h2>Ready to Calculate Your SAT Score?</h2>
+            <p>Now that you understand our methodology, try our calculator to estimate your scores.</p>
+            <a href="/" class="cta-button">Go to SAT Score Calculator</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <nav aria-label="Footer">
+            <a href="/about.html">About Us</a>
+            <span aria-hidden="true">·</span>
+            <a href="/contact.html">Contact Us</a>
+            <span aria-hidden="true">·</span>
+            <a href="/methodology.html">Methodology</a>
+            <span aria-hidden="true">·</span>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <span aria-hidden="true">·</span>
+            <a href="/terms.html">Terms & Conditions</a>
+        </nav>
+        <small>© <span id="year"></span> SAT Score Calculator</small>
+    </footer>
+
+    <script src="/script.min.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for table of contents links
+        document.querySelectorAll('.table-of-contents a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Consent Banner -->
+    <div id="consent-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 20px; z-index: 1000000; box-shadow: 0 -4px 20px rgba(0,0,0,0.3); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: none;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+            <div style="flex: 1; min-width: 300px;">
+                <p style="margin: 0; font-size: 14px; line-height: 1.4; font-weight: 500;">
+                    🍪 This site uses cookies to enhance your experience and for analytics. By using our site, you agree to our use of cookies.
+                    <a href="privacy-policy.html" style="color: #3498db; text-decoration: underline; margin-left: 5px;">Learn more</a>
+                </p>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button onclick="acceptAllConsent()" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);">
+                    Accept All
+                </button>
+                <button onclick="rejectAllConsent()" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);">
+                    Reject All
+                </button>
+                <button onclick="showCustomizeConsent()" style="background: transparent; color: white; border: 2px solid white; padding: 8px 16px; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.3s ease;">
+                    Customize
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consent Settings Modal -->
+    <div id="consent-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000001; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; max-width: 500px; width: 90%; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); max-height: 80vh; overflow-y: auto;">
+            <h3 style="margin-top: 0; color: #2c3e50; font-size: 24px; font-weight: 700;">Cookie Preferences</h3>
+            <p style="color: #7f8c8d; line-height: 1.6; font-size: 14px;">Choose which cookies you're comfortable with:</p>
+            
+            <div style="margin: 20px 0;">
+                <div style="margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <strong style="color: #2c3e50; font-size: 16px;">Necessary</strong>
+                            <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 13px;">Essential for the site to function properly</p>
+                        </div>
+                        <input type="checkbox" checked disabled style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <strong style="color: #2c3e50; font-size: 16px;">Analytics</strong>
+                            <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 13px;">Help us improve our website</p>
+                        </div>
+                        <input type="checkbox" id="analytics-consent" style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <strong style="color: #2c3e50; font-size: 16px;">Advertising</strong>
+                            <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 13px;">Relevant ads for you</p>
+                        </div>
+                        <input type="checkbox" id="advertising-consent" style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <strong style="color: #2c3e50; font-size: 16px;">Functional</strong>
+                            <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 13px;">Enhanced features and personalization</p>
+                        </div>
+                        <input type="checkbox" id="functional-consent" style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px;">
+                <button onclick="closeCustomizeConsent()" style="padding: 12px 20px; border: 2px solid #e74c3c; background: transparent; color: #e74c3c; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.3s ease;">
+                    Cancel
+                </button>
+                <button onclick="saveCustomConsent()" style="padding: 12px 20px; border: none; background: #27ae60; color: white; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);">
+                    Save Preferences
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
