@@ -205,6 +205,71 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+        .author-bio {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .author-bio h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .author-info p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: var(--content-text);
+        }
+        .related-posts {
+            margin: 40px 0;
+        }
+        .related-posts h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .related-post-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .related-post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .related-post-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .related-post-card h4 a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .related-post-card h4 a:hover {
+            text-decoration: underline;
+        }
+        .related-post-card p {
+            margin-bottom: 0;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
         @media (max-width: 768px) {
             .blog-container {
                 padding: 15px;
@@ -692,6 +757,37 @@
                 <a href="/">Calculate Your SAT Score Now</a>
             </div>
         </article>
+
+        <!-- Author Bio Section -->
+        <section class="author-bio">
+            <h3>About the Author</h3>
+            <div class="author-content">
+                <div class="author-info">
+                    <p><strong>SAT Score Calculator Team</strong> is a dedicated group of education professionals and standardized testing experts with over 15 years of experience in college admission counseling and test preparation. Our team includes former SAT tutors, college admissions officers, and curriculum specialists who understand the intricacies of SAT scoring and college readiness.</p>
+                    <p>As passionate advocates for educational equity, we've developed comprehensive tools and resources to help students navigate the complex world of standardized testing. Our expertise spans both traditional and Digital SAT formats, with particular focus on helping students understand scoring algorithms and develop data-driven study strategies.</p>
+                    <p>We've personally helped thousands of students achieve their target SAT scores through personalized coaching, and now we're committed to making expert-level SAT guidance accessible to everyone through our free calculators and comprehensive guides.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Posts Section -->
+        <section class="related-posts">
+            <h3>Related Articles</h3>
+            <div class="related-posts-grid">
+                <div class="related-post-card">
+                    <h4><a href="dsat-score-calculator.html">DSAT Score Calculator: Digital SAT scoring explained</a></h4>
+                    <p>Master the Digital SAT's adaptive scoring system with our comprehensive guide to module-based score calculation.</p>
+                </div>
+                <div class="related-post-card">
+                    <h4><a href="accurate-sat-score-calculator.html">How Accurate Are SAT Score Calculators?</a></h4>
+                    <p>Understanding the precision and limitations of SAT score calculators for better test preparation planning.</p>
+                </div>
+                <div class="related-post-card">
+                    <h4><a href="sat-score-predictor.html">SAT Score Predictor: Your Complete Guide</a></h4>
+                    <p>Learn to predict your SAT scores based on practice test performance and identify areas for improvement.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
