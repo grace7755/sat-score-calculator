@@ -287,7 +287,10 @@
         }
     </style>
 
-    <!-- Google Consent Mode v2 -->
+    <!-- Google-Certified CMP Configuration (Load FIRST) -->
+    <script src="/cmp-config.js"></script>
+    
+    <!-- Fallback Consent Banner & Configuration -->
     <script src="consent-config.js"></script>
 </head>
 <body>
@@ -1078,8 +1081,5 @@
         </div>
     </div>
 
-    <!-- Google AdSense Verification Snippet -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6578959056593527"
-            crossorigin="anonymous"></script>
 </body>
 </html>

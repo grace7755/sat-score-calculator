@@ -244,21 +244,3 @@ if (document.readyState === 'loading') {
 
 // Expose globally for privacy policy "Manage Consent" link
 window.ConsentManager = ConsentManager;
-
-// Expose individual functions for HTML onclick handlers
-window.acceptAllConsent = () => ConsentManager.acceptAll();
-window.rejectAllConsent = () => ConsentManager.rejectAll();
-window.showCustomizeConsent = () => {
-    ConsentManager.hideBanner();
-    ConsentManager.showSettings();
-};
-window.closeCustomizeConsent = () => ConsentManager.hideSettings();
-window.saveCustomConsent = () => {
-    const preferences = {
-        analytics: document.getElementById('analytics-consent')?.checked || false,
-        advertising: document.getElementById('advertising-consent')?.checked || false,
-        functional: document.getElementById('functional-consent')?.checked || false
-    };
-    ConsentManager.saveCustom(preferences);
-    ConsentManager.hideSettings();
-};
