@@ -10,10 +10,10 @@
  * 5. Test with EU/UK IP to verify TCF string generation
  */
 
-// CMP Configuration - UPDATE THESE VALUES
+// CMP Configuration - CONFIGURED WITH COOKIEYES
 const CMP_CONFIG = {
-    provider: 'cookiebot', // Options: 'cookiebot', 'onetrust', 'cookieyes'
-    id: 'YOUR_CMP_ID_HERE', // Replace with your CMP Domain Group ID
+    provider: 'cookieyes', // Using CookieYes (Google-certified)
+    id: '42b2bcc64380b01610f13dc3', // CookieYes Script ID
     language: 'en',
     autoLoad: true,
     tcfVersion: '2.2'
