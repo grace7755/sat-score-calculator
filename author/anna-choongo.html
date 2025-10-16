@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Consent Mode v2 (Must load BEFORE any analytics or ads) -->
+    <script>
+        // Initialize Google Consent Mode v2 with default denied state
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Set default consent state - all denied until user accepts
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'granted',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+    </script>
+
+    <!-- CookieYes Banner - Google-Certified IAB TCF v2.2 CMP -->
+    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/42b2bcc64380b01610f13dc3/script.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Anna Choongo - Educational Content Writer | SAT Score Calculator</title>
+    <meta name="description" content="Meet Anna Choongo, an experienced educational content writer with 17+ years in senior management and content creation. Specializing in SAT preparation and educational materials.">
+    <meta name="keywords" content="educational writer, content writer, SAT expert, Anna Choongo">
+    <meta name="robots" content="noindex, follow">
+    <meta name="author" content="SAT Score Calculator">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://satscorecalculator.io/author/anna-choongo.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Anna Choongo - Educational Content Writer">
+    <meta property="og:description" content="Meet Anna Choongo, an experienced educational content writer with 17+ years in senior management and content creation.">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://satscorecalculator.io/author/anna-choongo.html">
+    <meta property="og:image" content="https://satscorecalculator.io/content-writer/anna-choongo.jpg">
+    <meta property="og:site_name" content="SAT Score Calculator">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Anna Choongo - Educational Content Writer">
+    <meta name="twitter:description" content="Meet Anna Choongo, an experienced educational content writer with 17+ years in senior management and content creation.">
+    <meta name="twitter:image" content="https://satscorecalculator.io/content-writer/anna-choongo.jpg">
+    
+    <!-- Additional SEO Tags -->
+    <meta name="theme-color" content="#1e40af">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../logo/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../logo/favicon.png">
+    <link rel="shortcut icon" href="../logo/favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .author-profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .author-hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .author-avatar-large {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--border-color);
+            object-fit: cover;
+            margin: 0 auto 20px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .author-hero h1 {
+            font-size: var(--font-size-3xl);
+            color: var(--heading-text);
+            margin: 0 0 10px 0;
+        }
+        
+        .author-title {
+            font-size: var(--font-size-lg);
+            color: var(--secondary-color);
+            margin: 0 0 20px 0;
+        }
+        
+        .author-bio-intro {
+            font-size: var(--font-size-md);
+            line-height: 1.8;
+            color: var(--content-text);
+            margin: 20px 0;
+        }
+        
+        .author-social {
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--hover-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-link:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .divider {
+            height: 2px;
+            background: var(--border-color);
+            margin: 40px 0;
+        }
+        
+        .content-section {
+            margin-bottom: 40px;
+        }
+        
+        .content-section h2 {
+            font-size: var(--font-size-xxl);
+            color: var(--heading-text);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin: 0 0 20px 0;
+        }
+        
+        .content-section h3 {
+            font-size: var(--font-size-lg);
+            color: var(--heading-text);
+            margin: 25px 0 15px 0;
+        }
+        
+        .content-section p {
+            color: var(--content-text);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin: 20px 0;
+        }
+        
+        .expertise-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: var(--space-md);
+            text-align: center;
+            color: var(--heading-text);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .expertise-badge:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .highlight-box {
+            background: var(--background-color);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--space-lg);
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            color: var(--content-text);
+        }
+        
+        .recent-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin: 20px 0;
+        }
+        
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: var(--space-lg);
+            transition: all 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+        
+        .article-card h3 {
+            margin-top: 0;
+            color: var(--heading-text);
+        }
+        
+        .article-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .article-card a:hover {
+            text-decoration: underline;
+            color: var(--hover-color);
+        }
+        
+        .article-card p {
+            color: var(--secondary-color);
+            font-size: var(--font-size-sm);
+            margin: 10px 0;
+        }
+        
+        .article-meta {
+            font-size: var(--font-size-xs);
+            color: var(--secondary-color);
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 640px) {
+            .author-profile-container {
+                padding: 20px 15px;
+            }
+            
+            .author-avatar-large {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .author-hero h1 {
+                font-size: var(--font-size-xxl);
+            }
+            
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .recent-articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Anna Choongo",
+      "url": "https://satscorecalculator.io/author/anna-choongo.html",
+      "image": "https://satscorecalculator.io/content-writer/anna-choongo.jpg",
+      "description": "Educational Content Writer with 17+ years of experience in senior management and content creation",
+      "jobTitle": "Educational Content Writer & Blogger",
+      "sameAs": [
+        "https://www.linkedin.com/in/anna-choongo-b438bb57/"
+      ],
+      "affiliation": {
+        "@type": "Organization",
+        "name": "SAT Score Calculator",
+        "url": "https://satscorecalculator.io/"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Client-side redirect for subdomain consolidation -->
+    <script>
+        (function() {
+            var hostname = window.location.hostname;
+            var targetDomain = 'satscorecalculator.io';
+            
+            if (hostname === 'sat-score-calculator.vercel.app' || 
+                (hostname.includes('sat-score-calculator') && hostname.includes('.pages.dev'))) {
+                
+                var newUrl = 'https://' + targetDomain + window.location.pathname + window.location.search + window.location.hash;
+                window.location.replace(newUrl);
+            }
+        })();
+    </script>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <img src="/logo/favicon.png" alt="SAT Score Calculator Logo" width="40" height="40" class="logo-img">
+                <span class="logo-text">SAT Score Calculator</span>
+            </a>
+            <div class="header-controls">
+                <nav class="header-nav">
+                    <a href="/methodology.html" class="nav-link">Methodology</a>
+                    <div class="nav-dropdown">
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Tools
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <a href="/tools/sat-superscore-calculator" class="dropdown-item" role="menuitem">SAT Superscore Calculator</a>
+                            <a href="/tools/psat-to-sat-predictor" class="dropdown-item" role="menuitem">PSAT to SAT Predictor</a>
+                            <a href="/tools/master-gpa-calculator" class="dropdown-item" role="menuitem">Master GPA Calculator</a>
+                        </div>
+                    </div>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                </nav>
+
+                <div class="language-switch-wrapper">
+                    <select id="languageSwitcher" class="language-select notranslate" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <span class="sun">☀️</span>
+                            <span class="moon">🌙</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="author-profile-container">
+        <div class="breadcrumb">
+            <a href="/">Home</a> → <a href="/blog/">Blog</a> → Author Profile
+        </div>
+
+        <section class="author-hero">
+            <img src="/content-writer/anna-choongo.jpg" 
+                 alt="Anna Choongo - Educational Content Writer" 
+                 class="author-avatar-large"
+                 width="200"
+                 height="200">
+            <h1>Anna Choongo</h1>
+            <p class="author-title">Educational Content Writer & Blogger</p>
+            <p class="author-bio-intro">A highly motivated educational writer with over 17 years of experience in senior management and content creation. Specialized in educational materials, training programs, and academic topics.</p>
+            
+            <div class="author-social">
+                <a href="https://www.linkedin.com/in/anna-choongo-b438bb57/" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Visit Anna Choongo on LinkedIn"
+                   class="social-link"
+                   title="Connect on LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="content-section">
+            <h2>Professional Background</h2>
+            <h3>Experience</h3>
+            <p>With over 17 years of experience in senior management roles across education, training, and nonprofit sectors, Anna brings deep expertise in curriculum development, training delivery, and educational content creation. She has successfully managed large-scale educational programs, led organizational initiatives, and developed innovative solutions for educational challenges.</p>
+            
+            <h3>Expertise</h3>
+            <div class="expertise-grid">
+                <div class="expertise-badge">Educational Content Development</div>
+                <div class="expertise-badge">Training & Assessment Materials</div>
+                <div class="expertise-badge">Academic Writing</div>
+                <div class="expertise-badge">Instructional Design</div>
+                <div class="expertise-badge">Curriculum Development</div>
+                <div class="expertise-badge">Online Education</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Published Work</h2>
+            <p>Anna is the author of <strong>"Cultivating Peace and Hope"</strong>, a published memoir that explores self-help strategies for individuals dealing with anxiety and depression. Her creative writing extends to educational content and blog posts where she shares insights on personal growth, mental health, and educational success.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Contributing to SAT Score Calculator</h2>
+            <div class="highlight-box">
+                <p><strong>Anna is honored to contribute her expertise to SAT Score Calculator.</strong> Her extensive background in education, training, and academic content creation aligns perfectly with our mission to provide accurate, accessible SAT preparation resources. Through her articles on the SAT Score Calculator blog, Anna helps students navigate their academic journey with expert insights, practical strategies, and evidence-based preparation guidance.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Recent Articles by Anna</h2>
+            <p>Explore Anna's latest contributions to the SAT Score Calculator blog:</p>
+            <div class="recent-articles-grid" id="recentArticles">
+                <!-- Articles will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Get in Touch</h2>
+            <p>Connect with Anna on LinkedIn to discuss educational content, writing opportunities, or SAT preparation strategies. Visit <a href="/contact.html">our contact page</a> to reach out to the SAT Score Calculator team.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <nav aria-label="Footer">
+            <a href="/about.html">About Us</a>
+            <span aria-hidden="true">·</span>
+            <a href="/contact.html">Contact Us</a>
+            <span aria-hidden="true">·</span>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <span aria-hidden="true">·</span>
+            <a href="/terms.html">Terms & Conditions</a>
+        </nav>
+        <small>© <span id="year"></span> SAT Score Calculator</small>
+    </footer>
+    
+    <script>
+        (function(){ var el=document.getElementById('year'); if(el) el.textContent=new Date().getFullYear(); })();
+    </script>
+
+    <!-- xnx3/translate - Automatic Translation Library -->
+    <script src="https://cdn.staticfile.net/translate.js/3.17.0/translate.js"></script>
+    <script>
+        // Configure xnx3/translate for automatic translation
+        translate.language.setLocal('english');
+        translate.service.use('client.edge');
+        translate.selectLanguageTag.show = false;
+        
+        // Initialize translation when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSwitcher = document.getElementById('languageSwitcher');
+            if (!languageSwitcher) return;
+            
+            const langMap = {'en': 'english', 'de': 'deutsch', 'es': 'spanish'};
+            const savedLang = localStorage.getItem('userLanguage') || 'en';
+            languageSwitcher.value = savedLang;
+            
+            // Apply saved language on initial load
+            if (savedLang !== 'en') {
+                setTimeout(() => {
+                    translate.changeLanguage(langMap[savedLang]);
+                    translate.execute();
+                }, 100);
+            }
+            
+            // Handle language change
+            languageSwitcher.addEventListener('change', function() {
+                const selectedLang = this.value;
+                localStorage.setItem('userLanguage', selectedLang);
+                
+                if (selectedLang === 'en') {
+                    window.location.reload();
+                } else {
+                    translate.changeLanguage(langMap[selectedLang]);
+                }
+            });
+        });
+    </script>
+
+    <script src="/script.js" defer></script>
+    <!-- Google-Certified CMP Configuration (Load FIRST) -->
+    <script src="/cmp-config.js"></script>
+    <!-- Google Consent Banner & Configuration -->
+    <script src="/consent-config.js"></script>
+    
+    <!-- Consent Banner UI (Inline for all pages) -->
+    <style>
+        #consent-banner{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;box-shadow:0 -2px 10px rgba(0,0,0,.1);padding:1.5rem;z-index:999999;border-top:3px solid var(--primary-color,#000);animation:slideUp .3s ease-out}@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}.consent-content{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}.consent-text{flex:1;min-width:300px}.consent-text h3{margin:0 0 .5rem 0;font-size:1.125rem;color:var(--heading-text,#111)}.consent-text p{margin:0;font-size:.9375rem;color:var(--text-color,#666);line-height:1.6}.consent-text a{color:var(--hover-color,#0070f3);text-decoration:underline}.consent-buttons{display:flex;gap:.75rem;flex-wrap:wrap}.consent-btn{padding:.75rem 1.5rem;border:none;border-radius:6px;font-size:.9375rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}.consent-btn-primary{background:var(--primary-color,#000);color:#fff}.consent-btn-primary:hover{background:#333;transform:translateY(-1px)}.consent-btn-secondary{background:transparent;color:var(--text-color,#111);border:2px solid var(--border-color,#eaeaea)}.consent-btn-secondary:hover{border-color:var(--primary-color,#000);background:var(--background-color,#fafafa)}.consent-btn-link{background:transparent;color:var(--hover-color,#0070f3);padding:.75rem 1rem;text-decoration:underline}#consent-settings-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:1000000;align-items:center;justify-content:center;padding:1rem}.consent-modal-content{background:#fff;border-radius:12px;padding:2rem;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 10px 40px rgba(0,0,0,.2)}.consent-modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--border-color,#eaeaea)}.consent-modal-header h2{margin:0;font-size:1.5rem;color:var(--heading-text,#111)}.consent-close-btn{background:transparent;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-color,#666);padding:.25rem;line-height:1}.consent-close-btn:hover{color:var(--primary-color,#000)}.consent-option{padding:1.25rem;margin-bottom:1rem;border:1px solid var(--border-color,#eaeaea);border-radius:8px;background:var(--background-color,#fafafa)}.consent-option-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}.consent-option-header h4{margin:0;font-size:1.0625rem;color:var(--heading-text,#111)}.consent-toggle{position:relative;width:50px;height:26px}.consent-toggle input[type="checkbox"]{opacity:0;width:0;height:0}.consent-toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;border-radius:26px;transition:.3s}.consent-toggle-slider:before{position:absolute;content:"";height:20px;width:20px;left:3px;bottom:3px;background-color:#fff;border-radius:50%;transition:.3s}.consent-toggle input:checked+.consent-toggle-slider{background-color:var(--success-color,#0070f3)}.consent-toggle input:checked+.consent-toggle-slider:before{transform:translateX(24px)}.consent-toggle input:disabled+.consent-toggle-slider{opacity:.5;cursor:not-allowed}.consent-option-description{font-size:.875rem;color:var(--secondary-color,#666);line-height:1.6}.consent-modal-footer{margin-top:1.5rem;padding-top:1rem;border-top:2px solid var(--border-color,#eaeaea);display:flex;gap:.75rem;justify-content:flex-end}@media (max-width:768px){.consent-content{flex-direction:column;align-items:stretch}.consent-buttons{justify-content:stretch}.consent-btn{flex:1;text-align:center}.consent-modal-content{padding:1.5rem}.consent-modal-footer{flex-direction:column}}
+    </style>
+    
+    <div id="consent-banner">
+        <div class="consent-content">
+            <div class="consent-text">
+                <h3>🍪 We Value Your Privacy</h3>
+                <p>We use cookies to enhance your experience, analyze site traffic, and serve personalized ads. By clicking "Accept All", you consent to our use of cookies. <a href="/privacy-policy.html">Learn more</a></p>
+            </div>
+            <div class="consent-buttons">
+                <button id="consent-accept-all" class="consent-btn consent-btn-primary">Accept All</button>
+                <button id="consent-reject-all" class="consent-btn consent-btn-secondary">Reject All</button>
+                <button id="consent-settings-btn" class="consent-btn consent-btn-link">Customize</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="consent-settings-modal">
+        <div class="consent-modal-content">
+            <div class="consent-modal-header">
+                <h2>Cookie Preferences</h2>
+                <button id="consent-settings-close" class="consent-close-btn" aria-label="Close">×</button>
+            </div>
+            <div class="consent-options">
+                <div class="consent-option">
+                    <div class="consent-option-header">
+                        <h4>Essential Cookies</h4>
+                        <label class="consent-toggle">
+                            <input type="checkbox" checked disabled>
+                            <span class="consent-toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p class="consent-option-description">These cookies are necessary for the website to function and cannot be switched off.</p>
+                </div>
+                <div class="consent-option">
+                    <div class="consent-option-header">
+                        <h4>Analytics Cookies</h4>
+                        <label class="consent-toggle">
+                            <input type="checkbox" id="consent-analytics">
+                            <span class="consent-toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p class="consent-option-description">These cookies help us understand how visitors interact with our website by collecting information anonymously.</p>
+                </div>
+                <div class="consent-option">
+                    <div class="consent-option-header">
+                        <h4>Advertising Cookies</h4>
+                        <label class="consent-toggle">
+                            <input type="checkbox" id="consent-ads">
+                            <span class="consent-toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p class="consent-option-description">These cookies may be set by our advertising partners to build a profile of your interests and show you relevant ads.</p>
+                </div>
+                <div class="consent-option">
+                    <div class="consent-option-header">
+                        <h4>Personalization Cookies</h4>
+                        <label class="consent-toggle">
+                            <input type="checkbox" id="consent-personalization">
+                            <span class="consent-toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p class="consent-option-description">These cookies enable enhanced functionality and personalization, such as remembering your preferences.</p>
+                </div>
+            </div>
+            <div class="consent-modal-footer">
+                <button id="consent-save-settings" class="consent-btn consent-btn-primary">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
