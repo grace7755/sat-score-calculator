@@ -1,9 +1,6 @@
-# Canonical domain enforcement: Force www → apex
+# www → apex
 https://www.satscorecalculator.io/*  https://satscorecalculator.io/:splat  301!
 
-# Ensure HTTP → HTTPS on both hosts (defense in depth)
+# HTTP → HTTPS (belt & suspenders)
 http://satscorecalculator.io/*      https://satscorecalculator.io/:splat  301!
 http://www.satscorecalculator.io/*  https://satscorecalculator.io/:splat  301!
-
-# Redirect Cloudflare Pages subdomain to main domain
-https://*.pages.dev/*  https://satscorecalculator.io/:splat  301!
